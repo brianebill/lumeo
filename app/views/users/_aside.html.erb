@@ -1,0 +1,10 @@
+<section>
+	<h3 class="center user_name"><%= @user.name %></h3>
+	<p class="padding-bottom"><%= image_tag @user.photo.url(:show) %></p>
+</section>
+	<span>
+		<%= @user.first_name %>'s activity:<br /> <%= pluralize(current_user.microposts.count, "reflections") %>
+	</span>
+<section>
+	<%= render 'shared/stats' %>
+</section>

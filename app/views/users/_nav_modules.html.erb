@@ -1,0 +1,13 @@
+ <ul class="nav well">
+   <% if signed_in? %>
+     <li><%= link_to "Invite Friends", '#' %></li><i class="icon-user"></i><i class="icon-user"></i> 
+     <li><%= link_to "My Roadmap", '#' %></li><i class="icon-star"></i>
+     <li><%= link_to "My Courses", '#' %></li><i class="icon-user"></i>	
+     <li><%= link_to "My Profolio", '#' %></li><i class="icon-road"></i>	
+     <li><%= link_to "My Reflections", '#' %></li><i class="icon-eye-open"></i><i class="icon-eye-open"></i>
+     <li><%= link_to "My Feed", '#' %></li><i class="icon-fire"></i>
+     <li><%= link_to "Community", '#' %></li><i class="icon-comment"></i>
+     <li><%= link_to "Edit Membership", edit_user_registration_path(current_user) %></li><i class="icon-cog"></i>
+     <li><%= link_to "Help", "#" %></li><i class="icon-question-sign"></i></li>
+   <% end %>
+ </ul>

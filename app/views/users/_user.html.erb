@@ -1,0 +1,7 @@
+<li>
+  <%= gravatar_for user, size: 32 %>
+  <%= link_to user.name, user %>
+  <% if can? :update, @courses && !current_user?(user) %>
+      | <%= link_to "delete", user, method: :delete, confirm: "You sure?" %>
+  <% end %>
+</li>

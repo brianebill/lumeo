@@ -1,0 +1,5 @@
+<h1 class="title"><%= @course.title %></h1>
+<%= image_tag(@course.photo.url(:show), alt: @course.title) %>	
+<p class="description center">
+  <%= @course.description.html_safe %>
+</p>

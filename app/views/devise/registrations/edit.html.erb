@@ -1,25 +1,30 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% provide(:title, "Edit Member Information") %>
+<h2 class="span12 center form_title">Edit Membership</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="row">
+  <div class="span4 offset4">
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
-
-  <div><%= f.submit "Update" %></div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>
+     <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f| %>
+     <%= f.error_notification %>
+       		   <div class="inputs">
+	               <%= f.input :first_name, :required => false, :autofocus => true %>
+		           <%= f.input :last_name, :required => false, :autofocus => true %>
+		           <%= f.input :email, :required => true, :autofocus => true %>
+		           <%= f.input :current_password, :hint => "enter your current password above to make any changes, then.  if you want to change your password, enter and confirm your new password below", :required => true %>
+		           <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+		           <%= f.input :password_confirmation, :required => false %>
+				     upload photo
+				     <%= f.file_field :photo %>
+      			   <% for role in Role.all %>
+			       	     <div>
+						  <%= check_box_tag "user[role_id][]", role.id, @user.roles.include?(role) %>
+						  <%=h role.name %>
+						</div>
+			      <% end %>
+					<%= hidden_field_tag "user[role_id][]", "" %>
+					<%= f.submit :class => 'btn' %><%= link_to "Back", :back, :class => 'btn' %>
+			   </div>
+		<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+	<% end %>
+  </div>
+</div>

@@ -7,7 +7,7 @@ gem 'rails', '3.2.3'
 
 gem 'pg'
 gem 'jquery-rails'
-gem 'anjlab-bootstrap-rails', '>= 2.0.3.2', :require => 'bootstrap-rails'
+gem 'bootstrap-sass', '2.0.0'
 gem 'devise', '2.0.4'
 gem 'simple_form'
 gem 'cancan'
@@ -33,7 +33,6 @@ end
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
