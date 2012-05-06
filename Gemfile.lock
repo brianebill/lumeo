@@ -174,7 +174,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   cucumber-rails (= 1.2.1)
   database_cleaner (= 0.7.0)
-  devise
+  devise (= 2.0.4)
   factory_girl_rails (= 1.4.0)
   jquery-rails
   pg
