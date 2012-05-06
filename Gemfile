@@ -7,7 +7,7 @@ gem 'rails', '3.2.3'
 
 gem 'pg'
 gem 'jquery-rails'
-gem 'bootstrap-sass', '~> 2.0.2'
+gem 'anjlab-bootstrap-rails', '>= 2.0.3.2', :require => 'bootstrap-rails'
 gem 'devise', '2.0.4'
 gem 'simple_form'
 gem 'cancan'

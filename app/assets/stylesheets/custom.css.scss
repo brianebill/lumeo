@@ -1,1 +1,209 @@
+// Set the correct sprite paths
+$iconSpritePath: image-path('glyphicons-halflings.png');
+$iconWhiteSpritePath: image-path('glyphicons-halflings-white.png');
+
+$navbarBackground: #555;
+$navbarBackgroundHighlight: #888;
+$navbarText: #eee;
+$navbarLinkColor: #eee;
+
 @import "bootstrap";
+
+body { padding-top: 60px; }
+
+@import "bootstrap-responsive";
+
+.navbar .brand {
+  color: #FAFFB8;
+}
+
+.brand {margin-top:-22px;}
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.padding-bottom {
+  padding-bottom:20px;
+}
+
+.padding-top {
+  padding-top: 20px;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* header */
+
+#logo {
+  float:left;
+  padding:10px;
+}
+
+.gravatar_header {
+  padding-top:12px;
+  margin-right:-10px;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family:helvetica, arial, sans-serif;
+}
+
+li {
+  font-family:helvetica, arial, sans-serif;
+}
+
+a {
+  font-family:helvetica, arial, sans-serif;
+}
+
+p {
+  font-family:helvetica, arial, sans-serif;
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+}
+
+footer a {
+  color: #555;
+  &:hover {
+     color: #222;
+     background:transparent;
+   } 
+}
+
+footer small {
+  float: left;
+  a {
+    color:#2786C2;
+}
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 10px;
+}
+
+.footer_link {
+		list-style-type: none;
+	    display: inline-block;
+		font-family: Arial, Helvetica, sans-serif;
+	    padding-right: 20px;
+		font-size:14px;
+
+		a {
+				color:#777;
+				text-decoration:none;
+		}
+	}
+	
+/* forms */
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+input, textarea, select, .uneditable-input {
+	  border: 1px solid #bbb;
+	  width: 100%;
+	  padding: 10px;
+	  height: auto;
+	  margin-bottom: 15px;
+	  @include box_sizing;
+}
+
+.form_title {
+     padding:20px;
+}
+
+/* sidebar */
+
+aside {
+  section {
+    padding: 10px 0;
+    border-top: 1px solid;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.6em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.stats {
+  overflow: auto;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: #2786C2;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+}

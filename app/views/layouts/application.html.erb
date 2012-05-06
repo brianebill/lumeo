@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lumeo</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= render 'layouts/stylesheets' %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
-	<p class="notice"><%= notice %></p>
-	       <p class="alert"><%= alert %></p>
-<%= yield %>
 
+<body>
+	<% flash.each do |name, msg| %>
+	  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+	     <a class="close" data-dismiss="alert" href="#">&times;</a>
+	    <%= msg %>
+	  </div>
+	<% end %>
+
+	<div class="container">
+	    <%= render 'layouts/header' %>
+	</div>
+
+    <div class="container">
+       <%= yield %>
+    </div>
+    <div class="container">
+      <%= render 'layouts/footer' %>
+    </div>
+      <%= debug(params) if Rails.env.development? %>
 </body>
 </html>
+

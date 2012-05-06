@@ -1,8 +1,14 @@
 Lumeo::Application.routes.draw do
+  match '/about',   to: 'pages#about'
+  match '/contact',   to: 'pages#contact'
+  match '/terms', to: 'pages#terms'
+  match '/privacy', to: 'pages#privacy'
+
   devise_for :users
 
   root to: 'pages#home'
   resources :articles
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
