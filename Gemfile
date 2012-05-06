@@ -11,6 +11,11 @@ gem 'bootstrap-sass', '~> 2.0.2'
 gem 'devise', '2.0.4'
 gem 'simple_form'
 gem 'cancan'
+gem "paperclip", "~> 3.0"
+gem 'aws-sdk'
+gem 'faker', '1.0.1'
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.5'
 
 
 group :test, :development do
