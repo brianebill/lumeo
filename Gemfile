@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 2.0.2'
 gem 'devise', '2.0.4'
 gem 'simple_form'
+gem 'cancan'
 
 
 group :test, :development do
