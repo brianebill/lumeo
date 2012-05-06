@@ -3,7 +3,7 @@
 	<p class="padding-bottom"><%= image_tag @user.photo.url(:show) %></p>
 </section>
 	<span>
-		<%= @user.first_name %>'s activity:<br /> <%= pluralize(current_user.microposts.count, "reflections") %>
+		<%= @user.name %>'s activity:<br /> <%= pluralize(@user.microposts.count, "reflections") %>
 	</span>
 <section>
 	<%= render 'shared/stats' %>

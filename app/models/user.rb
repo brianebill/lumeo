@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :role_id, :photo
-  validates_presence_of :first_name, :last_name
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :role_id, :photo
+  validates_presence_of :name
   # attr_accessible :title, :body
   has_many :assignments
   has_many :roles, :through => :assignments
@@ -30,10 +30,6 @@ class User < ActiveRecord::Base
   
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
-  end
-  
-  def name
-    [first_name, last_name].join(' ')
   end
   
   def feed
