@@ -1,0 +1,14 @@
+<%= simple_form_for @post, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+   <fieldset>
+	 <legend><%= controller.action_name.capitalize %> Post</legend>
+	   <%= f.input :title %>
+	   <%= f.input :index_text %>
+	   <%= f.input :show_text %>
+	   Upload Photo <%= f.file_field :photo %>
+  </fieldset>
+  <h2>Categories</h2>
+  <%= render :partial => 'categories/form' %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+  </div>
+<% end %>

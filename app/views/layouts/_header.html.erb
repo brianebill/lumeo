@@ -17,7 +17,7 @@
 		<% end %>
          <li><%= link_to "Browse Courses", '#' %></li>
        <li><%= link_to "Community", '#' %></li>
-	   <li><%= link_to "Blog", '#' %></li>
+	   <li><%= link_to "Blog",  posts_path %></li>
 	   <% if user_signed_in? %>
 		  <li id="fat-menu" class="dropdown">
 	              <a href="#" class="dropdown-toggle" data-toggle="dropdown">

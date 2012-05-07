@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120506221614) do
+ActiveRecord::Schema.define(:version => 20120506224758) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -29,8 +29,30 @@ ActiveRecord::Schema.define(:version => 20120506221614) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  create_table "categories_posts", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.integer  "micropost_id"
+    t.text     "text"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "microposts", :force => true do |t|
@@ -41,6 +63,28 @@ ActiveRecord::Schema.define(:version => 20120506221614) do
   end
 
   add_index "microposts", ["content"], :name => "index_microposts_on_content"
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "index_text"
+    t.text     "show_text"
+    t.datetime "created_date"
+    t.datetime "edited_date"
+    t.integer  "category_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  add_index "posts", ["category_id"], :name => "index_posts_on_category_id"
+  add_index "posts", ["created_date"], :name => "index_posts_on_created_date"
+  add_index "posts", ["edited_date"], :name => "index_posts_on_edited_date"
+  add_index "posts", ["index_text"], :name => "index_posts_on_index_text"
+  add_index "posts", ["show_text"], :name => "index_posts_on_show_text"
+  add_index "posts", ["title"], :name => "index_posts_on_title"
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
