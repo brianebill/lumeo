@@ -11,4 +11,6 @@ How to load the database locally:
 	$ bundle exec rake db:test:prepare
 3. Add roles to the database at localhost:3000/roles
 
+4. Optional: Assign an administrator
+
     

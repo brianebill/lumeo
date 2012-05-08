@@ -1,0 +1,12 @@
+<%= simple_form_for([@course, @course.videos.build]) do |f| %>
+   <fieldset>
+	<%= f.input :photo %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :html %>
+    <%= f.input :running_time %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+  </div>
+  </fieldset>
+<% end %>

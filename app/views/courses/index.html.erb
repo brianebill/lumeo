@@ -1,0 +1,30 @@
+<div class="span10 offset1">
+	<h1>Courses</h1>	
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th>Courses</th>
+	      <th>Title</th>
+	      <th>Description</th>
+	      <th>Actions</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @courses.each do |course| %>
+	      <tr>
+	        <td><%= image_tag(course.photo.url(:index), alt: course.title) %></td>	
+	        <td><%= link_to course.title, course_path(course) %></td>
+	        <td><%= course.description.html_safe %></td>
+	        <td><%= link_to "Add Video", "#", :class => 'btn btn-mini' %>
+         	    <% if can? :update, @course %>
+		          <%= link_to 'Edit', edit_course_path(course), :class => 'btn btn-mini' %>
+		          <%= link_to 'Destroy', course_path(course), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+		       <% end %>   
+	        </td>
+	      </tr>
+
+	  </tbody>
+	</table>
+<% end %>
+	<p><%= link_to 'Create a New Course', new_course_path, :class => 'btn btn-mini' %></p>
+	</div>

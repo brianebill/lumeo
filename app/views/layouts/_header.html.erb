@@ -15,7 +15,7 @@
 		  <li> &nbsp; &nbsp;</li>
 		  <li><%= link_to current_user.name, current_user %></li>
 		<% end %>
-         <li><%= link_to "Browse Courses", '#' %></li>
+         <li><%= link_to "Browse Courses", courses_path %></li>
        <li><%= link_to "Community", '#' %></li>
 	   <li><%= link_to "Blog",  posts_path %></li>
 	   <% if user_signed_in? %>
