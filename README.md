@@ -1,3 +1,5 @@
+This readme file is a working progress while I get the processes in place inside the app
+
 == Welcome to Lumeo
 
 Lumeo is a web application created to accelerate learning by capturing the best pros in the world doing what they do.
