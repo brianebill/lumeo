@@ -1,0 +1,14 @@
+<%= simple_form_for @course, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+  <fieldset>
+	   <legend><%= controller.action_name.capitalize %> Course</legend>
+	   <%= f.input :title %>
+	   <%= f.input :description %>
+	   <%= f.input :price %>
+	   Upload Photo <%= f.file_field :photo %>
+	   <div class="form-actions">
+	     <%= f.submit nil, :class => 'btn btn-primary' %>
+	     <%= link_to 'Cancel', courses_path, :class => 'btn' %>
+	   </div>
+  </fieldset>
+<% end %>
+

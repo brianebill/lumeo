@@ -1,4 +1,10 @@
 Lumeo::Application.routes.draw do
+  get "roles_controller/index"
+
+  get "roles_controller/new"
+
+  get "roles_controller/edit"
+
   match '/about',   to: 'pages#about'
   match '/contact',   to: 'pages#contact'
   match '/terms', to: 'pages#terms'
@@ -16,13 +22,16 @@ Lumeo::Application.routes.draw do
   end
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
-  
-  resources :posts
 
   resources :posts do
   resources :comments
   end
+  
+  resources :courses do
+  resources :videos
+  end
 
+  resources :roles
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

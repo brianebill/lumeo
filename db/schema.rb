@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120506224758) do
+ActiveRecord::Schema.define(:version => 20120507160750) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -54,6 +54,20 @@ ActiveRecord::Schema.define(:version => 20120506224758) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
   end
+
+  create_table "courses", :force => true do |t|
+    t.integer  "school_id"
+    t.string   "title"
+    t.time     "total_running_time"
+    t.text     "show_text"
+    t.text     "index_text"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "courses", ["index_text"], :name => "index_courses_on_index_text"
+  add_index "courses", ["show_text"], :name => "index_courses_on_show_text"
+  add_index "courses", ["title"], :name => "index_courses_on_title"
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -103,6 +117,16 @@ ActiveRecord::Schema.define(:version => 20120506224758) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "schools", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "schools", ["description"], :name => "index_schools_on_description"
+  add_index "schools", ["name"], :name => "index_schools_on_name"
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -130,5 +154,19 @@ ActiveRecord::Schema.define(:version => 20120506224758) do
   add_index "users", ["first_name"], :name => "index_users_on_first_name"
   add_index "users", ["last_name"], :name => "index_users_on_last_name"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "videos", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "course_id"
+    t.text     "html_embed_for_video"
+    t.time     "running_time"
+    t.integer  "user_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "videos", ["description"], :name => "index_videos_on_description"
+  add_index "videos", ["title"], :name => "index_videos_on_title"
 
 end
