@@ -7,13 +7,11 @@
 			    <h1><%= @post.title %></h1>
 			    <p><%= @post.index_text.html_safe %></p>
 			   <p><%= @post.show_text.html_safe %></p>
-				<h2>Comments</h2>
 				<%= render "comments/comment" %>
-	            <h2>Add a comment:</h2>
 				<%= render "comments/form" %>
 			    <% if can? :update, @course %>
-				    <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-mini' %>
-					<%= link_to 'Destroy', @post, 
+				    <%= link_to 'Edit Post', edit_post_path(@post), :class => 'btn btn-mini' %>
+					<%= link_to 'Delete Post', @post, 
 					                    confirm: 'Are you sure?', 
 					                    method: :delete, 
 					                    :class => 'btn btn-mini' %>

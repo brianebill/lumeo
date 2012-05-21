@@ -1,4 +1,6 @@
 Lumeo::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
   get "roles_controller/index"
 
   get "roles_controller/new"
@@ -24,13 +26,15 @@ Lumeo::Application.routes.draw do
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 
-  resources :posts do
-  resources :comments
+  resources :posts, :has_many => :comments
+      
+  resources :courses do
+  resources :videos, :has_many => :comments
   end
   
-  resources :courses do
-  resources :videos
-  end
+  resources :comments
+  
+  resources :categories
 
   resources :roles
   # The priority is based upon order of creation:

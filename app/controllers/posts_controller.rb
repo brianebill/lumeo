@@ -1,4 +1,11 @@
 class PostsController < ApplicationController
+  before_filter :process_categorizations_attrs, only: [:create, :update]
+
+  def process_categorizations_attrs
+    params[:product][:categorizations_attributes].values.each do |cat_attr|
+      cat_attr[:_destroy] = true if cat_attr[:enable] != '1'
+    end
+  end
   
   def index
     @posts = Post.all
@@ -6,7 +13,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-
+    @post = @commentable = Post.find(params[:id])
     respond_to do |format|
       format.html  # show.html.erb
       format.json  { render :json => @post }

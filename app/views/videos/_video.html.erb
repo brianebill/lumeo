@@ -1,26 +1,25 @@
-<table class="table table-striped">
-	<thead>
-   		<tr>
-		   <th>Course Videos</th>
-		   <th>Title</th>
-		   <th>Running Time</th>
-		   <th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @course.videos.each do |video| %>
-			<tr>
-				<th><%= video.photo %></th>
-				<th><%= video.title %></th>
-				<th><%= video.running_time %></th>
-				<% if can? :update, @course %>
-
-		           <th><%= link_to 'Delete Video', [video.course, video],
-		                  :confirm => 'Are you sure?',
-		                  :method => :delete,
-		                  :class => 'btn btn-mini' %></th>
-		        <% end %>
-		    </tr>
-	   <% end %>
-	</tbody>
-</table>
+	<table class="table table-striped">
+		<thead>
+	   		<tr>
+			   <th>Course Videos</th>
+			   <th>Title</th>
+			   <th>Running Time</th>
+			   <th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @course.videos.each do |video| %>
+				<tr>
+					<th> <%= image_tag(video.photo.url(:header)) %></th>
+					<th><%= video.title %></th>
+					<th><%= video.running_time %></th>
+					<% if can? :update, @course %>
+                          <th><%= link_to 'Delete Video', [video.course, video],
+			                  :confirm => 'Are you sure?',
+			                  :method => :delete,
+			                  :class => 'btn btn-mini' %></th>
+		        	<% end %>
+			    </tr>
+		   <% end %>
+		</tbody>
+	</table>

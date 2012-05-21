@@ -1,0 +1,69 @@
+class CategoriesController < ApplicationController
+    def index
+      @categories = Category.all
+    end
+
+    def show
+      @category = Category.find(params[:id])
+      respond_to do |format|
+        format.html  # show.html.erb
+        format.json  { render :json => @post }
+      end
+    end
+
+    def new
+      @category = Post.new
+
+      respond_to do |format|
+        format.html  # new.html.erb
+        format.json  { render :json => @post }
+      end
+    end
+
+    def edit
+      @category = Category.find(params[:id])
+    end
+
+    def create
+      @category = Category.new(params[:post])
+
+      respond_to do |format|
+        if @category.save
+          format.html  { redirect_to(@category,
+                        :notice => 'Category was successfully created.') }
+          format.json  { render :json => @category,
+                        :status => :created, :location => @category }
+        else
+          format.html  { render :action => "new" }
+          format.json  { render :json => @category.errors,
+                        :status => :unprocessable_entity }
+        end
+      end
+    end
+
+      def update
+        @category = Post.find(params[:id])
+
+        respond_to do |format|
+          if @category.update_attributes(params[:post])
+            format.html  { redirect_to(@category,
+                          :notice => 'Category was successfully updated.') }
+            format.json  { head :no_content }
+          else
+            format.html  { render :action => "edit" }
+            format.json  { render :json => @category.errors,
+                          :status => :unprocessable_entity }
+          end
+        end
+      end
+
+        def destroy
+          @category = Category.find(params[:id])
+          @category.destroy
+
+          respond_to do |format|
+            format.html { redirect_to categories_url }
+            format.json { head :no_content }
+          end
+        end
+end

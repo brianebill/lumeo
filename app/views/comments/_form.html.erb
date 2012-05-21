@@ -1,0 +1,9 @@
+<%= simple_form_for [@commentable, Comment.new], :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+   <fieldset>
+	   <%= f.input :text %>
+	   Upload Photo <%= f.file_field :photo %>
+  </fieldset>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+  </div>
+<% end %>

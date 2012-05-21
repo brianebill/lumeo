@@ -7,7 +7,7 @@ gem 'rails', '3.2.3'
 
 gem 'pg'
 gem 'jquery-rails'
-gem 'bootstrap-sass', '2.0.0'
+gem 'bootstrap-sass', '2.0.3'
 gem 'devise', '2.0.4'
 gem 'simple_form'
 gem 'cancan'
@@ -18,10 +18,14 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.5'
 gem 'thin'
 gem "rolify", ">= 3.1.0"
+gem "rails_admin", "~> 0.0.3"
+gem "ckeditor", "3.7.1"
+gem 'paper_trail', '~> 2'
 
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 end
 
 group :test do

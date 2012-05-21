@@ -1,0 +1,10 @@
+<ul id="comments">
+  <% if @comments %>
+     <h2>Comments</h2>
+ 	 <% @comments.each do |comment| %>
+	    <li><%= comment.text %></li>
+	  <% end %>
+  <% else %>
+      <h2>Comment:</h2>
+  <% end %>
+</ul>

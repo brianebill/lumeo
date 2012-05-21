@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120519184153) do
+ActiveRecord::Schema.define(:version => 20120521032221) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -37,9 +37,20 @@ ActiveRecord::Schema.define(:version => 20120519184153) do
     t.datetime "photo_updated_at"
   end
 
-  create_table "categories_posts", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "categories_posts", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "post_id"
+  end
+
+  add_index "categories_posts", ["category_id", "post_id"], :name => "index_categories_posts_on_category_id_and_post_id"
+  add_index "categories_posts", ["post_id", "category_id"], :name => "index_categories_posts_on_post_id_and_category_id"
+
+  create_table "categorizations", :force => true do |t|
+    t.integer  "post_id"
+    t.integer  "category_id"
+    t.integer  "postion"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -53,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20120519184153) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
   end
 
   create_table "courses", :force => true do |t|
@@ -63,6 +76,12 @@ ActiveRecord::Schema.define(:version => 20120519184153) do
     t.text     "index_text"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.text     "description"
+    t.decimal  "price"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "courses", ["index_text"], :name => "index_courses_on_index_text"
@@ -99,6 +118,19 @@ ActiveRecord::Schema.define(:version => 20120519184153) do
   add_index "posts", ["index_text"], :name => "index_posts_on_index_text"
   add_index "posts", ["show_text"], :name => "index_posts_on_show_text"
   add_index "posts", ["title"], :name => "index_posts_on_title"
+
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 8
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
@@ -167,6 +199,17 @@ ActiveRecord::Schema.define(:version => 20120519184153) do
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
 
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",  :null => false
+    t.integer  "item_id",    :null => false
+    t.string   "event",      :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
+
   create_table "videos", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -176,6 +219,10 @@ ActiveRecord::Schema.define(:version => 20120519184153) do
     t.integer  "user_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "videos", ["description"], :name => "index_videos_on_description"
