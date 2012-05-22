@@ -13,8 +13,8 @@
 #
 
 class Category < ActiveRecord::Base
+  attr_accessible :name
   has_many :categorizations, dependent: :destroy
   has_many :posts, :through => :categorizations
-  attr_accessible :name
   validates :name, presence: true
 end

@@ -6,15 +6,7 @@
 	   <%= f.input :show_text %>
 	   Upload Photo <%= f.file_field :photo %>
   </fieldset>
-<%= f.fields_for :categorizations, @post.initialized_categorizations do |builder| %>
-    <% category = builder.object.category %>
-    <%= builder.hidden_field :category_id %>
 
-    <div class="field">
-      <%= builder.label :enable, category.name %>
-      <%= builder.check_box :enable %>
-    </div>
-  <% end %>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
   </div>

@@ -26,13 +26,13 @@ Lumeo::Application.routes.draw do
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 
-  resources :posts, :has_many => :comments
+  resources :posts do 
+    resources :comments
+  end
       
   resources :courses do
-  resources :videos, :has_many => :comments
+  resources :videos
   end
-  
-  resources :comments
   
   resources :categories
 
