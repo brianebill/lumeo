@@ -4,9 +4,9 @@
 	   <%= f.input :title %>
 	   <%= f.input :index_text %>
 	   <%= f.input :show_text %>
+	   <%= f.association :categories, :as => :check_boxes, :collection => @categories %>
 	   Upload Photo <%= f.file_field :photo %>
   </fieldset>
-
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
   </div>

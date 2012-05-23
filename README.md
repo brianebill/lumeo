@@ -11,8 +11,8 @@ How to load the database locally:
     $ bundle exec rake db:reset
 	$ bundle exec rake db:populate
 	$ bundle exec rake db:test:prepare
-3. Add roles to the database at localhost:3000/roles
+3. Check out the seed data and change the email and passwords to something you can remember.
+4. Run: rake db:seed
 
-4. Optional: Assign an administrator
 
     

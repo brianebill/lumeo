@@ -18,7 +18,7 @@
 #
 
 class Post < ActiveRecord::Base
-  attr_accessible :created_date, :edited_date, :index_text, :show_text, :title, :photo
+  attr_accessible :created_date, :edited_date, :index_text, :show_text, :title, :photo, :category_ids
   has_many :categorizations
   accepts_nested_attributes_for :categorizations, allow_destroy: true
   has_many :categories, :through => :categorizations

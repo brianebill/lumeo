@@ -22,11 +22,12 @@ class CommentsController < ApplicationController
   private
 
   def find_commentable
-    params.each do |name, value|
-      if name =~ /(.+)_attributes$/
-        return $1.classify.constantize.find(value)
-      end
+    if params[:post_id]
+      Post.find(params[:post_id])
+    #elsif params[:other_id]
+    #  Other.find(params[:other_id])
+    else
+      # error out?
     end
-    nil
   end
 end
