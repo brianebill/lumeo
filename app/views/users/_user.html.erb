@@ -1,6 +1,14 @@
 <li>
   <%= gravatar_for user, size: 32 %>
   <%= link_to user.name, user %>
+  <%= simple_form_for user, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+    <fieldset>
+  	   <%= f.association :roles, :as => :check_boxes, :collection => @roles %>
+    </fieldset>
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+    </div>
+  <% end %>
   <% if can? :update, @courses && !current_user?(user) %>
       | <%= link_to "delete", user, method: :delete, confirm: "You sure?" %>
   <% end %>
