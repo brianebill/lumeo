@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :role_id, :photo
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :role_id, :role_ids, :photo
   validates_presence_of :name
   validates_uniqueness_of :email, :case_sensitive => false
   # attr_accessible :title, :body
@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
                                    class_name:  "Relationship",
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
-  
+  #user photo
   has_attached_file :photo, :default_url => "default_:style_photo.png",
                     :styles => { :show => ["150x150#", :png ],
                                  :feed => ["50x50#", :png ],
