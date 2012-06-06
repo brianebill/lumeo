@@ -1,13 +1,60 @@
- <ul class="nav well">
-   <% if signed_in? %>
-     <li><%= link_to "Invite Friends", '#' %></li><i class="icon-user"></i><i class="icon-user"></i> 
-     <li><%= link_to "Roadmap", '#' %></li><i class="icon-road"></i>
-     <li><%= link_to "Courses", '#' %></li><i class="icon-user"></i>	
-     <li><%= link_to "Profolio", '#' %></li><i class="icon-star"></i>	
-     <li><%= link_to "Reflections", '#' %></li><i class="icon-eye-open"></i><i class="icon-eye-open"></i>
-     <li><%= link_to "Feed", '#' %></li><i class="icon-fire"></i>
-     <li><%= link_to "Community", '#' %></li><i class="icon-comment"></i>
-     <li><%= link_to "Edit Membership", edit_user_registration_path(current_user) %></li><i class="icon-cog"></i>
-     <li><%= link_to "Help", "#" %></li><i class="icon-question-sign"></i></li>
-   <% end %>
- </ul>
+<div class="tabbable tabs-right">
+  <ul class="nav nav-tabs">
+    <li><a href="#friends" data-toggle="tab">Invite Friends</a></li>
+    <li><a href="#roadmap" data-toggle="tab">Roadmap</a></li>
+    <li><a href="#courses" data-toggle="tab">Courses</a></li>
+    <li><a href="#profolio" data-toggle="tab">Profolio</a></li>
+    <li class="active"><a href="#reflections" data-toggle="tab">Reflections</a></li>
+    <li><a href="#feed" data-toggle="tab">Feed</a></li>
+    <li><a href="#community" data-toggle="tab">Community</a></li>
+    <li><a href="#edit" data-toggle="tab">Edit Membership</a></li>
+    <li><a href="#help" data-toggle="tab">Help</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="friends">
+
+    </div>
+    <div class="tab-pane" id="roadmap">
+
+    </div>
+    <div class="tab-pane" id="courses">
+
+    </div>
+    <div class="tab-pane" id="profolio">
+
+    </div>
+    <div class="tab-pane" id="reflections">
+     	<%= render 'reflections' %>
+    </div>
+    <div class="tab-pane" id="feed">
+
+	  <div class="row">
+	    <aside class="span4">
+	      <section>
+	        <%= render 'shared/user_info' %>
+	      </section>
+	      <section>
+	        <%= render 'shared/stats' %>
+	      </section>
+	      <section>
+	        <%= render 'shared/micropost_form' %>
+	      </section>
+	    </aside>
+	    <div class="span8">
+	      <h3><i class="icon-fire"></i> Feed</h3>
+	      <%= render 'shared/feed' %>
+	    </div>
+	  </div>
+
+    </div>
+    <div class="tab-pane" id="community">
+
+    </div>
+    <div class="tab-pane" id="edit">
+
+    </div>
+    <div class="tab-pane" id="help">
+
+    </div>
+  </div>
+</div>

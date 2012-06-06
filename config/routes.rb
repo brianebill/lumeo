@@ -37,6 +37,9 @@ Lumeo::Application.routes.draw do
   resources :categories
 
   resources :roles
+  
+  resources :messages
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

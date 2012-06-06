@@ -21,7 +21,9 @@ gem "rolify", ">= 3.1.0"
 gem "rails_admin", "~> 0.0.3"
 gem "ckeditor", "3.7.1"
 gem 'paper_trail', '~> 2'
+gem 'active_attr'
 
+gem "letter_opener", :group => :development
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
