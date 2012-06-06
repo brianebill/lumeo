@@ -1,26 +1,32 @@
-<div class="row">
-	<% @posts.each do |post| %>
-		<div class="span2 offset1">
-	 	   <%= image_tag post.photo.url(:index) %>
+<nav class="span2">
+	<ul class="well">
+		<% @categories.each do |category|%>
+		<%= category.name %>
+		<% end %>
+	</ul>
+</nav>
+
+<div class="row offset2">
+    <% @posts.each do |post| %>
+    	<div class="row">
+			<div class="span2">
+			  <%= image_tag post.photo.url(:index) %>
+			</div>
+			<div class="span5">
+			   <h1><%= post.title %></h1>
+			   <p><%= post.index_text.html_safe %></p>
+			</div>
+			<div class="span2">
+			   <%= link_to 'Show', post, :class => 'btn btn-mini'%>
+					<% if can? :update, @course %>
+				    	<%= link_to 'Edit', edit_post_path(post), :class => 'btn btn-mini' %>
+					    <%= link_to 'Destroy', post, 
+					                    confirm: 'Are you sure?', 
+					                    method: :delete, 
+					                    :class => 'btn btn-mini' %>
+				    <% end %>
+			</div>
 		</div>
-	   		<div class="span5">
-				    <h1><%= post.title %></h1>
-				    <p><%= post.index_text.html_safe %></p>
-					    <%= link_to 'Show', post, :class => 'btn btn-mini'%>
-						<% if can? :update, @course %>
-					    	<%= link_to 'Edit', edit_post_path(post), :class => 'btn btn-mini' %>
-						    <%= link_to 'Destroy', post, 
-						                    confirm: 'Are you sure?', 
-						                    method: :delete, 
-						                    :class => 'btn btn-mini' %>
-					    <% end %>
 	<% end %>
 	<%= link_to 'New Post', new_post_path, :class => 'btn btn-mini' %>
-	</div>
-	<nav class="span2 offset1">
-		<ul class="well">
-			<li>Category 1</li>
-			<li>Category 2</li>
-		</ul>
-	</nav>
 </div>

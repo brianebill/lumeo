@@ -1,13 +1,14 @@
+<div class="offset1 span8">
 <%= simple_form_for @post, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
    <fieldset>
-	 <legend><%= controller.action_name.capitalize %> Post</legend>
 	   <%= f.input :title %>
 	   <%= f.input :index_text %>
 	   <%= f.input :show_text %>
 	   <%= f.association :categories, :as => :check_boxes, :collection => @categories %>
 	   Upload Photo <%= f.file_field :photo %>
   </fieldset>
-  <div class="form-actions">
+  <div class ="title">
     <%= f.submit nil, :class => 'btn btn-primary' %>
   </div>
 <% end %>
+</div>
