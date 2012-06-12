@@ -18,7 +18,6 @@ gem 'bootstrap-will_paginate', '0.0.5'
 gem 'thin'
 gem "rolify", ">= 3.1.0"
 gem "rails_admin", "~> 0.0.3"
-gem "ckeditor", "3.7.1"
 gem 'paper_trail', '~> 2'
 gem 'thinking-sphinx'
 
