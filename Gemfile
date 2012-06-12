@@ -23,6 +23,10 @@ gem 'thinking-sphinx'
 
 gem "letter_opener", :group => :development
 
+group :development do
+  gem 'rvm'
+end
+
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
