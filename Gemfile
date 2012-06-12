@@ -19,7 +19,8 @@ gem 'thin'
 gem "rolify", ">= 3.1.0"
 gem "rails_admin", "~> 0.0.3"
 gem 'paper_trail', '~> 2'
-gem 'thinking-sphinx'
+# gem 'texticle', "2.0", :require => 'texticle/rails'
+gem 'pg_search'
 
 gem "letter_opener", :group => :development
 
