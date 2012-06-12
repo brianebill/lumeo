@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120521032221) do
+ActiveRecord::Schema.define(:version => 20120611035425) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -66,6 +66,35 @@ ActiveRecord::Schema.define(:version => 20120521032221) do
     t.datetime "photo_updated_at"
     t.integer  "commentable_id"
     t.string   "commentable_type"
+  end
+
+  create_table "communities", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "school_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "community_requests", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.integer  "community_id"
+    t.integer  "school_id"
+    t.integer  "upvotes"
+    t.integer  "course_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "contacts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "subject"
+    t.text     "message"
+    t.boolean  "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "courses", :force => true do |t|
@@ -143,6 +172,15 @@ ActiveRecord::Schema.define(:version => 20120521032221) do
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
+  create_table "requests", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "who"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -163,6 +201,22 @@ ActiveRecord::Schema.define(:version => 20120521032221) do
 
   add_index "schools", ["description"], :name => "index_schools_on_description"
   add_index "schools", ["name"], :name => "index_schools_on_name"
+
+  create_table "topic_requests", :force => true do |t|
+    t.integer  "topic_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "topics", :force => true do |t|
+    t.integer  "community_id"
+    t.integer  "school_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

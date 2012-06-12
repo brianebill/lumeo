@@ -57,7 +57,8 @@ class User < ActiveRecord::Base
                     :path => ":attachment/:id/:style.:extension",
                     :bucket => 'lumeo-user-dev'
   
-  has_many :comments
+  has_many :comments, :dependent => :destroy
+  has_many :requests, :dependent => :destroy
   
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }

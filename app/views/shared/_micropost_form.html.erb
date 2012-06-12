@@ -1,8 +1,7 @@
 <%= simple_form_for(@micropost) do |f| %>
   <%= f.error_notification %>
   <div class="field">
-	<p>What's on your mind?</p>
-    <%= f.text_area :content, placeholder: "Thoughts lead to actions..." %>
+    <%= f.text_area :content, placeholder: "Thoughts lead to actions..."%>
   </div>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>

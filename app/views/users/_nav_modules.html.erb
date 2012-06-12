@@ -1,45 +1,28 @@
 <div class="tabbable tabs-right">
   <ul class="nav nav-tabs">
-	<li class="active"><a href="#dashboard" data-toggle="tab">Dashboard</a></li>
-    <li><a href="#friends" data-toggle="tab">Invite Friends</a></li>
-    <li><a href="#roadmap" data-toggle="tab">Roadmap</a></li>
-    <li><a href="#courses" data-toggle="tab">Courses</a></li>
-    <li><a href="#profolio" data-toggle="tab">Profolio</a></li>
+	<li class="active"><a href="#feed" data-toggle="tab">Feed</a></li>
     <li><a href="#reflections" data-toggle="tab">Reflections</a></li>
-    <li><a href="#feed" data-toggle="tab">Feed</a></li>
+    <li><a href="#info" data-toggle="tab">Info</a></li>
+    <li><a href="#profolio" data-toggle="tab">Profolio</a></li>
     <li><a href="#community" data-toggle="tab">Community</a></li>
     <li><a href="#edit" data-toggle="tab">Edit Membership</a></li>
-    <li><a href="#help" data-toggle="tab">Help</a></li>
+    <li><%= link_to "Help", topics_path %></li>
   </ul>
   <div class="tab-content">
-	<div class="tab-pane active" id="dashboard">
-       </h4>Recent Activity</h4>
-       </h4>Reflections</h4>
-       </h4>Profolio</h4>
-    </div>
-    <div class="tab-pane" id="friends">
-       </h4>Invite and follow your friends:</h4>
-    </div>
-    <div class="tab-pane" id="roadmap">
-        <h3>Where am I now: I am here</h3>
-        <h3>Where do I want to be: this is your aspiration</h3>
-        <h3>What are the steps I need to achieve my aspiration: the projects you want to complete and upload to your profolio</h3>
-        <h3>This is the roadmap to your dream: check each item off as your achieve each step in the process.</h3>
-        <h3>Don't forget to share your success and to celebrate each step of the way.</h3>
-    </div>
-    <div class="tab-pane" id="courses">
-       <p>You have added the following courses to your queue:</p>
-    </div>
-    <div class="tab-pane" id="profolio">
-
-    </div>
-    <div class="tab-pane" id="reflections">
+	<div class="tab-pane span6 active" id="feed">
+	      <h3><i class="icon-fire"></i> Feed</h3>
+		  <p>What's on your mind?</p>
+		  <%= render 'shared/micropost_form' %>
+	      <%= render 'shared/feed' %>
+	</div>
+	<div class="tab-pane" id="reflections">
+	    <h3><i class="icon-eye-open"></i><i class="icon-eye-open"></i> Every Day I Learn Something New</h3>
+		<p>Today I learned:</p>
      	<%= render 'reflections' %>
     </div>
-    <div class="tab-pane span6" id="feed">
-	      <h3><i class="icon-fire"></i> Feed</h3>
-	      <%= render 'shared/feed' %>
-	  </div>
+    <div class="tab-pane" id="info">
+    </div>
+    <div class="tab-pane" id="profolio">
 
     </div>
     <div class="tab-pane" id="community">

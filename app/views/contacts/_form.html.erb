@@ -1,0 +1,8 @@
+<div class="row span7 community">
+   <%= simple_form_for @contact do |f| %>
+	  <%= f.input :message, :label => false, placeholder: "Send a private message to Lumeo" %>
+      <div class ="form-actions">
+         <%= f.submit 'Send Message', :class => 'btn btn-primary pull-right' %>
+      </div>
+   <% end %>
+</div>

@@ -1,0 +1,12 @@
+<div class="offset1 span8">
+<%= simple_form_for @request, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+   <fieldset>
+	   <%= f.input :title %>
+	   <%= f.input :who %>
+	   <%= f.input :description %>
+  </fieldset>
+  <div class ="actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+  </div>
+<% end %>
+</div>

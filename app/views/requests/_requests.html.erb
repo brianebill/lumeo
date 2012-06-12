@@ -1,0 +1,39 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<% if request.present? %>
+<div class="row">
+	<table class="table table-striped pretty">
+	   <thead>
+		  <tr>
+		    <th><%= sortable "title" %></th>
+			<th><%= sortable "who", "Requested Pro" %></th>
+			<th><%= sortable "created_at", "When" %></th>
+			<th><%= sortable "request.user", "Requested by" %></th>
+		  </tr>
+	   </thead>
+	   <tbody>
+	   <% @requests.each do |request| %>
+	     <tr>
+	       <td><%= request.title %></td>
+	       <td><%= request.who %></td>
+	       <td><%= request.created_at %></td>
+		   <td><%= request.user.name %></td>
+		   <td><%= link_to 'Show', request, :class => 'btn btn-mini'%></td>
+		   <% if can? :update, @course %>
+	   	   <td><%= link_to 'Edit', edit_request_path(request), :class => 'btn btn-mini' %></td>
+		       <td><%= link_to 'Destroy', request, 
+		                    confirm: 'Are you sure?', 
+		                    method: :delete, 
+		                    :class => 'btn btn-mini' %></td>
+	       <% end %>
+	     </tr>
+	  <% end %>
+	  </tbody>
+	</table>
+	<div class="pull-right"><%= will_paginate @requests %></div>
+</div>
+<% else %>
+  <p>Your search returned no Course Requests. Step 2: Click on the blue button to submit your Course Request</p>
+<% end %>
+<%= button_to 'New Request', new_request_path, :class => 'btn btn-large btn-primary mleft20 mtop20' %>

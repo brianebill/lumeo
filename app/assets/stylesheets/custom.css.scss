@@ -52,8 +52,72 @@ textarea {
   padding-top: 20px;
 }
 
+.pad10 {
+  padding:10px;
+}
+
+.pad20 {
+  padding:20px;
+}
+
+.pleft10 {
+  padding-left:10px;
+}
+
+.pleft20 {
+  padding-left:20px;
+}
+
+.pleft30 {
+  padding-left:30px;
+}
+
+.top4 {
+  padding-top:4px;
+}
+
+.ptop10 {
+  padding-top:10px;
+}
+
+.ptop40 {
+  padding-top:40px;
+}
+
+.mtop-15 {
+  margin-top:-15px;
+}
+
+.mtop10 {
+  margin-top:10px;
+}
+
+.mtop20 {
+  margin-top:20px;
+}
+
+mleft-10 {
+  margin-left:-25px;
+}
+
+.mleft20 {
+  margin-left:20px;
+}
+
+.mleft30 {
+  margin-left:30px;
+}
+
+.mleft-40 {
+  margin-left:-40px;
+}
+
 .center h1 {
   margin-bottom: 10px;
+}
+
+.text-white a {
+  color:white;
 }
 
 /* header */
@@ -64,7 +128,7 @@ textarea {
 }
 
 .gravatar_header {
-  padding-top:12px;
+  padding-top:8px;
   margin-right:-10px;
 }
 

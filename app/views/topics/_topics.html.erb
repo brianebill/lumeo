@@ -1,0 +1,60 @@
+<div class="row span12">
+	<div class="offset3 span5">
+		<h2 class="center">Welcome to the Lumeo Community</h2>
+		<p class="center">Interact with members and pros in topics of mutual interest</p>
+	</div>
+	<div class="community-search offset1 span2">
+		Search Function
+	</div>
+</div>
+
+<div class="row mtop10">
+	<div class="span2 well">
+		<div class="pad10">
+			<h3>Browse by Topic:</h3>
+		</div>
+		<div class="pad10">
+			<ul>
+				<li><%= link_to "Course Requests", requests_path %></li>
+				<li><%= link_to "Questions", requests_path %></li>
+				<li><%= link_to "Ideas", requests_path %></li>
+				<li><%= link_to "Problems", requests_path %></li>
+				<li><%= link_to "Praise", requests_path %></li>
+				<li><%= link_to "Questions", requests_path %></li>
+			</ul>
+		</div>
+	</div>
+	
+
+    <div class="community-form span8 left30 mtop20">
+		<div class="tabbable tabs">
+
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#request" data-toggle="tab">Request a course</a></li>
+				<li><a href="#question" data-toggle="tab">Ask a question</a></li> 
+				<li><a href="#idea" data-toggle="tab">Share an idea</a></li>
+				<li><a href="#problem" data-toggle="tab">Report a problem</a></li>
+				<li><a href="#praise" data-toggle="tab">Give praise</a></li>
+				<li><a href="#contact" data-toggle="tab">Contact Lumeo</a></li>
+			</ul>
+			
+			<div class="tab-content">
+		    	<div class="tab-pane active" id="request"><p class="center"><%= render 'requests/search_form' %></p></div>
+				<div class="tab-pane" id="question"><p class="center"><%= render 'questions/search_form' %></p></div>
+				<div class="tab-pane" id="idea"><p class="center"><%= render 'ideas/search_form' %></p></div>
+				<div class="tab-pane" id="problem"><p class="center"><%= render 'problems/search_form' %></p></div>
+				<div class="tab-pane" id="praise"><p class="center"><%= render 'praises/form' %></p></div>
+				<div class="tab-pane" id="contact"><p class="center"><%= render 'contacts/form' %></p></div>
+			</div>
+			
+	    </div>
+	
+	</div>
+	<div class="community-index">
+		<h3>Recent Topics</h3>
+	    <%= render 'recent' %>
+	    <h3>Popular Topics</h3>
+	    <%= render 'popular' %>
+	</div>
+
+</div>

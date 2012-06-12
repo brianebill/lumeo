@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="span2 offset1">
+	 
+	</div>
+		<div class="span5">
+			    <h1><%= @request.title %></h1>
+			    <p><%= @request.who %></p>
+			    <p><%= @request.description %></p>
+
+
+			    <% if can? :update, @request %>
+				    <%= link_to 'Edit Request', edit_request_path(@request), :class => 'btn btn-mini' %>
+					<%= link_to 'Delete Request', @request, 
+					                    confirm: 'Are you sure?', 
+					                    method: :delete, 
+					                    :class => 'btn btn-mini' %>
+	                 <%= link_to 'New Request', new_request_path, :class => 'btn btn-mini' %>
+				<% end %>
+	     </div>
+
+</div>
+<div class="row offset2">
+    <%= link_to 'Back to Requests', requests_path, :class => 'btn btn-mini' %>
+</div>
