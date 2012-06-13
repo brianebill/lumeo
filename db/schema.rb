@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120611035425) do
+ActiveRecord::Schema.define(:version => 20120612234956) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -88,6 +88,14 @@ ActiveRecord::Schema.define(:version => 20120611035425) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "compliments", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "contacts", :force => true do |t|
     t.integer  "user_id"
     t.string   "subject"
@@ -117,6 +125,14 @@ ActiveRecord::Schema.define(:version => 20120611035425) do
   add_index "courses", ["show_text"], :name => "index_courses_on_show_text"
   add_index "courses", ["title"], :name => "index_courses_on_title"
 
+  create_table "ideas", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "microposts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -125,6 +141,14 @@ ActiveRecord::Schema.define(:version => 20120611035425) do
   end
 
   add_index "microposts", ["content"], :name => "index_microposts_on_content"
+
+  create_table "pg_search_documents", :force => true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "posts", :force => true do |t|
     t.string   "title"
@@ -147,6 +171,31 @@ ActiveRecord::Schema.define(:version => 20120611035425) do
   add_index "posts", ["index_text"], :name => "index_posts_on_index_text"
   add_index "posts", ["show_text"], :name => "index_posts_on_show_text"
   add_index "posts", ["title"], :name => "index_posts_on_title"
+
+  create_table "praises", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "problems", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "status"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "questions", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -201,6 +250,19 @@ ActiveRecord::Schema.define(:version => 20120611035425) do
 
   add_index "schools", ["description"], :name => "index_schools_on_description"
   add_index "schools", ["name"], :name => "index_schools_on_name"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.integer  "post_id"
+    t.integer  "request_id"
+    t.integer  "idea_id"
+    t.integer  "problem_id"
+    t.integer  "question_id"
+    t.integer  "course_id"
+    t.integer  "video_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "topic_requests", :force => true do |t|
     t.integer  "topic_id"

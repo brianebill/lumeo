@@ -7,6 +7,11 @@
 			    <h1><%= @request.title %></h1>
 			    <p><%= @request.who %></p>
 			    <p><%= @request.description %></p>
+			
+				<p>
+				  <b>Tags:</b>
+				  <%= @request.tags.map { |t| t.name }.join(", ") %>
+				</p>
 
 
 			    <% if can? :update, @request %>

@@ -1,0 +1,14 @@
+<div class="row span8 well">
+	<div class="mleft-10 span8">
+		<h3 class="bold">What would you like to know about?</h3>
+	</div>
+	<div class="row span8">
+		<%= form_tag questions_path, :method => 'get', :class => "mtop10" do %>
+		<%= text_field_tag :search, params[:search], :class => 'input-xxlarge mleft20', :placeholder => 'Start simple by entering a single subject, like "Sports"' %>
+		<%= submit_tag "Search", :title => nil, :class => 'btn btn-primary btn-large mtop-15' %>
+		<% end %>
+	</div>
+	<div class="row span8">
+		<p class="pleft20 bold">Step 1: Let's see if someone has created a similar question...</p>
+	</div>
+</div>

@@ -16,10 +16,10 @@
 		<div class="pad10">
 			<ul>
 				<li><%= link_to "Course Requests", requests_path %></li>
-				<li><%= link_to "Questions", requests_path %></li>
-				<li><%= link_to "Ideas", requests_path %></li>
-				<li><%= link_to "Problems", requests_path %></li>
-				<li><%= link_to "Praise", requests_path %></li>
+				<li><%= link_to "Questions", questions_path %></li>
+				<li><%= link_to "Ideas", ideas_path %></li>
+				<li><%= link_to "Problems", problems_path %></li>
+				<li><%= link_to "Praise", compliments_path %></li>
 				<li><%= link_to "Questions", requests_path %></li>
 			</ul>
 		</div>
@@ -34,7 +34,7 @@
 				<li><a href="#question" data-toggle="tab">Ask a question</a></li> 
 				<li><a href="#idea" data-toggle="tab">Share an idea</a></li>
 				<li><a href="#problem" data-toggle="tab">Report a problem</a></li>
-				<li><a href="#praise" data-toggle="tab">Give praise</a></li>
+				<li><a href="#compliment" data-toggle="tab">Give praise</a></li>
 				<li><a href="#contact" data-toggle="tab">Contact Lumeo</a></li>
 			</ul>
 			
@@ -43,7 +43,7 @@
 				<div class="tab-pane" id="question"><p class="center"><%= render 'questions/search_form' %></p></div>
 				<div class="tab-pane" id="idea"><p class="center"><%= render 'ideas/search_form' %></p></div>
 				<div class="tab-pane" id="problem"><p class="center"><%= render 'problems/search_form' %></p></div>
-				<div class="tab-pane" id="praise"><p class="center"><%= render 'praises/form' %></p></div>
+				<div class="tab-pane" id="compliment"><p class="center"><%= render 'compliments/form' %></p></div>
 				<div class="tab-pane" id="contact"><p class="center"><%= render 'contacts/form' %></p></div>
 			</div>
 			

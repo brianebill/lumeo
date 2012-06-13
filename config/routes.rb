@@ -39,7 +39,7 @@ Lumeo::Application.routes.draw do
   
   resources :messages
   
-  resources :topics, :requests, :contacts
+  resources :topics, :contacts, :compliments, :ideas, :problems, :questions,  :requests
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

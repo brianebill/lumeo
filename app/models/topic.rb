@@ -1,2 +1,3 @@
-module Topic
+class Topic < ActiveRecord::Base
+
 end

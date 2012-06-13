@@ -1,0 +1,38 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<% if @idea.present? %>
+<div class="row">
+	<table class="table table-striped pretty">
+	   <thead>
+		  <tr>
+		    <th><%= sortable "title" %></th>
+			<th><%= sortable "created_at", "When" %></th>
+			<th><%= sortable "idea.user", "Requested by" %></th>
+		  </tr>
+	   </thead>
+	   <tbody>
+	   <% @ideas.each do |ideas| %>
+	     <tr>
+	       <td><%= idea.title %></td>
+	       <td><%= idea.who %></td>
+	       <td><%= idea.created_at %></td>
+		   <td><%= idea.user.name %></td>
+		   <td><%= link_to 'Show', idea, :class => 'btn btn-mini'%></td>
+		   <% if can? :update, @course %>
+	   	   <td><%= link_to 'Edit', edit_idea_path(idea), :class => 'btn btn-mini' %></td>
+		       <td><%= link_to 'Destroy', idea, 
+		                    confirm: 'Are you sure?', 
+		                    method: :delete, 
+		                    :class => 'btn btn-mini' %></td>
+	       <% end %>
+	     </tr>
+	  <% end %>
+	  </tbody>
+	</table>
+	<div class="pull-right"><%= will_paginate @ideas %></div>	
+</div>
+<% else %>
+  <p>Your search returned no Course Requests. Step 2: Click on the blue button to submit your Course Request</p>
+<% end %>
+<%= button_to 'New Idea', new_idea_path, :class => 'btn btn-large btn-primary mleft20 mtop20' %>

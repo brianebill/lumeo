@@ -1,0 +1,13 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<% if @problem.nil? %>
+<div id="problems_table"><%= render 'problems_table' %></div>
+<% elsif @problem.present? %>
+<p>Step 2: Your search yielded <%= pluralize(@requests.total_entries, "item") %>. If you don't see what you're looking for, enter a new request by clicking on the button.</p>
+<div id="problems_table"><%= render 'problems_table' %></div>
+
+<% else %>
+  <p>Your search returned no Course Requests. Step 2: Click on the blue button to submit your Course Request</p>
+<% end %>
+<%= button_to 'Create Support Ticket', new_problem_path, :class => 'btn btn-large btn-primary mleft20 mtop20' %>

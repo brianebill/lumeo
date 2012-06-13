@@ -1,12 +1,18 @@
-<div class="offset1 span8">
-<%= simple_form_for @request, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+<div class="offset3 span6">
+	<h1 class="title center">Create a Course Request</h1>
+	<% @request.tags.build %>
+<%= simple_form_for @request, :html => { :class => 'form-horizontal pull-left mtop20', :multipart => true } do |post_form| %>
    <fieldset>
-	   <%= f.input :title %>
-	   <%= f.input :who %>
-	   <%= f.input :description %>
+	   <%= post_form.input :title %>
+	   <%= post_form.input :who, :label => 'Taught by' %>
+	   <%= post_form.input :description %>
   </fieldset>
-  <div class ="actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+
+  <%= render :partial => 'tags/form',
+             :locals => {:form => post_form} %>
+
+  <div class ="form-actions">
+    <%= post_form.submit nil, :class => 'btn btn-primary pull-right' %>
   </div>
 <% end %>
 </div>

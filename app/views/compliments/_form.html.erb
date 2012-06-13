@@ -1,0 +1,9 @@
+<div class="row span7 community">
+   <%= simple_form_for @compliment do |f| %>
+	  <%= f.input :title, :label => false, placeholder: "Title" %>
+	  <%= f.input :description, :label => false, placeholder: "Send praise" %>
+      <div class ="form-actions">
+         <%= f.submit 'Send Praise', :class => 'btn btn-primary pull-right' %>
+      </div>
+   <% end %>
+</div>

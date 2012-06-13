@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="span2 offset1">
+	 
+	</div>
+		<div class="span5">
+			    <h1><%= @compliment.title %></h1>
+			    <p><%= @compliment.description %></p>
+
+
+			    <% if can? :update, @compliment %>
+				    <%= link_to 'Edit Request', edit_compliment_path(@compliment), :class => 'btn btn-mini' %>
+					<%= link_to 'Delete Request', @compliment, 
+					                    confirm: 'Are you sure?', 
+					                    method: :delete, 
+					                    :class => 'btn btn-mini' %>
+	                 <%= link_to 'New Request', new_compliment_path, :class => 'btn btn-mini' %>
+				<% end %>
+	     </div>
+
+</div>
+<div class="row offset2">
+    <%= link_to 'Back to Requests', compliments_path, :class => 'btn btn-mini' %>
+</div>
