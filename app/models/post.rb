@@ -36,7 +36,8 @@ class Post < ActiveRecord::Base
                         :s3_credentials => "#{Rails.root}/config/s3.yml",
                         :path => ":attachment/:id/:style.:extension",
                         :bucket => 'lumeo-post-dev'
-    def initialized_categorizations # this is the key method
+  
+  def initialized_categorizations # this is the key method
         [].tap do |o|
           Category.all.each do |category|
             if c = categorizations.find { |c| c.category_id == category.id }

@@ -1,0 +1,6 @@
+<div class="row span12 mtop20">
+	<%= form_tag requests_path, :method => 'get', :class => "form-search pull-right" do %>
+    	<%= text_field_tag :search, params[:search], :class => "input-xlarge", :placeholder => 'Enter a subject like "Photo"' %>
+    	<%= submit_tag "Search", :title => nil %>
+	<% end %>
+</div>

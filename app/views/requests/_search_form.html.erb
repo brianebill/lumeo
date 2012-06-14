@@ -1,14 +1,15 @@
 <div class="row span8 well">
 	<div class="mleft-10 span8">
-		<h3 class="bold">If you could learn more about any subject in the world, what would it be?</h3>
+		<h2 class="bold">Lumeo Courses are created by Request</h2>
+		<h3 class="bold pleft20">Start here by searching inside a subject you'd like to request</h3>
 	</div>
 	<div class="row span8">
 		<%= form_tag requests_path, :method => 'get', :class => "mtop10" do %>
-		<%= text_field_tag :search, params[:search], :class => 'input-xxlarge mleft20', :placeholder => 'Start simple by entering a single subject, like "Photo"' %>
+		<%= text_field_tag :search, params[:search], :class => 'input-xxlarge mleft20', :placeholder => 'Start simple by entering a single subject, like "Photography"' %>
 		<%= submit_tag "Search", :title => nil, :class => 'btn btn-primary btn-large mtop-15' %>
 		<% end %>
 	</div>
 	<div class="row span8">
-		<p class="pleft20 bold">Step 1: Let's see if someone has created a similar request...</p>
+		<p class="pleft40 bold">Let's see if someone has created a similar request...</p>
 	</div>
 </div>

@@ -1,0 +1,13 @@
+<% if @search.present? %> 
+   <h3 class="center">Good news! Your search found <%= pluralize(@requests.total_entries, "request") %>....</h3>
+   <div id="requests">
+	   <%= render 'requests' %>
+   </div>
+   <h3 class="center">Enter your request by clicking on the blue button</h3>
+
+<% elsif @seach.nil? %>
+	<div id="problems_table"><%= render 'requests' %></div>
+
+<% else %>
+    <p>Your search returned no Course Requests. Step 2: Click on the blue button to submit your Course Request</p>
+<% end %>
