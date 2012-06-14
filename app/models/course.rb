@@ -32,6 +32,4 @@ class Course < ActiveRecord::Base
                     :s3_credentials => "#{Rails.root}/config/s3.yml",
                     :path => ":attachment/:id/:style.:extension",
                     :bucket => 'lumeo-course-dev'
-                    
-  process_in_background :photo
 end

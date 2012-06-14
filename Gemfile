@@ -21,9 +21,6 @@ gem "rails_admin", "~> 0.0.3"
 gem 'paper_trail', '~> 2'
 # gem 'texticle', "2.0", :require => 'texticle/rails'
 gem 'pg_search'
-gem 'delayed_job_active_record'
-source "http://gemcutter.org"
-gem 'delayed_paperclip'
 
 gem "letter_opener", :group => :development
 
