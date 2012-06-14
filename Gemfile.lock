@@ -6,6 +6,7 @@ GIT
 
 GEM
   remote: https://rubygems.org/
+  remote: http://gemcutter.org/
   specs:
     actionmailer (3.2.3)
       actionpack (= 3.2.3)
@@ -81,6 +82,8 @@ GEM
     delayed_job_active_record (0.3.2)
       activerecord (> 2.1.0)
       delayed_job (~> 3.0.0)
+    delayed_paperclip (2.4.5.1)
+      paperclip (>= 2.4.5)
     devise (2.0.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -258,6 +261,7 @@ DEPENDENCIES
   cucumber-rails (= 1.2.1)
   database_cleaner (= 0.7.0)
   delayed_job_active_record
+  delayed_paperclip
   devise (= 2.0.4)
   factory_girl_rails (= 1.4.0)
   faker (= 1.0.1)

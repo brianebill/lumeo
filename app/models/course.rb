@@ -23,7 +23,7 @@ class Course < ActiveRecord::Base
   
   has_many :videos, :dependent => :destroy
   belongs_to :user
-  accepts_nested_attributes_for :videos, allow_destroy: true
+  accepts_nested_attributes_for :videos, :allow_destroy => true
   
   has_attached_file :photo,
                     :styles => { :show => ["250x250#", :png ],
