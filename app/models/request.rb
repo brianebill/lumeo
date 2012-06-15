@@ -1,7 +1,8 @@
 class Request < ActiveRecord::Base
   before_save { |request| request.title = title.titleize }
   before_save { |request| request.who = who.titleize }
-  attr_accessible :description, :title, :user_id, :who, :tags_attributes
+  before_save destroy_blank
+  attr_accessible :description, :title, :user_id, :who, :tag_ids, :tags_attributes
   
   validates :title, :presence => true,
                     :length => { :minimum => 5 }
@@ -10,10 +11,11 @@ class Request < ActiveRecord::Base
   
   belongs_to :user
   has_many :comments
+  has_many :assignments
   has_many :tags
   
-  accepts_nested_attributes_for :tags, :allow_destroy => :true,
-    :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
+  accepts_nested_attributes_for :tags, allow_destroy: true
+    #:reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
   
   include PgSearch
   pg_search_scope :search, against: [:title, :description, :who],
@@ -30,5 +32,10 @@ class Request < ActiveRecord::Base
     end
   end
   
-  private
+  def destroy_blank
+      if @tag.name.nil?
+         destroy_blank = @tag.name
+         destroy_blank.delete
+      end
+  end
 end

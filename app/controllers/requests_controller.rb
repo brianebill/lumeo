@@ -5,6 +5,7 @@ class RequestsController < ApplicationController
    @requests = Request.request_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 25, :page => params[:page])
     @users = User.all
     @search = params[:search]
+    @tag = Tag.all
   end
 
   def show
@@ -17,7 +18,10 @@ class RequestsController < ApplicationController
   end
 
   def new
+   # 0.times { @survey.questions.build }   
     @request = Request.new
+    @tag = Tag.new
+    @tags = Tag.all
     respond_to do |format|
       format.html  # new.html.erb
       format.json  { render :json => @request }
@@ -28,22 +32,26 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
   end
 
-  def create
-    @request = current_user.requests.build(params[:request])
+      def create
+            @request = current_user.requests.build(params[:request])
+            @tag = Tag.new
+            if @tag.name.nil?
+              destroy_blank
+            end
 
-    respond_to do |format|
-      if @request.save
-        format.html  { redirect_to(@request,
-                      :notice => 'Request was successfully created.') }
-        format.json  { render :json => @request,
-                      :status => :created, :location => @request }
-      else
-        format.html  { render :action => "new" }
-        format.json  { render :json => @request.errors,
-                      :status => :unprocessable_entity }
+        respond_to do |format|
+          if @request.save
+            format.html  { redirect_to(@request,
+                          :notice => 'Request was successfully created.') }
+            format.json  { render :json => @request,
+                          :status => :created, :location => @request }
+          else
+            format.html  { render :action => "new" }
+            format.json  { render :json => @request.errors,
+                          :status => :unprocessable_entity }
+          end
+        end
       end
-    end
-  end
 
     def update
       @request = Request.find(params[:id])

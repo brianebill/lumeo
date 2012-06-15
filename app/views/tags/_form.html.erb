@@ -1,12 +1,6 @@
-<%=  simple_fields_for :tags do |tag_form| %>
-  <div class="field">
-    <%= tag_form.label :name, 'Tag:' %>
-    <%= tag_form.text_field :name, :placeholder => 'Tags are one word descriptions of a course like "Photography"' %>
-  </div>
-  <% unless tag_form.object.nil? || tag_form.object.new_record? %>
-    <div class="field">
-      <%= tag_form.label :_destroy, 'Remove:' %>
-      <%= tag_form.check_box :_destroy %>
-    </div>
-  <% end %>
-<% end %>
+<fieldset>
+	<%= f.input :name, :label => 'Subject', :placeholder => 'Add a subject like, "Film"' %>
+	<%= f.hidden_field :_destroy %>
+	<%= link_to 'remove subject', '#', class: 'remove_fields pull-right' %>
+</fieldset>
+
