@@ -7,5 +7,8 @@ class Tag < ActiveRecord::Base
   attr_accessible :name
 
   validates_uniqueness_of :name
+  
+  validates :request_id, :presence => true, :associated => true
+  validates :name, :presence => true
 
 end

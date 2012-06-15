@@ -35,9 +35,6 @@ class RequestsController < ApplicationController
       def create
             @request = current_user.requests.build(params[:request])
             @tag = Tag.new
-            if @tag.name.nil?
-              destroy_blank
-            end
 
         respond_to do |format|
           if @request.save

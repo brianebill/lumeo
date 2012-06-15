@@ -1,13 +1,14 @@
 class Request < ActiveRecord::Base
   before_save { |request| request.title = title.titleize }
   before_save { |request| request.who = who.titleize }
-  before_save destroy_blank
   attr_accessible :description, :title, :user_id, :who, :tag_ids, :tags_attributes
   
   validates :title, :presence => true,
                     :length => { :minimum => 5 }
   validates :description,  :presence => true
   validates :who,  :presence => true
+  
+  validates :tags, :presence => true, :associated => true 
   
   belongs_to :user
   has_many :comments
@@ -30,12 +31,5 @@ class Request < ActiveRecord::Base
     else
       scoped
     end
-  end
-  
-  def destroy_blank
-      if @tag.name.nil?
-         destroy_blank = @tag.name
-         destroy_blank.delete
-      end
   end
 end
