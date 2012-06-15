@@ -1,19 +1,22 @@
 class Request < ActiveRecord::Base
   before_save { |request| request.title = title.titleize }
   before_save { |request| request.who = who.titleize }
-  attr_accessible :description, :title, :user_id, :who, :tags_attributes
+  attr_accessible :description, :title, :user_id, :who, :tag_ids, :tags_attributes
   
   validates :title, :presence => true,
                     :length => { :minimum => 5 }
   validates :description,  :presence => true
   validates :who,  :presence => true
   
+  validates :tags, :presence => true, :associated => true 
+  
   belongs_to :user
   has_many :comments
+  has_many :assignments
   has_many :tags
   
-  accepts_nested_attributes_for :tags, :allow_destroy => :true,
-    :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
+  accepts_nested_attributes_for :tags, allow_destroy: true
+    #:reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
   
   include PgSearch
   pg_search_scope :search, against: [:title, :description, :who],
@@ -29,6 +32,4 @@ class Request < ActiveRecord::Base
       scoped
     end
   end
-  
-  private
 end

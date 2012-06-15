@@ -1,18 +1,18 @@
 <div class="offset3 span6">
 	<h1 class="title center">Create a Course Request</h1>
-	<% @request.tags.build %>
-<%= simple_form_for @request, :html => { :class => 'form-horizontal pull-left mtop20', :multipart => true } do |post_form| %>
-   <fieldset>
-	   <%= post_form.input :title %>
-	   <%= post_form.input :who, :label => 'Taught by' %>
-	   <%= post_form.input :description %>
-  </fieldset>
-
-  <%= render :partial => 'tags/form',
-             :locals => {:form => post_form} %>
-
-  <div class ="form-actions">
-    <%= post_form.submit nil, :class => 'btn btn-primary pull-right' %>
-  </div>
-<% end %>
+	<%= simple_form_for @request, :html => { :class => 'form-horizontal pull-left mtop20', :multipart => true } do |f| %>
+	   <fieldset class="h125 mbottom130">
+		   <%= f.input :title %>
+		   <%= f.input :who, :label => 'Taught by' %>
+		   <%= f.input :description %>
+	       <%= f.association :tags, :as => :check_boxes, :collection => @tags, :label => 'Pick one or more subjects' %>
+		   <%= f.simple_fields_for :tags do |builder| %>
+		         <%= render 'tags/form', f: builder %>
+		   <% end %>
+		   <%= link_to_add_fields "Add a new subject tag", f, :tags %> 	
+		  <div class ="form-actions">
+		    <%= f.submit nil, :class => 'btn btn-primary pull-right' %>
+		  </div>
+	   </fieldset>
+	<% end %>
 </div>
