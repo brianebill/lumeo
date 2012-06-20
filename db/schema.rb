@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120613203428) do
+ActiveRecord::Schema.define(:version => 20120620164728) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -147,6 +147,16 @@ ActiveRecord::Schema.define(:version => 20120613203428) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "images", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.string   "source_file_name"
+    t.string   "source_content_type"
+    t.integer  "source_file_size"
+    t.datetime "source_updated_at"
+    t.boolean  "processing",          :default => false
   end
 
   create_table "microposts", :force => true do |t|
