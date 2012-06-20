@@ -12,7 +12,7 @@
 	  <tbody>
 	    <% @courses.each do |course| %>
 	      <tr>
-	        <td><%= image_tag(course.photo.url(:index), alt: course.title) %></td>	
+	        <td><%= image_tag(course.source.url(:index), alt: course.title) %></td>	
 	        <td><%= link_to course.title, course_path(course) %></td>
 	        <td><%= course.description.html_safe %></td>
          	    <% if can? :update, @course %>
