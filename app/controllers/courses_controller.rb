@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-
+    @course = Course.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @course }
@@ -19,6 +19,8 @@ class CoursesController < ApplicationController
   # GET /courses/new
   # GET /courses/new.json
   def new
+    @course = Course.new
+    @image = @course.images.build
   end
 
   # GET /courses/1/edit
@@ -28,6 +30,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
+    @course = Course.new(params[:course])
 
     respond_to do |format|
       if @course.save

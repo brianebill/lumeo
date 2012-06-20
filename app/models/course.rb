@@ -19,17 +19,14 @@
 #
 
 class Course < ActiveRecord::Base
-  attr_accessible :index_text, :school_id, :show_text, :title, :total_running_time, :description, :price, :photo
-  
-  has_many :videos, :dependent => :destroy
+  attr_accessible :index_text, :school_id, :show_text, :title, :total_running_time, :description, 
+                  :price, :images_attributes
+
   belongs_to :user
+
+  has_many :videos, :dependent => :destroy
+  has_many :images, :dependent => :destroy, :as => :parent
+
   accepts_nested_attributes_for :videos, :allow_destroy => true
-  
-  has_attached_file :photo,
-                    :styles => { :show => ["250x250#", :png ],
-                                 :index => ["150x150#", :png ]},
-                    :storage => :s3,
-                    :s3_credentials => "#{Rails.root}/config/s3.yml",
-                    :path => ":attachment/:id/:style.:extension",
-                    :bucket => 'lumeo-course-dev'
+  accepts_nested_attributes_for :images, :allow_destroy => true
 end
