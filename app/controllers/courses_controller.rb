@@ -19,6 +19,8 @@ class CoursesController < ApplicationController
   # GET /courses/new
   # GET /courses/new.json
   def new
+    @course = Course.new
+    @image = @course.images.build
   end
 
   # GET /courses/1/edit
@@ -28,7 +30,8 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new
+    @course = Course.new(params[:course])
+
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'course was successfully created.' }
