@@ -1,27 +1,30 @@
 <div class="span10 title">
 	<h1 class="center">Add Courses to Your Queue</h1>	
 </div>
+
 	<div class="row offset1 span9">
-	    <% @courses.each do |course| %>
-	    	<div class="row">
-				<div class="span2">
-				  <%= image_tag course.source.url %>
-				</div>
-				<div class="span5">
-				   <h1><%= course.title %></h1>
-				   <p><%= course.description %></p>
-				</div>
-				<div class="span2">
-				   <%= link_to 'Show', course, :class => 'btn btn-mini'%>
-						<% if can? :update, @course %>
-					    	<%= link_to 'Edit', edit_course_path(course), :class => 'btn btn-mini' %>
-						    <%= link_to 'Destroy', course, 
-						                    confirm: 'Are you sure?', 
-						                    method: :delete, 
-						                    :class => 'btn btn-mini' %>
-					    <% end %>
-				</div>
-			</div>
-		<% end %>
-		<%= link_to 'New Post', new_course_path, :class => 'btn btn-mini' %>
-	</div>
+    <% @courses.each do |course| %>
+      <div class="row">
+        <div class="span2">
+          <% if course.images.any? %>
+            <%= image_tag course.images.first.source(:thumb) %>
+          <% end %>
+        </div>
+        <div class="span5">
+          <h1><%= course.title %></h1>
+          <p><%= course.description %></p>
+        </div>
+        <div class="span2">
+          <%= link_to 'Show', course, :class => 'btn btn-mini'%>
+          <% if can? :update, @course %>
+            <%= link_to 'Edit', edit_course_path(course), :class => 'btn btn-mini' %>
+            <%= link_to 'Destroy', course, 
+              confirm: 'Are you sure?', 
+              method: :delete, 
+              :class => 'btn btn-mini' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to 'New Post', new_course_path, :class => 'btn btn-mini' %>
+  </div>
