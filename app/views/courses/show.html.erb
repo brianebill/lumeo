@@ -1,11 +1,11 @@
 <div class="row">
 	<div class="offset1 span3">
-       		<%= image_tag(@course.photo.url(:show), alt: @course.title) %>
+       		<%= image_tag(@course.source.url(:show), alt: @course.title) %>
     </div>
     <div class="span5">
 		<h1 class="title"><%= @course.title %></h1>
 		<p class="description center">
-		  <%= @course.description.html_safe %>
+		  <%= @course.description %>
 		</p>
 	</div>
 	<div class="offset1 span2 course_well">

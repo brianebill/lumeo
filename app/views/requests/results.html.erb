@@ -1,0 +1,20 @@
+<div class="row span12">
+	<div class="span10">
+		<h1 class="center title">Search Results</h1>
+		<p class="center">Check out the Course Requests below. If you don't see what you're looking for, make a new Request by clicking on the button below</p>
+	</div>
+</div>
+
+<div class="row span12 mtop20">
+	<%= form_tag requests_path, :method => 'get', :class => "form-search pull-right" do %>
+    	<%= text_field_tag :search, params[:search], :class => "input-xlarge search-query", :placeholder => 'Enter a subject like "Photo"' %>
+    	<%= submit_tag "Search", :title => nil %>
+	<% end %>
+</div>
+
+<% if @search.present? %> 
+  <p>Step 2: Your search yielded <%= pluralize(@requests.total_entries, "item") %>. If you don't see what you're looking for, enter a new request by clicking on the button.</p>
+  <div id="requests"><%= render 'requests' %></div>
+<% else %>
+  <p>Your search returned no matches. Create a new request by clicking on the big blue button.</p>
+<% end %>

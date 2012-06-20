@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-
+    @course = Course.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @course }
@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-
+    @course = Course.new
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'course was successfully created.' }
