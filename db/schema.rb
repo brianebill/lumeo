@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120620141935) do
+ActiveRecord::Schema.define(:version => 20120613203428) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -111,19 +111,14 @@ ActiveRecord::Schema.define(:version => 20120620141935) do
     t.time     "total_running_time"
     t.text     "show_text"
     t.text     "index_text"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.text     "description"
     t.decimal  "price"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.string   "source_file_name"
-    t.string   "source_content_type"
-    t.integer  "source_file_size"
-    t.datetime "source_updated_at"
-    t.boolean  "processing"
   end
 
   add_index "courses", ["index_text"], :name => "index_courses_on_index_text"
