@@ -1,4 +1,4 @@
-<nav class="span2">
+<nav class="span2 mtop30">
 	<ul class="well">
 		<% @categories.each do |category|%>
 		<%= category.name %>
@@ -6,13 +6,15 @@
 	</ul>
 </nav>
 
-<div class="row offset2">
+<div class="row offset2 span10 mtop30">
     <% @posts.each do |post| %>
     	<div class="row">
 			<div class="span2">
-			  <%= image_tag post.photo.url(:index) %>
+			  	<% if post.images.any? %>
+		            <%= image_tag post.images.first.source(:index) %>
+		          <% end %>
 			</div>
-			<div class="span5">
+			<div class="span6">
 			   <h1><%= post.title %></h1>
 			   <p><%= post.index_text.html_safe %></p>
 			</div>

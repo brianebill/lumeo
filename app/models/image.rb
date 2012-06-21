@@ -4,12 +4,14 @@ class Image < ActiveRecord::Base
 
   belongs_to :parent, :polymorphic => true
 
-  has_attached_file :source, :styles => { :medium => "300x300>", :thumb => "100x100>" },
+  has_attached_file :source, :styles => { :show => ["250x250#", :png ],
+                                          :index => ["150x150#", :png ],
+                                          :feed => ["50X50#", :png ],
+                                          :header => ["15X15#", :png ]},
                              :storage => :s3,
                              :s3_credentials => "#{Rails.root}/config/s3.yml",
                              :path => ":attachment/:id/:style.:extension",
                              :bucket => 'lumeo-course-dev'
-
 
   # cancel post-processing now, and set processing flag
   before_source_post_process do

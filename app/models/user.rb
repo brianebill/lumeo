@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :role_id, :role_ids, :photo
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :role_id, :role_ids, :images_attributes, :images
   validates_presence_of :name
   validates_uniqueness_of :email, :case_sensitive => false
   # attr_accessible :title, :body
@@ -48,14 +48,9 @@ class User < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   #user photo
-  has_attached_file :photo, :default_url => "default_:style_photo.png",
-                    :styles => { :show => ["150x150#", :png ],
-                                 :feed => ["50x50#", :png ],
-                                 :header => ["15x15#", :png ]},
-                    :storage => :s3,
-                    :s3_credentials => "#{Rails.root}/config/s3.yml",
-                    :path => ":attachment/:id/:style.:extension",
-                    :bucket => 'lumeo-user-dev'
+  
+  has_many :images, :dependent => :destroy, :as => :parent
+  accepts_nested_attributes_for :images, :allow_destroy => true
   
   has_many :comments, :dependent => :destroy
   has_many :requests, :dependent => :destroy

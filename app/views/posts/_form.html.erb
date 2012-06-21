@@ -5,7 +5,9 @@
 	   <%= f.input :index_text %>
 	   <%= f.input :show_text %>
 	   <%= f.association :categories, :as => :check_boxes, :collection => @categories %>
-	   Upload Photo <%= f.file_field :photo %>
+	   <%= f.fields_for :images, @image do |img_field| %>
+           Upload Photo <%= img_field.file_field :source %>
+       <% end %>
   </fieldset>
   <div class ="title">
     <%= f.submit nil, :class => 'btn btn-primary' %>
