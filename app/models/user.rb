@@ -47,11 +47,11 @@ class User < ActiveRecord::Base
                                    class_name:  "Relationship",
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
+
   #user photo
-  
-  has_many :images, :dependent => :destroy, :as => :parent
-  accepts_nested_attributes_for :images, :allow_destroy => true
-  
+  has_one :image, :dependent => :destroy, :as => :parent
+  accepts_nested_attributes_for :image, :allow_destroy => true
+
   has_many :comments, :dependent => :destroy
   has_many :requests, :dependent => :destroy
   has_many :questions, :dependent => :destroy
