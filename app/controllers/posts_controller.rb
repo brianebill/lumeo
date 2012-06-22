@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
+  before_filter :find_categories, :only => [:index, :new]
+  before_filter :find_post, :except => [:index, :create, :new]
+
   def index
     @posts = Post.all
-    @categories = Category.all
   end
 
   def show
@@ -14,17 +16,8 @@ class PostsController < ApplicationController
   end
 
   def new
-    @category = Category.all
     @post = Post.new
-    @image = @post.images.build
-  end
-
-    # GET /courses/1/edit
-    def edit
-    end
-
-  def edit
-    @post = Post.find(params[:id])
+    @image = @post.build_image
   end
 
   def create
@@ -46,7 +39,6 @@ class PostsController < ApplicationController
 
 
   def update
-
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to @post, notice: 'course was successfully updated.' }
@@ -58,13 +50,22 @@ class PostsController < ApplicationController
     end
   end
 
-      def destroy
-        @post = Post.find(params[:id])
-        @post.destroy
+  def destroy
+    @post.destroy
 
-        respond_to do |format|
-          format.html { redirect_to posts_url }
-          format.json { head :no_content }
-        end
-      end
+    respond_to do |format|
+      format.html { redirect_to posts_url }
+      format.json { head :no_content }
+    end
+  end
+
+  protected
+
+  def find_categories
+    @categories = Category.all
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
+  end
 end
