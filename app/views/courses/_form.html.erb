@@ -2,11 +2,11 @@
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Course</legend>
 
-	<%= f.input :title %>
+    <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :price %>
 
-    <%= f.fields_for :images, @image do |img_field| %>
+    <%= f.fields_for :images do |img_field| %>
       Upload Photo <%= img_field.file_field :source %>
     <% end %>
 
