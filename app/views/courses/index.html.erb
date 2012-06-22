@@ -7,7 +7,7 @@
       <div class="row">
         <div class="span2">
           <% if course.images.any? %>
-            <%= image_tag course.images.first.source(:thumb) %>
+            <%= image_tag course.images.first.source(:index) %>
           <% end %>
         </div>
         <div class="span5">
