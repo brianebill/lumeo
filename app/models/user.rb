@@ -58,7 +58,13 @@ class User < ActiveRecord::Base
   has_many :problems, :dependent => :destroy
   has_many :ideas, :dependent => :destroy
   has_many :compliments, :dependent => :destroy
-  
+
+  # after a user is created, make sure a Image
+  # association is also created
+  after_create do
+    self.create_image unless image
+  end
+
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
