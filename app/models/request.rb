@@ -7,13 +7,12 @@ class Request < ActiveRecord::Base
                     :length => { :minimum => 5 }
   validates :description,  :presence => true
   validates :who,  :presence => true
-  
   validates :tags, :presence => true, :associated => true 
   
   belongs_to :user
   has_many :comments
   has_many :assignments
-  has_many :tags
+  has_many :tags, :dependent => :destroy, :as => :parent
   
   accepts_nested_attributes_for :tags, allow_destroy: true
     #:reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }

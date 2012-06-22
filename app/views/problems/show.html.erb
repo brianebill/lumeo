@@ -10,16 +10,16 @@
 
 
 			    <% if can? :update, @problem %>
-				    <%= link_to 'Edit Request', edit_problem_path(@problem), :class => 'btn btn-mini' %>
-					<%= link_to 'Delete Request', @problem, 
+				    <%= link_to 'Edit Ticket', edit_problem_path(@problem), :class => 'btn btn-mini' %>
+					<%= link_to 'Delete Ticket', @problem, 
 					                    confirm: 'Are you sure?', 
 					                    method: :delete, 
 					                    :class => 'btn btn-mini' %>
-	                 <%= link_to 'New Request', new_problem_path, :class => 'btn btn-mini' %>
+	                 <%= link_to 'New Support Ticket', new_problem_path, :class => 'btn btn-mini' %>
 				<% end %>
 	     </div>
 
 </div>
 <div class="row offset2">
-    <%= link_to 'Back to Requests', problems_path, :class => 'btn btn-mini' %>
+    <%= link_to 'Back to Support', problems_path, :class => 'btn btn-mini' %>
 </div>

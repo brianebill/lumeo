@@ -35,4 +35,4 @@
 <% else %>
   <p>Your search returned no Course Requests. Step 2: Click on the blue button to submit your Course Request</p>
 <% end %>
-<%= button_to 'New Idea', new_idea_path, :class => 'btn btn-large btn-primary mleft20 mtop20' %>
+<%= button_to 'New Idea', new_idea_path, :method => 'get', :class => 'btn btn-large btn-primary mleft20 mtop20' %>

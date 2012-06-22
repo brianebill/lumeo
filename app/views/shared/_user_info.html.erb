@@ -1,6 +1,8 @@
 <a href="<%= user_path(current_user) %>">
   <h1><%= current_user.name %></h1>
-  <%= image_tag @user.photo.url(:show) %>
+	<% if current_user.images.any? %>
+		<%= image_tag @user.images.first.source(:show) %>
+	<% end %>
 </a>
 <span>
   <%= link_to "view my profile", current_user %>

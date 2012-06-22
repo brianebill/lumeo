@@ -3,16 +3,15 @@
 	   <thead>
 		  <tr>
 		    <th><%= sortable "title" %></th>
-			<th><%= sortable "who", "Requested Pro" %></th>
 			<th><%= sortable "created_at", "When" %></th>
-			<th><%= sortable "problem.user", "Requested by" %></th>
+			<th><%= sortable "problem.user", "Ticket Created By" %></th>
+			<th>Actions</th>
 		  </tr>
 	   </thead>
 	   <tbody>
 	   <% @problems.each do |problem| %>
 	     <tr>
 	       <td><%= problem.title %></td>
-	       <td><%= problem.who %></td>
 	       <td><%= problem.created_at %></td>
 		   <td><%= problem.user.name %></td>
 		   <td><%= link_to 'Show', problem, :class => 'btn btn-mini'%></td>

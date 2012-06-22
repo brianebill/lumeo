@@ -1,8 +1,17 @@
 class Question < ActiveRecord::Base
-  attr_accessible :description, :title, :user_id
+  attr_accessible :description, :title, :user_id, :tag_ids, :tags_attributes
+  
+  validates :title, :presence => true,
+                    :length => { :minimum => 5 }
+  validates :description,  :presence => true
+  
+  validates :tags, :presence => true, :associated => true
   
   belongs_to :user
   has_many :comments
+  has_many :tags, :dependent => :destroy, :as => :parent
+  
+  accepts_nested_attributes_for :tags, allow_destroy: true
   
   include PgSearch
   pg_search_scope :search, against: [:title, :description],

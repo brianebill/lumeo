@@ -19,10 +19,21 @@
 					  <li> &nbsp; &nbsp;</li>
 					  <li><%= link_to current_user.name, current_user %></li>
 					<% end %>
-			         <li><%= link_to "Browse Courses", courses_path %></li>
-			       <li><%= link_to "Community", topics_path %></li>
-				   <li><%= link_to "Blog",  posts_path %></li>
-				   <li><%= link_to "Help", topics_path %></li>
+			         <li><%= link_to "School", courses_path %></li>
+					<li id="fat-menu" class="dropdown">
+				         <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+				                Community <b class="caret"></b>
+				         </a>
+						 <ul class="dropdown-menu">
+							    <li><%= link_to "Community Home", topics_path %></li>
+							    <li class="divider"></li>
+								<li><%= link_to "Course Requests", requests_path %></li>
+								<li><%= link_to "Questions", questions_path %></li>
+								<li><%= link_to "Ideas", ideas_path %></li>
+								<li><%= link_to "Praise", compliments_path %></li>
+								<li><%= link_to "Problems", problems_path %></li>
+								<li><%= link_to "Questions", requests_path %></li>
+						</ul>
 				   <% if user_signed_in? %>
 					  <li id="fat-menu" class="dropdown">
 				              <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
@@ -56,10 +67,4 @@
   </div>
 </div>
 
-
-
-
-		   
-
-		    
 

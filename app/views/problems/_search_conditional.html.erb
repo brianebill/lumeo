@@ -1,0 +1,11 @@
+<% if @problems.total_entries.zero? %> 
+ <p>Your search returned no similar support tickets. Step 2: Click on the blue button to submit a new ticket</p>
+<% elsif @search.nil? %>
+	<div id="problems_table"><%= render 'problems' %></div>
+<% else %>
+	<h3 class="center">Your search found <%= pluralize(@problems.total_entries, "problem") %>....</h3>
+	<div id="problems">
+		   <%= render 'problems' %>
+	</div>
+	<h3 class="center">Enter a new problem by clicking on the blue button</h3>
+<% end %>

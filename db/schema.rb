@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120620164728) do
+ActiveRecord::Schema.define(:version => 20120622011048) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -288,6 +288,8 @@ ActiveRecord::Schema.define(:version => 20120620164728) do
     t.integer  "video_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "parent_id"
+    t.string   "parent_type"
   end
 
   create_table "topic_requests", :force => true do |t|

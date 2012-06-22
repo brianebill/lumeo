@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
   
   has_many :comments, :dependent => :destroy
   has_many :requests, :dependent => :destroy
+  has_many :questions, :dependent => :destroy
+  has_many :problems, :dependent => :destroy
+  has_many :ideas, :dependent => :destroy
+  has_many :compliments, :dependent => :destroy
   
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }

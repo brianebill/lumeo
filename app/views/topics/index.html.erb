@@ -1,3 +1,38 @@
-<div>
-       <%= render 'topics' %>
+<div class="row span12">
+	<div class="offset2 span6">
+		<h1 class="center title pleft80">Lumeo Community</h1>
+	</div>
+	<div class="community-search offset1 span2">
+		Search Function
+	</div>
+</div>
+
+<div class="row">
+	<div class="span2 well mtop20">
+		<div class="pad10">
+			<h3>Browse by Topic:</h3>
+		</div>
+		<div class="pad10">
+			<ul>
+				<li><%= link_to "Course Requests", requests_path %></li>
+				<li><%= link_to "Questions", questions_path %></li>
+				<li><%= link_to "Ideas", ideas_path %></li>
+				<li><%= link_to "Praise", compliments_path %></li>
+				<li><%= link_to "Problems", problems_path %></li>
+				<li><%= link_to "Questions", requests_path %></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div>
+	       <%= render 'topics' %>
+	</div>
+
+	<div class="community-index offset3">
+		<h3>Recent Topics</h3>
+	    <%= render 'recent' %>
+	    <h3>Popular Topics</h3>
+	    <%= render 'popular' %>
+	</div>
+
 </div>

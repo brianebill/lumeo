@@ -17,38 +17,38 @@ class RequestsController < ApplicationController
     end
   end
 
-  def new
-   # 0.times { @survey.questions.build }   
-    @request = Request.new
-    @tag = Tag.new
-    @tags = Tag.all
-    respond_to do |format|
-      format.html  # new.html.erb
-      format.json  { render :json => @request }
+    def new
+     # 0.times { @survey.questions.build }   
+      @request = Request.new
+      @tag = Tag.new
+      @tags = Tag.all
+      respond_to do |format|
+        format.html  # new.html.erb
+        format.json  { render :json => @request }
+      end
     end
-  end
 
-  def edit
-    @request = Request.find(params[:id])
-  end
+    def edit
+      @request = Request.find(params[:id])
+    end
 
-      def create
-            @request = current_user.requests.build(params[:request])
-            @tag = Tag.new
+    def create
+      @request = current_user.requests.build(params[:request])
+      @tag = Tag.new
 
-        respond_to do |format|
-          if @request.save
-            format.html  { redirect_to(@request,
-                          :notice => 'Request was successfully created.') }
-            format.json  { render :json => @request,
-                          :status => :created, :location => @request }
-          else
-            format.html  { render :action => "new" }
-            format.json  { render :json => @request.errors,
-                          :status => :unprocessable_entity }
-          end
+      respond_to do |format|
+        if @request.save
+          format.html  { redirect_to(@request,
+                        :notice => 'Request was successfully created.') }
+          format.json  { render :json => @request,
+                        :status => :created, :location => @request }
+        else
+          format.html  { render :action => "new" }
+          format.json  { render :json => @request.errors,
+                        :status => :unprocessable_entity }
         end
       end
+    end
 
     def update
       @request = Request.find(params[:id])
