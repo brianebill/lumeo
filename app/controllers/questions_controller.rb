@@ -5,11 +5,11 @@ class QuestionsController < ApplicationController
     @questions = Question.question_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
     @users = User.all
     @search = params[:search]
-    @tag = Tag.all
   end
 
   def show
     @question = Question.find(params[:id])
+    @users = User.all
     @question = @commentable = Question.find(params[:id])
     respond_to do |format|
       format.html  # show.html.erb
@@ -19,8 +19,6 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    @tag = Tag.new
-    @tags = Tag.all
     respond_to do |format|
       format.html  # new.html.erb
       format.json  { render :json => @question }
@@ -32,19 +30,17 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    
     @question = current_user.questions.build(params[:question])
-    @tag = Tag.new
 
     respond_to do |format|
       if @question.save
         format.html  { redirect_to(@question,
-                      :notice => 'Request was successfully created.') }
+                      :notice => 'Question was successfully created.') }
         format.json  { render :json => @question,
-                      :status => :created, :location => @request }
+                      :status => :created, :location => @question }
       else
         format.html  { render :action => "new" }
-        format.json  { render :json => @request.errors,
+        format.json  { render :json => @question.errors,
                       :status => :unprocessable_entity }
       end
     end

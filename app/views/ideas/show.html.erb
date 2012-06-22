@@ -5,21 +5,21 @@
 	</div>
 		<div class="span5">
 			    <h1><%= @idea.title %></h1>
-			    <p><%= @idea.who %></p>
+			    <p><%= @idea.user.name %></p>
 			    <p><%= @idea.description %></p>
 
 
 			    <% if can? :update, @idea %>
-				    <%= link_to 'Edit Request', edit_idea_path(@idea), :class => 'btn btn-mini' %>
-					<%= link_to 'Delete Request', @idea, 
+				    <%= link_to 'Edit Idea', edit_idea_path(@idea), :class => 'btn btn-mini' %>
+					<%= link_to 'Delete Idea', @idea, 
 					                    confirm: 'Are you sure?', 
 					                    method: :delete, 
 					                    :class => 'btn btn-mini' %>
-	                 <%= link_to 'New Request', new_idea_path, :class => 'btn btn-mini' %>
+	                 <%= link_to 'New Idea', new_idea_path, :class => 'btn btn-mini' %>
 				<% end %>
 	     </div>
 
 </div>
 <div class="row offset2">
-    <%= link_to 'Back to Requests', ideas_path, :class => 'btn btn-mini' %>
+    <%= link_to 'Back to Ideas', ideas_path, :class => 'btn btn-mini' %>
 </div>

@@ -1,15 +1,7 @@
-<div class="row span12">
-	<div class="span10">
-		<h1 class="center title">Ideas</h1>
-		<p class="center">Check out the Ideas below. If you don't see what you're looking for, send a new Idea by clicking on the big blue button below</p>
-	</div>
-</div>
+<%= render 'title' %>
 
-<div class="row span12 mtop20">
-	<%= form_tag ideas_path, :method => 'get', :class => "form-search pull-right" do %>
-    	<%= text_field_tag :search, params[:search], :class => "input-xlarge", :placeholder => 'Enter a subject like "Photo"' %>
-    	<%= submit_tag "Search", :title => nil %>
-	<% end %>
-</div>
+<%= render 'index_search_form' %>
 
-<div id="ideas"><%= render 'ideas' %></div>
+<%= render 'search_conditional' %>
+
+<%= button_to 'New Idea', new_idea_path, :method => 'get', :class => 'btn btn-large btn-primary mleft20 mtop20 pull-right' %>

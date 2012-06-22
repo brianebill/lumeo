@@ -3,6 +3,8 @@ class ComplimentsController < ApplicationController
   
   def index
     @compliments = Compliment.all
+    @users = User.all
+    @compliments = Compliment.compliment_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
   end
 
   def show

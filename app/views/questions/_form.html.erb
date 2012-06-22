@@ -1,10 +1,11 @@
-<%= simple_form_for @question, :html => { :class => 'form-horizontal pull-left mtop20', :multipart => true } do |f| %>
-   <fieldset class="h125 mbottom130">
-	   <%= f.input :title, :label => 'Question', :input_html => { :class => 'input-xxlarge' } %>
+<div class="offset1 span8">
+<%= simple_form_for @idea, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+   <fieldset>
+	   <%= f.input :title %>
 	   <%= f.input :description %>
-
-  <div class ="actions">
-    <%= f.submit nil, :class => 'btn btn-primary pull-right' %>
-  </div>
   </fieldset>
+  <div class ="actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+  </div>
 <% end %>
+</div>

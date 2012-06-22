@@ -1,7 +1,7 @@
 <div class="offset1 span8">
-<%= simple_form_for @idea, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+<%= simple_form_for @question, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
    <fieldset>
-	   <%= f.input :title %>
+	   <%= f.input :title, :label => 'Question' %>
 	   <%= f.input :description %>
   </fieldset>
   <div class ="actions">

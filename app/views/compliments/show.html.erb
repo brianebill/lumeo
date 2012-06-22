@@ -9,16 +9,16 @@
 
 
 			    <% if can? :update, @compliment %>
-				    <%= link_to 'Edit Request', edit_compliment_path(@compliment), :class => 'btn btn-mini' %>
-					<%= link_to 'Delete Request', @compliment, 
+				    <%= link_to 'Edit Compliment', edit_compliment_path(@compliment), :class => 'btn btn-mini' %>
+					<%= link_to 'Delete Compliment', @compliment, 
 					                    confirm: 'Are you sure?', 
 					                    method: :delete, 
 					                    :class => 'btn btn-mini' %>
-	                 <%= link_to 'New Request', new_compliment_path, :class => 'btn btn-mini' %>
+	                 <%= link_to 'New Compliment', new_compliment_path, :class => 'btn btn-mini' %>
 				<% end %>
 	     </div>
 
 </div>
 <div class="row offset2">
-    <%= link_to 'Back to Requests', compliments_path, :class => 'btn btn-mini' %>
+    <%= link_to 'Back to Compliments', compliments_path, :class => 'btn btn-mini' %>
 </div>

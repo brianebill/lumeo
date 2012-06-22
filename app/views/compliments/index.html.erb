@@ -1,15 +1,15 @@
 <div class="row span12">
 	<div class="span10">
-		<h1 class="center title">Course Requests</h1>
-		<p class="center">Check out the Course Requests below. If you don't see what you're looking for, make a new Request by clicking on the button below</p>
-	</div>
+		<h1 class="center title">Praise for Lumeo</h1>
 </div>
 
 <div class="row span12 mtop20">
 	<%= form_tag compliments_path, :method => 'get', :class => "form-search pull-right" do %>
-    	<%= text_field_tag :search, params[:search], :class => "input-xlarge search-query", :placeholder => 'Enter a subject like "Photo"' %>
+    	<%= text_field_tag :search, params[:search], :class => "input-xlarge", :placeholder => 'Enter a subject like "Photo"' %>
     	<%= submit_tag "Search", :title => nil %>
 	<% end %>
 </div>
 
 <div id="compliments"><%= render 'compliments' %></div>
+
+<%= button_to 'Give Praise', new_compliment_path, :method => 'get', :class => 'btn btn-large btn-primary mleft20 mtop20 pull-right' %>

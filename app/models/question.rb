@@ -5,8 +5,6 @@ class Question < ActiveRecord::Base
                     :length => { :minimum => 5 }
   validates :description,  :presence => true
   
-  validates :tags, :presence => true, :associated => true
-  
   belongs_to :user
   has_many :comments
   has_many :tags, :dependent => :destroy, :as => :parent

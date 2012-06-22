@@ -9,6 +9,7 @@ class IdeasController < ApplicationController
 
   def show
     @idea = Idea.find(params[:id])
+    @users = User.all
     @idea = @commentable = Idea.find(params[:id])
     respond_to do |format|
       format.html  # show.html.erb

@@ -18,7 +18,7 @@ class Compliment < ActiveRecord::Base
          associated_against: {user: :name},
          ignoring: :accents
 
-    def self.request_search(query)
+    def self.compliment_search(query)
       if query.present?
         search(query)
         where("title @@ :q or description @@ :q", q: query)
