@@ -4,6 +4,7 @@ class Request < ActiveRecord::Base
    req.who.titleize!
    req.subject.titleize!
   end
+  
   attr_accessible :description, :title, :user_id, :who, :tag_ids, :subject, :tags_attributes
   
   validates :title, :presence => true,
