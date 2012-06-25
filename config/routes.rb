@@ -41,6 +41,10 @@ Lumeo::Application.routes.draw do
   resources :questions
   resources :topics, :contacts, :compliments, :ideas, :problems, :requests
   
+  resources :requests do
+   put :vote, :on => :member
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,15 +1,15 @@
-<%= simple_form_for @request, :html => { :class => 'form-horizontal pull-left mtop20', :multipart => true } do |f| %>
-   <fieldset class="h125 mbottom130">
-	   <%= f.input :title %>
-	   <%= f.input :who, :label => 'Taught by' %>
-	   <%= f.input :description %>
-       <%= f.association :tags, :as => :check_boxes, :collection => @tags, :label => 'Pick one or more subjects' %>
-	   <%= f.simple_fields_for :tags do |builder| %>
-	         <%= render 'tags/form', f: builder %>
+<div class="offset3 span6 mtop20">
+<%= simple_form_for @request, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+   <fieldset class="well">
+	   <% if current_user.has_role? :admin %>
+	       <%= f.input :subject, :placeholder => 'no commas' %>
 	   <% end %>
-	   <%= link_to_add_fields "Add a new subject tag", f, :tags %> 	
-	  <div class ="form-actions">
-	    <%= f.submit nil, :class => 'btn btn-primary pull-right' %>
-	  </div>
-   </fieldset>
+	   <%= f.input :title %>
+ 	   <%= f.input :who, :label => 'Taught by' %>
+	   <%= f.input :description %>
+  </fieldset>
+  <div class ="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary pull-right btn-large m5' %>
+  </div>
 <% end %>
+</div>

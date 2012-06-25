@@ -1,11 +1,14 @@
-<div class="offset1 span8">
-<%= simple_form_for @question, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
-   <fieldset>
-	   <%= f.input :title, :label => 'Question' %>
-	   <%= f.input :description %>
-  </fieldset>
-  <div class ="actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-  </div>
-<% end %>
+<div class="offset3 span6 well">
+	<%= simple_form_for @idea, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+	   <fieldset>
+		   <% if current_user.has_role? :admin %>
+		       <%= f.input :subject, :placeholder => 'no commas' %>
+		   <% end %>
+		   <%= f.input :title, :label => 'Question' %>
+		   <%= f.input :description %>
+	  </fieldset>
+	  <div class ="form-actions">
+	    <%= f.submit nil, :class => 'btn btn-primary btn-large pull-right' %>
+	  </div>
+	<% end %>
 </div>

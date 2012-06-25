@@ -1,0 +1,29 @@
+<% if current_user.has_role? :admin %>
+	<div class="row">
+		<div class="span2 offset1">
+	 
+		</div>
+			<div class="span5">
+				    <h1><%= @contact.subject %></h1>
+				    <p><%= @contact.user %></p>
+				    <p><%= @contact.message %></p>
+
+
+				    <% if can? :update, @contact %>
+					    <%= link_to 'Edit Message', edit_contact_path(@compliment), :class => 'btn btn-mini' %>
+						<%= link_to 'Delete Message', @compliment, 
+						                    confirm: 'Are you sure?', 
+						                    method: :delete, 
+						                    :class => 'btn btn-mini' %>
+		                 <%= link_to 'New Message', new_contact_path, :class => 'btn btn-mini' %>
+					<% end %>
+		     </div>
+
+	</div>
+	<div class="row offset2">
+	    <%= link_to 'Back to Messages', contacts_path, :class => 'btn btn-mini' %>
+	</div>
+<% else %>
+   <h3 class = "center">Thank you for contacting Lumeo, we will respond to your message as soon as possible.</h3>
+
+<% end %>

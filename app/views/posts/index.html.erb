@@ -1,35 +1,37 @@
-<nav class="span2 mtop30">
-	<ul class="well">
-		<% @categories.each do |category|%>
-		<%= category.name %>
-		<% end %>
-	</ul>
-</nav>
+<div class="row">
+	<div class="span2 mtop30">
+		<ul class="well">
+			<% @categories.each do |category|%>
+			<%= category.name %>
+			<% end %>
+		</ul>
+	</div>
 
-<div class="row offset2 span10 mtop30">
-  <% @posts.each do |post| %>
-    <div class="row">
-      <div class="span2">
-        <% if post.image %>
-          <%= image_tag post.image.source(:medium) %>
-        <% end %>
-      </div>
-      <div class="span6">
-        <h1><%= post.title %></h1>
-        <p><%= post.index_text.html_safe %></p>
-      </div>
+	<div class="span9 mtop30">
+	  <% @posts.each do |post| %>
+	    <div class="row">
+	      <div class="span2">
+	        <% if post.image %>
+	          <%= image_tag post.image.source(:medium) %>
+	        <% end %>
+	      </div>
+	      <div class="span5">
+	        <h1><%= post.title %></h1>
+	        <p><%= post.index_text.html_safe %></p>
+	      </div>
 
-      <div class="span2">
-        <%= link_to 'Show', post, :class => 'btn btn-mini'%>
-        <% if can? :update, @course %>
-          <%= link_to 'Edit', edit_post_path(post), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', post,
-            confirm: 'Are you sure?',
-            method: :delete,
-            :class => 'btn btn-mini' %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-  <%= link_to 'New Post', new_post_path, :class => 'btn btn-mini' %>
+	      <div class="span2">
+	        <%= link_to 'Show', post, :class => 'btn btn-mini'%>
+	        <% if can? :update, @course %>
+	          <%= link_to 'Edit', edit_post_path(post), :class => 'btn btn-mini' %>
+	          <%= link_to 'Destroy', post,
+	            confirm: 'Are you sure?',
+	            method: :delete,
+	            :class => 'btn btn-mini' %>
+	        <% end %>
+	      </div>
+	    </div>
+	  <% end %>
+	  <%= button_to 'New Post', new_post_path, :method => 'get', :class => 'btn btn-primary' %>
+	</div>
 </div>

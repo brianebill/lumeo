@@ -1,15 +1,16 @@
 <% if @questions.total_entries.zero? %> 
- <p>Your search returned no Course Requests. Step 2: Click on the blue button to submit your Course Request</p>
+ <p class="center bold">Your search returned no Course Requests.</p>
+ <p class="center bold"> Step 2: Click on the blue button to submit your Course Request</p>
 
 <% elsif @search.nil? %>
 	<div id="problems_table"><%= render 'questions' %></div>
 
 <% else %>
 
-<h3 class="center">Your search found <%= pluralize(@questions.total_entries, "question") %>....</h3>
+<p class="center bold">Your search found <%= pluralize(@questions.total_entries, "question") %>....</p>
 <div id="requests">
 	   <%= render 'questions' %>
 </div>
-<h3 class="center">Enter a new request by clicking on the blue button</h3>
+<p class="center bold">If you don't see what you want, enter a new request by clicking on the blue button</p>
    
 <% end %>

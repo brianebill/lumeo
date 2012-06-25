@@ -1,19 +1,23 @@
-<%= simple_form_for @course, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
-  <fieldset>
-    <legend><%= controller.action_name.capitalize %> Course</legend>
-
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :price %>
-
-    <%= f.fields_for :images do |img_field| %>
-      Upload Photo <%= img_field.file_field :source %>
-    <% end %>
-
-    <div class="form-actions">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', courses_path, :class => 'btn' %>
-    </div>
-  </fieldset>
-<% end %>
+<div class="span8 offset2">
+	<%= simple_form_for @course, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+	  <fieldset class="well">
+	    <%= f.input :title %>
+	    <%= f.input :description %>
+	    <%= f.input :price %>
+	 </fieldset>
+	 <fieldset class="well">
+	    <%= f.fields_for :image do |img_field| %>
+	         <div class="mleft150"> 
+				<h3 class = "">
+					Upload Photo: <%= img_field.file_field :source, :class => 'mleft10' %>
+				</h3>
+			</div>
+	    <% end %>
+	<fieldset>
+	 <div class="form-actions offset2">
+	    <%= link_to 'Cancel', courses_path, :class => 'btn pull-right btn-large m5' %>
+		<%= f.submit nil, :class => 'btn btn-primary pull-right btn-large m5' %>
+	  </div>
+	<% end %>
+</div>
 

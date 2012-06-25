@@ -1,5 +1,6 @@
 <% if @ideas.total_entries.zero? %> 
-   <p>Your search returned no formerly submitted ideas. Proceed to Step 2: Click on the blue button to submit your Idea</p>
+   <p class = "center bold">Your search returned no formerly submitted ideas.</p>
+   <p class = "center bold"> Proceed to Step 2: Click on the blue button to submit your Idea</p>
 <% elsif @search.nil? %>
 	<div><%= render 'ideas' %></div>
 <% else %>

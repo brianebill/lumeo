@@ -13,7 +13,7 @@ class Idea < ActiveRecord::Base
   def self.idea_search(query)
     if query.present?
       search(query)
-      where("title @@ :q or description @@ :q", q: query)
+      where("to_tsvector('english', title) @@ :q or to_tsvector('english', description) @@ :q", q: query)
     else
       scoped
     end

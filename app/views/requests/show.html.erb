@@ -5,15 +5,10 @@
 	</div>
 		<div class="span5">
 			    <h1><%= @request.title %></h1>
+			    <p><%= @request.subject %></p>
 			    <p><%= @request.who %></p>
 			    <p><%= @request.description %></p>
 			
-				<p>
-				  <b>Tags:</b>
-				  <%= @request.tags.map { |t| t.name }.join(", ") %>
-				</p>
-
-
 			    <% if can? :update, @request %>
 				    <%= link_to 'Edit Request', edit_request_path(@request), :class => 'btn btn-mini' %>
 					<%= link_to 'Delete Request', @request, 

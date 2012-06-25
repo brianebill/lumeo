@@ -1,6 +1,10 @@
 class ContactsController < ApplicationController
+  helper_method :sort_column, :sort_direction
+  
   def index
-    @contacts = Contact.all
+    @contacts = Contact.contact_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
+    @users = User.all
+    @search = params[:search]
   end
 
   def show
@@ -41,7 +45,7 @@ class ContactsController < ApplicationController
   end
 
     def update
-      @contact = Contact.find(params[:id])
+      @contact = current_user.contacts.build(params[:contact])
 
       respond_to do |format|
         if @contact.update_attributes(params[:contact])
@@ -64,5 +68,15 @@ class ContactsController < ApplicationController
           format.html { redirect_to contacts_url }
           format.json { head :no_content }
         end
+      end
+      
+      private
+
+      def sort_column
+        Contact.column_names.include?(params[:sort]) ? params[:sort] : "subject"
+      end
+
+      def sort_direction
+        %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
       end
 end

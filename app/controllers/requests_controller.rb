@@ -2,10 +2,18 @@ class RequestsController < ApplicationController
   helper_method :sort_column, :sort_direction
   
   def index
-   @requests = Request.request_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 25, :page => params[:page])
+    @requests = Request.request_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 25, :page => params[:page])
     @users = User.all
     @search = params[:search]
-    @tag = Tag.all
+    def vote
+     if params[:up]
+       current_user.cast_vote(@request, 1)
+     else
+       current_user.cast_vote(@request, -1)
+     end
+
+     render :show
+    end
   end
 
   def show
@@ -18,10 +26,7 @@ class RequestsController < ApplicationController
   end
 
     def new
-     # 0.times { @survey.questions.build }   
       @request = Request.new
-      @tag = Tag.new
-      @tags = Tag.all
       respond_to do |format|
         format.html  # new.html.erb
         format.json  { render :json => @request }
@@ -34,7 +39,6 @@ class RequestsController < ApplicationController
 
     def create
       @request = current_user.requests.build(params[:request])
-      @tag = Tag.new
 
       respond_to do |format|
         if @request.save

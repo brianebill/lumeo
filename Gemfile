@@ -22,6 +22,7 @@ gem 'paper_trail', '~> 2'
 # gem 'texticle', "2.0", :require => 'texticle/rails'
 gem 'pg_search'
 gem 'delayed_job_active_record'
+gem "votable", :git => "git://github.com/mikeycgto/votable.git"
 
 gem "letter_opener", :group => :development
 

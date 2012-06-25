@@ -4,6 +4,13 @@ GIT
   specs:
     annotate (2.4.1.beta1)
 
+GIT
+  remote: git://github.com/mikeycgto/votable.git
+  revision: 06f8ca6b4d4255a3d66794254ba35f11ecc2ff86
+  specs:
+    votable (0.0.1)
+      rails (~> 3.2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -277,4 +284,5 @@ DEPENDENCIES
   simple_form
   thin
   uglifier (>= 1.0.3)
+  votable!
   will_paginate (= 3.0.3)

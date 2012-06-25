@@ -7,7 +7,7 @@
 		  <tr>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "created_at", "When" %></th>
-			<th><%= sortable "question.user", "Member" %></th>
+			<th><%= sortable "question.user.name", "Member" %></th>
 		  </tr>
 	   </thead>
 	   <tbody>
@@ -15,6 +15,7 @@
 	     <tr>
 	       <td><%= question.title %></td>
 	       <td><%= question.created_at %></td>
+	       <td><%= question.user.name %></td>
 
 		   <td><%= link_to 'Show', question, :class => 'btn btn-mini'%></td>
 		   <% if can? :update, @course %>

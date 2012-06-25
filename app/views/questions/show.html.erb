@@ -4,21 +4,22 @@
 	 
 	</div>
 		<div class="span5">
-			    <h1><%= @question.title %></h1>
-			    <p><%= @question.description %></p>
+			<h1><%= @question.title %></h1>
+			<p><%= @question.subject %></p>
+			<p><%= @question.description %></p>
 
 
 			    <% if can? :update, @question %>
-				    <%= link_to 'Edit Request', edit_question_path(@question), :class => 'btn btn-mini' %>
-					<%= link_to 'Delete Request', @question, 
+				    <%= link_to 'Edit Question', edit_question_path(@question), :class => 'btn btn-mini' %>
+					<%= link_to 'Delete Question', @question, 
 					                    confirm: 'Are you sure?', 
 					                    method: :delete, 
 					                    :class => 'btn btn-mini' %>
-	                 <%= link_to 'New Request', new_question_path, :class => 'btn btn-mini' %>
+	                 <%= link_to 'New Question', new_question_path, :class => 'btn btn-mini' %>
 				<% end %>
 	     </div>
 
 </div>
 <div class="row offset2">
-    <%= link_to 'Back to Requests', questions_path, :class => 'btn btn-mini' %>
+    <%= link_to 'Back to Questions', questions_path, :class => 'btn btn-mini' %>
 </div>

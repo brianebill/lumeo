@@ -6,9 +6,9 @@
     <% @courses.each do |course| %>
       <div class="row">
         <div class="span2">
-          <% if course.images.any? %>
-            <%= image_tag course.images.first.source(:index) %>
-          <% end %>
+		<% if course.image %>
+		 <%= image_tag course.image.source(:medium)  %>
+		<% end %>
         </div>
         <div class="span5">
           <h1><%= course.title %></h1>
@@ -26,5 +26,5 @@
         </div>
       </div>
     <% end %>
-    <%= link_to 'New Post', new_course_path, :class => 'btn btn-mini' %>
+    <%= button_to 'New Course', new_course_path, :method => 'get', :class => 'btn btn-primary btn-large pull-right' %>
   </div>

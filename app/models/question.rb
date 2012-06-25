@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
-  attr_accessible :description, :title, :user_id, :tag_ids, :tags_attributes
+  before_save { |question| question.title = title.titleize }
+  attr_accessible :description, :title, :user_id, :subject
   
   validates :title, :presence => true,
                     :length => { :minimum => 5 }
@@ -7,12 +8,9 @@ class Question < ActiveRecord::Base
   
   belongs_to :user
   has_many :comments
-  has_many :tags, :dependent => :destroy, :as => :parent
-  
-  accepts_nested_attributes_for :tags, allow_destroy: true
   
   include PgSearch
-  pg_search_scope :search, against: [:title, :description],
+  pg_search_scope :search, against: [:title, :description, :subject],
      using: {tsearch: {dictionary: "english"}},
        associated_against: {user: :name},
        ignoring: :accents
@@ -20,7 +18,7 @@ class Question < ActiveRecord::Base
   def self.question_search(query)
     if query.present?
       search(query)
-      where("title @@ :q or description @@ :q", q: query)
+      where("to_tsvector('english', title) @@ :q or to_tsvector('english', description) @@ :q or to_tsvector('english', subject) @@ :q", q: query)
     else
       scoped
     end

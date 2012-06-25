@@ -5,7 +5,7 @@
     <li><a href="#info" data-toggle="tab">Info</a></li>
     <li><a href="#profolio" data-toggle="tab">Profolio</a></li>
     <li><a href="#community" data-toggle="tab">Community</a></li>
-    <li><a href="#edit" data-toggle="tab">Edit Membership</a></li>
+    <li><%= link_to "Edit Membership", edit_user_registration_path %>
     <li><%= link_to "Help", topics_path %></li>
   </ul>
   <div class="tab-content">
@@ -28,9 +28,7 @@
     <div class="tab-pane" id="community">
 
     </div>
-    <div class="tab-pane" id="edit">
 
-    </div>
     <div class="tab-pane" id="help">
 
     </div>

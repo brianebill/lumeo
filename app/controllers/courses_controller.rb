@@ -4,12 +4,14 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
+    @videos = Video.all
   end
 
   # GET /courses/1
   # GET /courses/1.json
   def show
     @course = Course.find(params[:id])
+    @videos = Video.all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @course }
@@ -20,7 +22,7 @@ class CoursesController < ApplicationController
   # GET /courses/new.json
   def new
     @course = Course.new
-    @image = @course.images.build
+    @image = @course.build_image
   end
 
   # GET /courses/1/edit

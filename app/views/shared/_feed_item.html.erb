@@ -1,8 +1,7 @@
 <li id="<%= feed_item.id %>">
-	<% if feed_item.user.images.any? %>
-      <%= image_tag feed_item.user.images.first.source(:header) %>
+	<% if feed_item.user.image %>
+      <%= image_tag feed_item.user.image(:header) %>
     <% end %>
-    <%= feed_item.user %>
   <span class="user">
     <%= link_to feed_item.user.name, feed_item.user %>
   </span>

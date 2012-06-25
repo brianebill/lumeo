@@ -88,4 +88,7 @@ class User < ActiveRecord::Base
   def feed
     Micropost.from_users_followed_by(self)
   end
+  
+  votes_on :requests
+  
 end

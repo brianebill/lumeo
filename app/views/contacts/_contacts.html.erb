@@ -1,0 +1,33 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<div class="row">
+	<table class="table table-striped pretty">
+	   <thead>
+		  <tr>
+		    <th><%= sortable "contact.user.name", "From" %></th>
+			<th><%= sortable "created_at", "When" %></th>
+			<th><%= sortable "subject", "Subject" %></th>
+		  </tr>
+	   </thead>
+	   <tbody>
+	   <% @contacts.each do |contact| %>
+	     <tr>
+		   <td><%= contact.user.name %></td>
+	       <td><%= contact.subject %></td>
+	       <td><%= contact.created_at %></td>
+		   
+		   <td><%= link_to 'Show', contact, :class => 'btn btn-mini'%></td>
+		   <% if can? :update, @course %>
+	   	   <td><%= link_to 'Edit', edit_contact_path(contact), :class => 'btn btn-mini' %></td>
+		       <td><%= link_to 'Destroy', contact, 
+		                    confirm: 'Are you sure?', 
+		                    method: :delete, 
+		                    :class => 'btn btn-mini' %></td>
+	       <% end %>
+	     </tr>
+	  <% end %>
+	  </tbody>
+	</table>
+	<div class="pull-right"><%= will_paginate @contacts %></div>	
+</div>
