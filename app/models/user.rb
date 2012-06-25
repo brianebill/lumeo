@@ -58,6 +58,7 @@ class User < ActiveRecord::Base
   has_many :problems, :dependent => :destroy
   has_many :ideas, :dependent => :destroy
   has_many :compliments, :dependent => :destroy
+   has_many :contacts, :dependent => :destroy
 
   # after a user is created, make sure a Image
   # association is also created

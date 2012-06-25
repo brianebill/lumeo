@@ -6,6 +6,7 @@
 	<table class="table table-striped pretty">
 	   <thead>
 		  <tr>
+			<th>Vote!</th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "who", "Requested Pro" %></th>
 			<th><%= sortable "created_at", "When" %></th>
@@ -13,20 +14,22 @@
 		  </tr>
 	   </thead>
 	   <tbody>
-	   <% @requests.each do |request| %>
-			<%= form_for @request, :url => vote_request_path do |f| %>
-			 <%= submit_tag "Up Vote", :name => :up %>
-			 <%= submit_tag "Down Vote", :name => :down %>
-			<% end %>
-	     <tr>
-	       <td><%= request.title %></td>
-	       <td><%= request.who %></td>
-	       <td><%= time_ago_in_words(request.created_at) %> ago</td>
-		   <td><%= request.user.name %></td>
-		   <td><%= link_to 'Show', request, :class => 'btn btn-mini'%></td>
+	   <% @requests.each do |req| %>
+		 <tr>
+		 	<td>
+				 <%= form_for req, :url => vote_request_path(req) do |f| %>
+					 <%= submit_tag "Up Vote", :name => :up %>
+					 <%= submit_tag "Down Vote", :name => :down %>
+				 <% end %>
+		   </td>
+	       <td><%= req.title %></td>
+	       <td><%= req.who %></td>
+	       <td><%= time_ago_in_words(req.created_at) %> ago</td>
+		   <td><%= req.user.name %></td>
+		   <td><%= link_to 'Show', req, :class => 'btn btn-mini'%></td>
 		   <% if can? :update, @course %>
 	   	   <td><%= link_to 'Edit', edit_request_path(request), :class => 'btn btn-mini' %></td>
-		       <td><%= link_to 'Destroy', request, 
+		       <td><%= link_to 'Destroy', req, 
 		                    confirm: 'Are you sure?', 
 		                    method: :delete, 
 		                    :class => 'btn btn-mini' %></td>

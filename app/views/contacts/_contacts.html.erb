@@ -13,7 +13,7 @@
 	   <tbody>
 	   <% @contacts.each do |contact| %>
 	     <tr>
-		   <td><%= contact.user.name %></td>
+		   <td><%= contact.user %></td>
 	       <td><%= contact.subject %></td>
 	       <td><%= contact.created_at %></td>
 		   

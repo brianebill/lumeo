@@ -1,19 +1,10 @@
 class RequestsController < ApplicationController
-  helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction, :vote
   
   def index
     @requests = Request.request_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 25, :page => params[:page])
     @users = User.all
     @search = params[:search]
-    def vote
-     if params[:up]
-       current_user.cast_vote(@request, 1)
-     else
-       current_user.cast_vote(@request, -1)
-     end
-
-     render :show
-    end
   end
 
   def show
@@ -89,4 +80,13 @@ class RequestsController < ApplicationController
       def sort_direction
         %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
       end
+      
+      def vote
+        if params[:up]
+          current_user.cast_vote(@request, 1)
+        else
+          current_user.cast_vote(@request, -1)
+        end
+        render :show
+       end
 end
