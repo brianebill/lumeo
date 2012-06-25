@@ -6,14 +6,14 @@
 	   <thead>
 		  <tr>
 		    <th><%= sortable "contact.user.name", "From" %></th>
+		    <th><%= sortable "subject", "Subject" %></th>
 			<th><%= sortable "created_at", "When" %></th>
-			<th><%= sortable "subject", "Subject" %></th>
 		  </tr>
 	   </thead>
 	   <tbody>
 	   <% @contacts.each do |contact| %>
 	     <tr>
-		   <td><%= contact.user %></td>
+		   <td><%= contact.user.name %></td>
 	       <td><%= contact.subject %></td>
 	       <td><%= contact.created_at %></td>
 		   

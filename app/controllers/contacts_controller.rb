@@ -28,7 +28,7 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = Contact.new(params[:contact])
+    @contact = current_user.contacts.build(params[:contact])
 
     respond_to do |format|
       if @contact.save
@@ -45,7 +45,7 @@ class ContactsController < ApplicationController
   end
 
     def update
-      @contact = current_user.contacts.build(params[:contact])
+      @contact = Contact.find(params[:id])
 
       respond_to do |format|
         if @contact.update_attributes(params[:contact])
