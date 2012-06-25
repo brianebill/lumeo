@@ -7,6 +7,7 @@
 	   <thead>
 		  <tr>
 			<th>Vote!</th>
+			<th>Score</th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "who", "Requested Pro" %></th>
 			<th><%= sortable "created_at", "When" %></th>
@@ -21,6 +22,11 @@
 					 <%= submit_tag "Up Vote", :name => :up %>
 					 <%= submit_tag "Down Vote", :name => :down %>
 				 <% end %>
+		   </td>
+		   <td>
+		        <%= counts = req_instance.user_votes.inject([0,0]) { |sum, vote| sum.tap {
+		        |s| vote.value > 0 ? s[0] += 1 : s[1] += 1 } } %>
+		        <%= counts[0] - counts[1] %>
 		   </td>
 	       <td><%= req.title %></td>
 	       <td><%= req.who %></td>
