@@ -1,8 +1,7 @@
 class RequestsController < ApplicationController
   before_filter :find_request, :except => [:index, :new, :create]
-
   helper_method :sort_column, :sort_direction, :vote
-  
+
   def index
     @requests = Request.request_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 25, :page => params[:page])
     @users = User.all
@@ -67,14 +66,14 @@ class RequestsController < ApplicationController
 
   def vote
     if params[:up]
-      current_user.cast_vote(@request, 1)
+      current_user.cast_request_vote(@request, 1)
     else
-      current_user.cast_vote(@request, -1)
+      current_user.cast_request_vote(@request, -1)
     end
     render :show
   end
 
-  private
+  protected
 
   def find_request
     @request = Request.find(params[:id])
