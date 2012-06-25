@@ -1,5 +1,6 @@
 class ProblemsController < ApplicationController
-  helper_method :sort_column, :sort_direction
+  before_filter :find_problem, :except => [:index, :new, :create]
+  helper_method :sort_column, :sort_direction, :vote
   
   def index
     @problems = Problem.problem_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
@@ -24,10 +25,6 @@ class ProblemsController < ApplicationController
     end
   end
 
-  def edit
-    @problem = Problem.find(params[:id])
-  end
-
   def create
     @problem = current_user.problems.build(params[:problem])
 
@@ -46,8 +43,6 @@ class ProblemsController < ApplicationController
   end
 
     def update
-      @problem = Problem.find(params[:id])
-
       respond_to do |format|
         if @problem.update_attributes(params[:problem])
           format.html  { redirect_to(@problem,
@@ -62,7 +57,6 @@ class ProblemsController < ApplicationController
     end
 
       def destroy
-        @problem = Problem.find(params[:id])
         @problem.destroy
 
         respond_to do |format|
@@ -71,7 +65,19 @@ class ProblemsController < ApplicationController
         end
       end
       
+        def vote
+          if params[:up]
+            current_user.cast_problem_vote(@problem, 1)
+          else
+            current_user.cast_problem_vote(@problem, -1)
+          end
+          render :show
+        end
+      
       private
+      def find_problem
+        @problem = Problem.find(params[:id])
+      end
 
       def sort_column
         Problem.column_names.include?(params[:sort]) ? params[:sort] : "title"

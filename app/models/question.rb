@@ -9,6 +9,8 @@ class Question < ActiveRecord::Base
   belongs_to :user
   has_many :comments
   
+  votable_by :users
+  
   include PgSearch
   pg_search_scope :search, against: [:title, :description, :subject],
      using: {tsearch: {dictionary: "english"}},

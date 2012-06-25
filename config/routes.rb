@@ -45,6 +45,22 @@ Lumeo::Application.routes.draw do
    put :vote, :on => :member
   end
   
+  resources :questions do
+   put :vote, :on => :member
+  end
+  
+  resources :compliments do
+   put :vote, :on => :member
+  end
+  
+  resources :ideas do
+   put :vote, :on => :member
+  end
+  
+  resources :problems do
+   put :vote, :on => :member
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

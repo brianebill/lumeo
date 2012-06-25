@@ -5,6 +5,7 @@
 	<table class="table table-striped pretty">
 	   <thead>
 		  <tr>
+		    <th>Score</th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "created_at", "When" %></th>
 			<th><%= sortable "question.user.name", "Member" %></th>
@@ -13,8 +14,15 @@
 	   <tbody>
 	   <% @questions.each do |question| %>
 	     <tr>
-	       <td><%= question.title %></td>
-	       <td><%= question.created_at %></td>
+		    <td>
+				 <%= form_for question, :url => vote_question_path(question) do |f| %>
+					 <p class="center"><%= submit_tag "Up Vote", :name => :up %></p>
+					 <h1 class="center"><%= vote_total question.user_votes %></h1>
+					 <p class="center"><%= submit_tag "Down Vote", :name => :down %></p>
+				 <% end %>
+		   </td>
+	       <td><h3><%= question.title %></h3></td>
+	       <td><%= time_ago_in_words(question.created_at) %> ago</td>
 	       <td><%= question.user.name %></td>
 
 		   <td><%= link_to 'Show', question, :class => 'btn btn-mini'%></td>

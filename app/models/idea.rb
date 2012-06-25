@@ -1,8 +1,10 @@
 class Idea < ActiveRecord::Base
-  attr_accessible :description, :title, :user_id
+  attr_accessible :description, :title, :user_id, :subject
   
   belongs_to :user
   has_many :comments
+  
+  votable_by :users
   
   include PgSearch
   pg_search_scope :search, against: [:title, :description],

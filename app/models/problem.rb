@@ -4,6 +4,8 @@ class Problem < ActiveRecord::Base
   belongs_to :user
   has_many :comments
   
+  votable_by :users
+  
   include PgSearch
   pg_search_scope :search, against: [:title, :description],
      using: {tsearch: {dictionary: "english"}},

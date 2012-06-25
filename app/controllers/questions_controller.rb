@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
-  helper_method :sort_column, :sort_direction
+  before_filter :find_question, :except => [:index, :new, :create]
+  helper_method :sort_column, :sort_direction, :vote
   
   def index
     @questions = Question.question_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
@@ -8,8 +9,6 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
-    @users = User.all
     @question = @commentable = Question.find(params[:id])
     respond_to do |format|
       format.html  # show.html.erb
@@ -23,10 +22,6 @@ class QuestionsController < ApplicationController
       format.html  # new.html.erb
       format.json  { render :json => @question }
     end
-  end
-
-  def edit
-    @question = Question.find(params[:id])
   end
 
   def create
@@ -47,8 +42,6 @@ class QuestionsController < ApplicationController
   end
 
     def update
-      @question = Question.find(params[:id])
-
       respond_to do |format|
         if @question.update_attributes(params[:question])
           format.html  { redirect_to(@question,
@@ -63,7 +56,6 @@ class QuestionsController < ApplicationController
     end
 
       def destroy
-        @question = Question.find(params[:id])
         @question.destroy
 
         respond_to do |format|
@@ -72,7 +64,20 @@ class QuestionsController < ApplicationController
         end
       end
       
+      def vote
+        if params[:up]
+          current_user.cast_question_vote(@question, 1)
+        else
+          current_user.cast_question_vote(@question, -1)
+        end
+        render :show
+      end
+      
       private
+      
+      def find_question
+        @question = Question.find(params[:id])
+      end
 
       def sort_column
         Question.column_names.include?(params[:sort]) ? params[:sort] : "title"

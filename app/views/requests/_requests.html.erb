@@ -1,12 +1,10 @@
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
 
-
 <div class="row mleft30">
 	<table class="table table-striped pretty">
 	   <thead>
 		  <tr>
-			<th>Vote!</th>
 			<th>Score</th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "who", "Requested Pro" %></th>
@@ -19,16 +17,12 @@
 		 <tr>
 		 	<td>
 				 <%= form_for req, :url => vote_request_path(req) do |f| %>
-					 <%= submit_tag "Up Vote", :name => :up %>
-					 <%= submit_tag "Down Vote", :name => :down %>
+					 <p class="center"><%= submit_tag "Up Vote", :name => :up %></p>
+					 <h1 class="center"><%= vote_total req.user_votes %></h1>
+					 <p class="center"><%= submit_tag "Down Vote", :name => :down %></p>
 				 <% end %>
 		   </td>
-		   <td>
-		        <%= counts = req_instance.user_votes.inject([0,0]) { |sum, vote| sum.tap {
-		        |s| vote.value > 0 ? s[0] += 1 : s[1] += 1 } } %>
-		        <%= counts[0] - counts[1] %>
-		   </td>
-	       <td><%= req.title %></td>
+	       <td><h3><%= req.title %></h3></td>
 	       <td><%= req.who %></td>
 	       <td><%= time_ago_in_words(req.created_at) %> ago</td>
 		   <td><%= req.user.name %></td>

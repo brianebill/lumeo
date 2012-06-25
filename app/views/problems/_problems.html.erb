@@ -5,6 +5,7 @@
 	<table class="table table-striped pretty">
 	   <thead>
 		  <tr>
+			<th>Score</th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "created_at", "When" %></th>
 			<th><%= sortable "problem.user", "Ticket Created By" %></th>
@@ -14,6 +15,13 @@
 	   <tbody>
 	   <% @problems.each do |problem| %>
 	     <tr>
+		    <td>
+				 <%= form_for problem, :url => vote_problem_path(problem) do |f| %>
+					 <p class="center"><%= submit_tag "Up Vote", :name => :up %></p>
+					 <h1 class="center"><%= vote_total problem.user_votes %></h1>
+					 <p class="center"><%= submit_tag "Down Vote", :name => :down %></p>
+				 <% end %>
+		   </td>
 	       <td><%= problem.title %></td>
 	       <td><%= problem.created_at %></td>
 		   <td><%= problem.user.name %></td>

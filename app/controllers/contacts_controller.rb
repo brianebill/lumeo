@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction, :vote
   
   def index
     @contacts = Contact.contact_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])

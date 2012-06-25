@@ -1,5 +1,6 @@
 class IdeasController < ApplicationController
-  helper_method :sort_column, :sort_direction
+  before_filter :find_idea, :except => [:index, :new, :create]
+  helper_method :sort_column, :sort_direction, :vote
   
   def index
     @ideas = Idea.idea_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
@@ -8,8 +9,6 @@ class IdeasController < ApplicationController
   end
 
   def show
-    @idea = Idea.find(params[:id])
-    @users = User.all
     @idea = @commentable = Idea.find(params[:id])
     respond_to do |format|
       format.html  # show.html.erb
@@ -23,10 +22,6 @@ class IdeasController < ApplicationController
       format.html  # new.html.erb
       format.json  { render :json => @idea }
     end
-  end
-
-  def edit
-    @idea = Idea.find(params[:id])
   end
 
   def create
@@ -63,7 +58,6 @@ class IdeasController < ApplicationController
     end
 
       def destroy
-        @idea = Idea.find(params[:id])
         @idea.destroy
 
         respond_to do |format|
@@ -72,7 +66,20 @@ class IdeasController < ApplicationController
         end
       end
       
+        def vote
+          if params[:up]
+            current_user.cast_idea_vote(@idea, 1)
+          else
+            current_user.cast_idea_vote(@idea, -1)
+          end
+          render :show
+        end
+        
       private
+      
+      def find_idea
+        @idea = Idea.find(params[:id])
+      end
 
       def sort_column
         Idea.column_names.include?(params[:sort]) ? params[:sort] : "title"

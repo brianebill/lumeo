@@ -5,6 +5,7 @@
 	<table class="table table-striped pretty">
 	   <thead>
 		  <tr>
+			<th>Score</th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "created_at", "When" %></th>
 			<th><%= sortable "idea.user", "Requested by" %></th>
@@ -13,8 +14,15 @@
 	   <tbody>
 	   <% @ideas.each do |idea| %>
 	     <tr>
-	       <td><%= idea.title %></td>
-	       <td><%= idea.created_at %></td>
+		    <td>
+				 <%= form_for idea, :url => vote_idea_path(idea) do |f| %>
+					 <p class="center"><%= submit_tag "Up Vote", :name => :up %></p>
+					 <h1 class="center"><%= vote_total idea.user_votes %></h1>
+					 <p class="center"><%= submit_tag "Down Vote", :name => :down %></p>
+				 <% end %>
+		   </td>
+	       <td><h3><%= idea.title %></h3></td>
+	       <td><%= time_ago_in_words(idea.created_at) %> ago</td>
 		   <td><%= idea.user.name %></td>
 		   <td><%= link_to 'Show', idea, :class => 'btn btn-mini'%></td>
 		   <% if can? :update, @course %>

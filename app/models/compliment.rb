@@ -5,13 +5,11 @@ class Compliment < ActiveRecord::Base
                     :length => { :minimum => 5 }
   validates :description,  :presence => true
   
+  votable_by :users
+  
   belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy
-  has_many :tags
-  
-  accepts_nested_attributes_for :tags, :allow_destroy => :true,
-    :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
-    
+
     include PgSearch
     pg_search_scope :search, against: [:title, :description],
        using: {tsearch: {dictionary: "english"}},

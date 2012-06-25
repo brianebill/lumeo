@@ -1,14 +1,14 @@
 class ComplimentsController < ApplicationController
-  helper_method :sort_column, :sort_direction
+  before_filter :find_compliment, :except => [:index, :new, :create]
+  helper_method :sort_column, :sort_direction, :vote
   
   def index
-    @compliments = Compliment.all
     @users = User.all
     @compliments = Compliment.compliment_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
+    @search = params[:search]
   end
 
   def show
-    @compliment = Compliment.find(params[:id])
     @compliment = @commentable = Compliment.find(params[:id])
     respond_to do |format|
       format.html  # show.html.erb
@@ -22,10 +22,6 @@ class ComplimentsController < ApplicationController
       format.html  # new.html.erb
       format.json  { render :json => @compliment }
     end
-  end
-
-  def edit
-    @compliment = Compliment.find(params[:id])
   end
 
   def create
@@ -46,8 +42,6 @@ class ComplimentsController < ApplicationController
   end
 
     def update
-      @compliment = Compliment.find(params[:id])
-
       respond_to do |format|
         if @compliment.update_attributes(params[:compliment])
           format.html  { redirect_to(@compliment,
@@ -62,7 +56,6 @@ class ComplimentsController < ApplicationController
     end
 
       def destroy
-        @compliment = Compliment.find(params[:id])
         @compliment.destroy
 
         respond_to do |format|
@@ -71,7 +64,20 @@ class ComplimentsController < ApplicationController
         end
       end
       
+      def vote
+        if params[:up]
+          current_user.cast_compliment_vote(@compliment, 1)
+        else
+          current_user.cast_compliment_vote(@compliment, -1)
+        end
+        render :show
+      end
+
       private
+
+      def find_compliment
+        @compliment = Compliment.find(params[:id])
+      end
 
       def sort_column
         Compliment.column_names.include?(params[:sort]) ? params[:sort] : "title"

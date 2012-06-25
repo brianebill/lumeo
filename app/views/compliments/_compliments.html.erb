@@ -5,6 +5,7 @@
 	<table class="table table-striped pretty">
 	   <thead>
 		  <tr>
+			<th>Score</th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "created_at", "When" %></th>
 			<th><%= sortable "compliment.user.name", "Compliment by" %></th>
@@ -13,6 +14,13 @@
 	   <tbody>
 	   <% @compliments.each do |compliment| %>
 	     <tr>
+		    <td>
+				 <%= form_for compliment, :url => vote_compliment_path(compliment) do |f| %>
+					 <p class="center"><%= submit_tag "Up Vote", :name => :up %></p>
+					 <h1 class="center"><%= vote_total compliment.user_votes %></h1>
+					 <p class="center"><%= submit_tag "Down Vote", :name => :down %></p>
+				 <% end %>
+		   </td>
 	       <td><%= compliment.title %></td>
 	       <td><%= compliment.created_at %></td>
 		   <td><%= compliment.user.name %></td>
