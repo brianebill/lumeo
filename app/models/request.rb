@@ -1,8 +1,8 @@
 class Request < ActiveRecord::Base
   before_save do |req|
-   req.title.titleize!
-   req.who.titleize!
-   req.subject.titleize!
+    %w[ title who subject ].each do |type|
+      req.attributes[type] = req.attributes[type].titleize
+    end
   end
   
   attr_accessible :description, :title, :user_id, :who, :tag_ids, :subject, :tags_attributes
