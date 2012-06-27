@@ -1,13 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <div class="row">
-  <div class="span2 offset1">
+  <div class="span2">
     <% if @post.image %>
-      <%= image_tag @post.image.source(:show) %>
+      <%= image_tag @post.image.source(:medium) %>
     <% end %>
   </div>
 
-  <div class="span5">
+  <div class="span7">
     <h1><%= @post.title %></h1>
     <p><%= @post.index_text.html_safe %></p>
     <p><%= @post.show_text.html_safe %></p>
@@ -18,19 +16,18 @@
     <% if can? :update, @course %>
       <%= link_to 'Edit Post', edit_post_path(@post), :class => 'btn btn-mini' %>
       <%= link_to 'Delete Post', @post,
-        confirm: 'Are you sure?',
         method: :delete,
         :class => 'btn btn-mini' %>
       <%= link_to 'New Post', new_post_path, :class => 'btn btn-mini' %>
     <% end %>
   </div>
 
-  <nav class="span2 offset1">
+  <div class="span2">
     <ul class="well">
       <li>Category 1</li>
       <li>Category 2</li>
     </ul>
-  </nav>
+  </div>
 </div>
 
 <div class="row offset2">

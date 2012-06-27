@@ -5,7 +5,7 @@
 	<table class="table table-striped pretty">
 	   <thead>
 		  <tr>
-			<th>Score</th>
+			<th></th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "who", "Requested Pro" %></th>
 			<th><%= sortable "created_at", "When" %></th>
@@ -17,9 +17,9 @@
 		 <tr>
 		 	<td>
 				 <%= form_for req, :url => vote_request_path(req) do |f| %>
-					 <p class="center"><%= submit_tag "Up Vote", :name => :up %></p>
-					 <h1 class="center"><%= vote_total req.user_votes %></h1>
-					 <p class="center"><%= submit_tag "Down Vote", :name => :down %></p>
+					 <p class="center"><%= submit_tag "up", :name => :up %></p>
+					 <h1 class="center  mtop-20"><%= vote_total req.user_votes %></h1>
+					 <p class="center"><%= submit_tag "down", :name => :down %></p>
 				 <% end %>
 		   </td>
 	       <td><h3><%= req.title %></h3></td>

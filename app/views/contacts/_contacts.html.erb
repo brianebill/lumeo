@@ -15,7 +15,7 @@
 	     <tr>
 		   <td><%= contact.user.name %></td>
 	       <td><%= contact.subject %></td>
-	       <td><%= contact.created_at %></td>
+	       <td><%= time_ago_in_words(contact.created_at) %> ago</td>
 		   
 		   <td><%= link_to 'Show', contact, :class => 'btn btn-mini'%></td>
 		   <% if can? :update, @course %>

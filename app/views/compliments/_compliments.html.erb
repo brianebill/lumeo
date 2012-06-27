@@ -5,7 +5,7 @@
 	<table class="table table-striped pretty">
 	   <thead>
 		  <tr>
-			<th>Score</th>
+			<th></th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "created_at", "When" %></th>
 			<th><%= sortable "compliment.user.name", "Compliment by" %></th>
@@ -17,12 +17,12 @@
 		    <td>
 				 <%= form_for compliment, :url => vote_compliment_path(compliment) do |f| %>
 					 <p class="center"><%= submit_tag "Up", :name => :up %></p>
-					 <h1 class="center"><%= vote_total compliment.user_votes %></h1>
+					 <h1 class="center  mtop-20"><%= vote_total compliment.user_votes %></h1>
 					 <p class="center"><%= submit_tag "Down", :name => :down %></p>
 				 <% end %>
 		   </td>
 	       <td><%= compliment.title %></td>
-	       <td><%= compliment.created_at %></td>
+	       <td><%= time_ago_in_words(compliment.created_at) %> ago</td>
 		   <td><%= compliment.user.name %></td>
 		   <td><%= link_to 'Show', compliment, :class => 'btn btn-mini'%></td>
 		   <% if can? :update, @course %>
