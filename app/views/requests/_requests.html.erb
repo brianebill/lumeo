@@ -17,6 +17,7 @@
 		 <tr>
 		 	<td>
 				 <%= form_for req, :url => vote_request_path(req) do |f| %>
+				     <%= hidden_field_tag :redirect, :index %>
 					 <p class="center"><%= submit_tag "up", :name => :up %></p>
 					 <h1 class="center  mtop-20"><%= vote_total req.user_votes %></h1>
 					 <p class="center"><%= submit_tag "down", :name => :down %></p>

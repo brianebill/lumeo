@@ -70,7 +70,8 @@ class RequestsController < ApplicationController
     else
       current_user.cast_request_vote(@request, -1)
     end
-    render :show
+    #render :show
+    redirect_to params[:redirect] == 'index' ? request_path : @request
   end
 
   protected
