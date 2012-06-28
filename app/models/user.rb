@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   has_one :image, :dependent => :destroy, :as => :parent
   accepts_nested_attributes_for :image, :allow_destroy => true
 
-  has_many :comments, :dependent => :destroy
+  has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :requests, :dependent => :destroy
   has_many :questions, :dependent => :destroy
   has_many :problems, :dependent => :destroy

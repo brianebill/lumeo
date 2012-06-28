@@ -6,7 +6,6 @@
 			<% if can? :update, @course %>
 		    	<%= link_to 'Edit', [comment.commentable, comment], :class => 'btn btn-mini' %>
 			    <%= link_to 'Destroy', [comment.commentable, comment],
-			                    confirm: 'Are you sure?', 
 			                    method: :delete, 
 			                    :class => 'btn btn-mini' %>
 		    <% end %>

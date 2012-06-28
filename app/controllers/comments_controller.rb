@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
+  before_filter :find_comment, :except => [:index, :new, :create]
   def index
     @commentable = find_commentable
     @comments = @commentable.comments
   end
 
   def new
-    @post = Post.find(params[:post_id])
   end
   
   def create
@@ -18,8 +18,18 @@ class CommentsController < ApplicationController
       render :action => 'new'
     end
   end
+  
+  def destroy
+    @comment.destroy
+    flash[:notice] = "Successfully destroyed comment."
+    redirect_to :id => nil
+  end
 
   private
+  
+  def find_comment
+    @comment = Comment.find(params[:id])
+  end
 
   def find_commentable
     params.each do |name, value|
