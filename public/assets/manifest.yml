@@ -2,9 +2,6 @@
 about_headline_2.png: about_headline_2-c0c38bf2349f3f3c999e56a4177ca117.png
 about_slogan.png: about_slogan-99c37ec2370350160d0092f214acfc68.png
 about_video_button.png: about_video_button-04796ae94ccc0cc2463ded362507b354.png
-default_feed_photo.png: default_feed_photo-a5d55bf77879fb2c21f6be1d12c5327b.png
-default_header_photo.png: default_header_photo-716661e4cd0343f20899f5f887fd2507.png
-default_show_photo.png: default_show_photo-f39763792191a03048b38b32cb922aa8.png
 down_arrow.gif: down_arrow-d90479466fabf8ef4fdd95f12a47549b.gif
 home_button_video.gif: home_button_video-49d2ece9eb272d8bc308cb76d380f49c.gif
 home_call_button.gif: home_call_button-464a706e4ac9c7727672b77123562f51.gif
@@ -14,9 +11,12 @@ home_feature_2.png: home_feature_2-d816459768f023043c89c3dc01da0308.png
 home_feature_3.png: home_feature_3-0dee51468e3acc6d7a056389907a4d56.png
 home_feature_4.png: home_feature_4-2346a9ebcd7259ca91964231becefdb9.png
 logo.png: logo-4f554b7fdcf06034d95f59b42286784f.png
+sources/user/feed.png: sources/user/feed-a5d55bf77879fb2c21f6be1d12c5327b.png
+sources/user/header.png: sources/user/header-716661e4cd0343f20899f5f887fd2507.png
+sources/user/show.png: sources/user/show-f39763792191a03048b38b32cb922aa8.png
 up_arrow.gif: up_arrow-124964db309a81a0de095e4ca1075bd1.gif
-application.js: application-cf968fd20951d12a38ac1aee9d18fa67.js
-application.css: application-cc02044ff1759440b0081bd9e6bfdf9b.css
+application.js: application-ddc2681f5f7c580679dda3f6a3f3628b.js
+application.css: application-1e2845a0fc47d7b605a818f55becb5c9.css
 rails_admin/aristo/images/bg_fallback.png: rails_admin/aristo/images/bg_fallback-55829c6af9b9af338904d5a0ed9c191d.png
 rails_admin/aristo/images/icon_sprite.png: rails_admin/aristo/images/icon_sprite-555074e93c8d91f9f72d1a211d5a820e.png
 rails_admin/aristo/images/progress_bar.gif: rails_admin/aristo/images/progress_bar-f2c649fbf555aafd4d55d58040db2990.gif

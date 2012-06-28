@@ -5,7 +5,7 @@
 	<table class="table table-striped pretty">
 	   <thead>
 		  <tr>
-			<th></th>
+			<th>Vote</th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "who", "Requested Pro" %></th>
 			<th><%= sortable "created_at", "When" %></th>
@@ -18,20 +18,18 @@
 		 	<td>
 				 <%= form_for req, :url => vote_request_path(req) do |f| %>
 				     <%= hidden_field_tag :redirect, :index %>
-					 <p class="center"><%= submit_tag "up", :name => :up %></p>
-					 <h1 class="center  mtop-20"><%= vote_total req.user_votes %></h1>
-					 <p class="center"><%= submit_tag "down", :name => :down %></p>
+					 <p class="center"><%= submit_tag "up", :name => :up, :class => 'btn btn-mini' %></p>
+					 <h4 class="center mtop-7"><%= vote_total req.user_votes %></h4>
+					 <p class="center"><%= submit_tag "down", :name => :down, :class => 'btn btn-mini' %></p>
 				 <% end %>
 		   </td>
-	       <td><h3><%= req.title %></h3></td>
+	       <td><h3><%= link_to req.title, req %></h3></td>
 	       <td><%= req.who %></td>
 	       <td><%= time_ago_in_words(req.created_at) %> ago</td>
 		   <td><%= req.user.name %></td>
-		   <td><%= link_to 'Show', req, :class => 'btn btn-mini'%></td>
 		   <% if can? :update, @course %>
-	   	   <td><%= link_to 'Edit', edit_request_path(request), :class => 'btn btn-mini' %></td>
-		       <td><%= link_to 'Destroy', req, 
-		                    confirm: 'Are you sure?', 
+	   	       <td><%= link_to 'Edit', edit_request_path(req), :class => 'btn btn-mini' %></td>
+		       <td><%= link_to 'Delete', req,
 		                    method: :delete, 
 		                    :class => 'btn btn-mini' %></td>
 	       <% end %>

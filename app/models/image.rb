@@ -4,10 +4,10 @@ class Image < ActiveRecord::Base
 
   belongs_to :parent, :polymorphic => true
 
-  has_attached_file :source, :styles => { :show => ["250x250#", :png ],
-                                          :index => ["150x150#", :png ],
-                                          :feed => ["50X50#", :png ],
-                                          :header => ["15X15#", :png ]},
+  has_attached_file :source, :styles => { :show => "250x250>",
+                                          :index => "150x150>",
+                                          :feed => "50X50>",
+                                          :header => "15X15>"},
                              :storage => :s3,
                              :bucket => 'lumeo-course-dev',
                              :s3_credentials => "#{Rails.root}/config/s3.yml",

@@ -39,7 +39,9 @@ Lumeo::Application.routes.draw do
   
   resources :messages
   resources :questions
-  resources :topics, :contacts, :compliments, :ideas, :problems, :requests
+  resources :topics, :contacts, :compliments, :ideas, :problems, :requests do
+    resources :comments
+  end
   
   resources :requests do
    put :vote, :on => :member

@@ -1,11 +1,15 @@
-<% @comments.each do |comment| %>
-   		<div class="span5">
-			    <h1><%= comment.text %></h1>
-					<% if can? :update, @course %>
-				    	<%= link_to 'Edit', [comment.commentable, comment], :class => 'btn btn-mini' %>
-					    <%= link_to 'Destroy', [comment.commentable, comment],
-					                    confirm: 'Are you sure?', 
-					                    method: :delete, 
-					                    :class => 'btn btn-mini' %>
-				    <% end %>
-<% end %>
+<div class="span5 offset1">
+		<% @comments.each do |comment| %>
+			<div class="well">
+			<h1><%= comment.text %></h1>
+			<% if can? :update, @course %>
+		    	<%= link_to 'Edit', [comment.commentable, comment], :class => 'btn btn-mini' %>
+			    <%= link_to 'Destroy', [comment.commentable, comment],
+			                    confirm: 'Are you sure?', 
+			                    method: :delete, 
+			                    :class => 'btn btn-mini' %>
+		    <% end %>
+			</div>
+		<% end %>
+		
+</div>
