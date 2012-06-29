@@ -13,7 +13,8 @@
 #
 
 class Category < ActiveRecord::Base
-  attr_accessible :name
+  before_save { |category| category.name = category.name.downcase }
+  attr_accessible :name, :post_id
+  validates_uniqueness_of :name, :case_sensitive => false
   belongs_to :post
-  validates :name, presence: true
 end

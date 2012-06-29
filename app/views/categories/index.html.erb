@@ -1,0 +1,8 @@
+<div class="row span2 offset1">
+  <% @categories.each do |category| %>
+       <div><%= category.name %>
+       <%= button_to 'Delete', category, 
+	                :method => 'delete', 
+					:class => 'btn btn-mini btn-danger pull-right mtop-17' %></div>
+  <% end %>
+</ul>

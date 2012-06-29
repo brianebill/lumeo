@@ -38,7 +38,6 @@ class PostsController < ApplicationController
     end
   end
 
-
   def update
     respond_to do |format|
       if @post.update_attributes(params[:post])

@@ -1,1 +1,4 @@
-<%= @category.name %>
+<h1 class="title center"><%= @category.name.titleize %></h1>
+<% for post in post.category %>
+   <li><%= post.name %></li>
+ <% end %>

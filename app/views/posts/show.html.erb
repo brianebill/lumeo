@@ -12,6 +12,11 @@
 		   <span>By: <%= image_tag @post.user.image.source(:header) %></span>
 		   <span><%= @post.user.name %></span>
 		   <span>Posted <%= time_ago_in_words(@post.created_at) %> ago</span>
+		   <span>
+				<% for category in @post.categories %>
+		  			<p><%= link_to category.name, @category, :class => 'btn btn-mini' %></p>
+		  		<% end %>
+		   </span>
 		</p>
 	</div>
     <p><%= @post.index_text.html_safe %></p>

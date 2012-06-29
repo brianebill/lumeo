@@ -1,18 +1,24 @@
-<div class="offset1 span8">
+<div class="offset2 span7">
   <%= simple_form_for @post, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
-    <fieldset>
+    <fieldset class="well">
       <%= f.input :title %>
       <%= f.input :index_text %>
       <%= f.input :show_text %>
-      <%= f.association :categories, :as => :check_boxes, :collection => @categories %>
-
+      		<%= f.association :categories, :as => :check_boxes, :collection => @categories, :label => 'Pick one or more categories' %>
+	  <%= f.simple_fields_for :categories do |builder| %>
+		   <%= render 'categories/form', f: builder %>
+	  <% end %>
+	  <p><%= link_to_add_fields "Add Category", f, :categories  %></p>
+	 </fiedlset>
+	<fieldset>
       <%= f.fields_for :image do |img_field| %>
-        Upload Photo <%= img_field.file_field :source %>
+        <p class="mleft80"><b>Upload Photo</b> <%= img_field.file_field :source %></p>
       <% end %>
     </fieldset>
 
-    <div class ="title">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
+    <div class ="title form-actions">
+      <%= button_to 'Cancel', posts_path, :method => 'get', :class => 'btn btn-large pull-right mleft10 mtop18' %>
+      <%= f.submit nil, :class => 'btn btn-primary btn-large pull-right' %>
     </div>
   <% end %>
 </div>

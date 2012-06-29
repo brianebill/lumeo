@@ -1,10 +1,12 @@
 <div class="row">
-	<div class="span2 mtop30">
+	<div class="span3 mtop30">
 		<ul class="well">
-
+			<h4>Browse by Category</h4>
+			<% @categories.each do |category| %>
+	  			<p><%= button_to category.name, category, :method => 'get', :class => 'btn btn-mini mbottom-10' %></p>
+	  		<% end %>
 		</ul>
 	</div>
-
 	<div class="span9 mtop30">
 	  <% @posts.each do |post| %>
 	    <div class="row">

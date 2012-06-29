@@ -1,10 +1,12 @@
 class CategoriesController < ApplicationController
+    before_filter :find_category, :except => [:index, :new, :create]
+
     def index
       @categories = Category.all
     end
 
     def show
-      @category = Category.find(params[:id])
+      @post = Post.all
       respond_to do |format|
         format.html  # show.html.erb
         format.json  { render :json => @post }
@@ -21,7 +23,6 @@ class CategoriesController < ApplicationController
     end
 
     def edit
-      @category = Category.find(params[:id])
     end
 
     def create
@@ -42,8 +43,6 @@ class CategoriesController < ApplicationController
     end
 
       def update
-        @category = Category.find(params[:id])
-
         respond_to do |format|
           if @category.update_attributes(params[:category])
             format.html  { redirect_to(@category,
@@ -58,7 +57,6 @@ class CategoriesController < ApplicationController
       end
 
         def destroy
-          @category = Category.find(params[:id])
           @category.destroy
 
           respond_to do |format|
@@ -66,4 +64,13 @@ class CategoriesController < ApplicationController
             format.json { head :no_content }
           end
         end
+  
+  private
+  
+  def find_category
+    @category = Category.find(params[:id])
+  end
+
+
 end
+
