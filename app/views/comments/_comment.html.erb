@@ -2,8 +2,8 @@
 	<h1 class="center title">Comments</h1>
 	<% for comment in @comments %>
 		<div class="well">
-			<span><%= image_tag current_user.image.source(:header) %></span>
-			<span><%= link_to 'User', "#" %></span>
+			<span><%= image_tag comment.user.image.source(:header) %></span>
+			<span><%= link_to comment.user.name, comment.user %></span>
 			<p><%= comment.text %></p>
 			<% if can? :update, @course %>
 		    	<%= link_to 'Edit', [comment.commentable, comment], :class => 'btn btn-mini' %>

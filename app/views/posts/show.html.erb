@@ -7,10 +7,6 @@
 
   <div class="span7">
     <h1><%= @post.title %></h1>
-	<% category.each do |category| %>
-		<%= link_to category.name, category %>
-	<% end %>
-	<p><%= @category.name %>
     <p><%= @post.index_text.html_safe %></p>
     <p><%= @post.show_text.html_safe %></p>
 

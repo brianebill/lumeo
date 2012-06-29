@@ -14,6 +14,6 @@
 
 class Category < ActiveRecord::Base
   attr_accessible :name
-  has_many belongs_to :posts
+  belongs_to :post
   validates :name, presence: true
 end

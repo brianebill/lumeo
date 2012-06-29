@@ -27,20 +27,8 @@ class Post < ActiveRecord::Base
 
   validates :title, :presence => true, :length => { :minimum => 5 }
 
-  accepts_nested_attributes_for :categorizations, allow_destroy: true
   accepts_nested_attributes_for :image, :allow_destroy => true
 
   default_scope order: 'posts.created_at DESC'
 
-  def initialized_categorizations # this is the key method
-    [].tap do |o|
-      Category.all.each do |category|
-        if c = categorizations.find { |c| c.category_id == category.id }
-          o << c.tap { |c| c.enable ||= true }
-        else
-          o << Categorization.new(category: category)
-        end
-      end
-    end
-  end
 end
