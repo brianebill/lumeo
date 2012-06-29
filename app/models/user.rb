@@ -51,7 +51,8 @@ class User < ActiveRecord::Base
   #user photo
   has_one :image, :dependent => :destroy, :as => :parent
   accepts_nested_attributes_for :image, :allow_destroy => true
-
+  
+  has_many :posts, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :requests, :dependent => :destroy
   has_many :questions, :dependent => :destroy

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120629012411) do
+ActiveRecord::Schema.define(:version => 20120629023817) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -29,12 +29,8 @@ ActiveRecord::Schema.define(:version => 20120629012411) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "post_id"
   end
 
@@ -82,10 +78,6 @@ ActiveRecord::Schema.define(:version => 20120629012411) do
     t.datetime "updated_at",         :null => false
     t.text     "description"
     t.decimal  "price"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
   end
 
   add_index "courses", ["index_text"], :name => "index_courses_on_index_text"
@@ -151,12 +143,9 @@ ActiveRecord::Schema.define(:version => 20120629012411) do
     t.datetime "created_date"
     t.datetime "edited_date"
     t.integer  "category_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
   end
 
   add_index "posts", ["category_id"], :name => "index_posts_on_category_id"
@@ -285,10 +274,6 @@ ActiveRecord::Schema.define(:version => 20120629012411) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "role_id"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
     t.string   "name"
   end
 

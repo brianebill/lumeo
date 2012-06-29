@@ -37,7 +37,7 @@
 								<li><%= link_to "Problems", problems_path %></li>
 								<li><%= link_to "Contacts", contacts_path %></li>
 						</ul>
-				 <li class="footer_link"><%= link_to "News",  posts_path  %></li>
+				 <li class="footer_link"><%= link_to "Blog",  posts_path  %></li>
 				   <% if user_signed_in? %>		 
 			           <% if current_user.has_role? :admin %>
 					        <li><%= link_to "Manage Members", users_path %></li>

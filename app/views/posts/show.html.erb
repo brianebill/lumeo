@@ -1,12 +1,19 @@
-<div class="row">
+<div class="row mleft40 mtop20">
   <div class="span2">
     <% if @post.image %>
       <%= image_tag @post.image.source(:show) %>
     <% end %>
   </div>
 
-  <div class="span7">
-    <h1><%= @post.title %></h1>
+  <div class="span7 mleft40">
+    <h1 class="title center"><%= @post.title %></h1>
+	<div class="span2 pull-left mright10">
+		<p>
+		   <span>By: <%= image_tag @post.user.image.source(:header) %></span>
+		   <span><%= @post.user.name %></span>
+		   <span>Posted <%= time_ago_in_words(@post.created_at) %> ago</span>
+		</p>
+	</div>
     <p><%= @post.index_text.html_safe %></p>
     <p><%= @post.show_text.html_safe %></p>
 
@@ -17,18 +24,13 @@
         :class => 'btn btn-mini pull-right mleft10' %>
       <%= link_to 'New Post', new_post_path, :class => 'btn btn-mini pull-right' %>
     <% end %>
-
+  </div>
+  <div class="row offset2 span7">
     <%= render "comments/comment" %>
     <%= render "comments/form" %>
   </div>
-
-  <div class="span2">
-	<ul class="well">
-
-	</ul>
-  </div>
 </div>
 
-<div class="row offset2 span7">
+<div class="row offset2 span8">
   <%= link_to 'Back to Posts', posts_path, :class => 'btn btn-mini pull-right' %>
 </div>
