@@ -7,29 +7,33 @@
 
   <div class="span7">
     <h1><%= @post.title %></h1>
+	<p><%= @post.category.name %>
     <p><%= @post.index_text.html_safe %></p>
     <p><%= @post.show_text.html_safe %></p>
 
-    <%= render "comments/comment" %>
-    <%= render "comments/form" %>
-
     <% if can? :update, @course %>
-      <%= link_to 'Edit Post', edit_post_path(@post), :class => 'btn btn-mini' %>
+      <%= link_to 'Edit Post', edit_post_path(@post), :class => 'btn btn-mini pull-right mleft10' %>
       <%= link_to 'Delete Post', @post,
         method: :delete,
-        :class => 'btn btn-mini' %>
-      <%= link_to 'New Post', new_post_path, :class => 'btn btn-mini' %>
+        :class => 'btn btn-mini pull-right mleft10' %>
+      <%= link_to 'New Post', new_post_path, :class => 'btn btn-mini pull-right' %>
     <% end %>
+
+    <%= render "comments/comment" %>
+    <%= render "comments/form" %>
   </div>
 
   <div class="span2">
-    <ul class="well">
-      <li>Category 1</li>
-      <li>Category 2</li>
-    </ul>
+	<ul class="well">
+		<% if @category %>
+		<% @categories.each do |category| %>
+			<%= link_to category.name, category %>
+		<% end %>
+		<% end %>
+	</ul>
   </div>
 </div>
 
-<div class="row offset2">
-  <%= link_to 'Back to Posts', posts_path, :class => 'btn btn-mini' %>
+<div class="row offset2 span7">
+  <%= link_to 'Back to Posts', posts_path, :class => 'btn btn-mini pull-right' %>
 </div>

@@ -1,15 +1,16 @@
-<div class="span5 offset1">
-	<% if @comments %>
-		<% for comment in @comments %>
-			<div class="well">
-			<h1><%= comment.text %></h1>
+<% if @comments %>
+	<h1 class="center title">Comments</h1>
+	<% for comment in @comments %>
+		<div class="well">
+			<span><%= image_tag current_user.image.source(:header) %></span>
+			<span><%= link_to 'User', "#" %></span>
+			<p><%= comment.text %></p>
 			<% if can? :update, @course %>
 		    	<%= link_to 'Edit', [comment.commentable, comment], :class => 'btn btn-mini' %>
 			    <%= link_to 'Destroy', [comment.commentable, comment],
 			                    method: :delete, 
 			                    :class => 'btn btn-mini' %>
 		    <% end %>
-			</div>
-		<% end %>
+		</div>
 	<% end %>
-</div>
+<% end %>
