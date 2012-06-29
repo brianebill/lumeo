@@ -7,7 +7,10 @@
 
   <div class="span7">
     <h1><%= @post.title %></h1>
-	<p><%= @post.category.name %>
+	<% category.each do |category| %>
+		<%= link_to category.name, category %>
+	<% end %>
+	<p><%= @category.name %>
     <p><%= @post.index_text.html_safe %></p>
     <p><%= @post.show_text.html_safe %></p>
 
@@ -25,11 +28,7 @@
 
   <div class="span2">
 	<ul class="well">
-		<% if @category %>
-		<% @categories.each do |category| %>
-			<%= link_to category.name, category %>
-		<% end %>
-		<% end %>
+
 	</ul>
   </div>
 </div>

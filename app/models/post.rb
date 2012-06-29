@@ -20,8 +20,7 @@
 class Post < ActiveRecord::Base
   attr_accessible :created_date, :edited_date, :index_text, :show_text, :title, :photo, :category_ids, :image_attributes
 
-  has_many :categorizations
-  has_many :categories, :through => :categorizations
+  has_many :categories
 
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_one :image, :as => :parent, :dependent => :destroy

@@ -1,13 +1,18 @@
 <div class="row span8 offset1 well">
- 		 <%= user.image.source(:header) %>
-		 <%= link_to user.name, user %>
-		  <% user.roles.each do |role| %>
-		     <%= role.name %>
-		  <% end %>
-  		  <%= simple_form_for user, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
- 		  <%= f.association :roles, :as => :check_boxes, :collection => @roles %>			  
-			  <%= button_to 'Delete', user, :method => 'delete', :class => 'btn btn-mini btn-danger pull-right mright10' %>
-			  <%= button_to 'Edit Member', edit_user_registration_path, :method => 'get', :class => 'btn btn-mini mright10 pull-right' %>
-			  <%= f.submit 'Update Role', :class => 'btn btn-mini btn-primary pull-right mright10' %>
-  	      <% end %>
+   <%= user.image.source(:header) %>
+   <%= link_to user.name, user %>
+   <% user.roles.each do |role| %>
+        <%= role.name %>
+   <% end %>
+   <%= simple_form_for user, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+	  <%= f.association :roles, :as => :check_boxes, :collection => @roles %>			  
+	  <%= button_to 'Delete', user, 
+	                :method => 'delete', 
+					:class => 'btn btn-mini btn-danger pull-right mright10' %>
+	  <%= button_to 'Edit Member', edit_user_registration_path, 
+					:method => 'get', 
+					:class => 'btn btn-mini mright10 pull-right' %>
+	  <%= f.submit 'Update Role', 
+					:class => 'btn btn-mini btn-primary pull-right mright10' %>
+   <% end %>
 </div>

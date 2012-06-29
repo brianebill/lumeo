@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120629004439) do
+ActiveRecord::Schema.define(:version => 20120629010602) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -37,22 +37,6 @@ ActiveRecord::Schema.define(:version => 20120629004439) do
     t.datetime "photo_updated_at"
   end
 
-  create_table "categories_posts", :id => false, :force => true do |t|
-    t.integer "category_id"
-    t.integer "post_id"
-  end
-
-  add_index "categories_posts", ["category_id", "post_id"], :name => "index_categories_posts_on_category_id_and_post_id"
-  add_index "categories_posts", ["post_id", "category_id"], :name => "index_categories_posts_on_post_id_and_category_id"
-
-  create_table "categorizations", :force => true do |t|
-    t.integer  "post_id"
-    t.integer  "category_id"
-    t.integer  "postion"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
     t.text     "text"
@@ -68,18 +52,6 @@ ActiveRecord::Schema.define(:version => 20120629004439) do
     t.integer  "school_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "community_requests", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "user_id"
-    t.integer  "community_id"
-    t.integer  "school_id"
-    t.integer  "upvotes"
-    t.integer  "course_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
   end
 
   create_table "compliments", :force => true do |t|
@@ -289,15 +261,6 @@ ActiveRecord::Schema.define(:version => 20120629004439) do
     t.string   "parent_type"
   end
 
-  create_table "topic_requests", :force => true do |t|
-    t.integer  "topic_id"
-    t.string   "title"
-    t.text     "description"
-    t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "topics", :force => true do |t|
     t.integer  "community_id"
     t.integer  "school_id"
@@ -339,17 +302,6 @@ ActiveRecord::Schema.define(:version => 20120629004439) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
-
-  create_table "versions", :force => true do |t|
-    t.string   "item_type",  :null => false
-    t.integer  "item_id",    :null => false
-    t.string   "event",      :null => false
-    t.string   "whodunnit"
-    t.text     "object"
-    t.datetime "created_at"
-  end
-
-  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
   create_table "videos", :force => true do |t|
     t.string   "title"

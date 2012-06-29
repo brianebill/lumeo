@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post = @commentable = Post.find(params[:id])
     @comments = @commentable.comments
+    @category = Post.category
     respond_to do |format|
       format.html  # show.html.erb
       format.json  { render :json => @post }
