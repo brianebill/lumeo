@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       flash[:notice] = "Successfully created comment."
-      redirect_to :id => nil
+      redirect_to :back
     else
       render :action => 'new'
     end
@@ -26,13 +26,13 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     flash[:notice] = "Successfully destroyed comment."
-    redirect_to :id => nil
+    redirect_to :back
   end
 
   private
   
   def find_comment
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:post])
   end
 
   def find_commentable

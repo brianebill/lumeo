@@ -5,9 +5,10 @@
 			<span><%= image_tag comment.user.image.source(:header) %></span>
 			<span><%= link_to comment.user.name, comment.user %></span>
 			<p><%= comment.text %></p>
-			<% if can? :update, @course %>
+			<% if can? :update, @comment %>
 		    	<%= link_to 'Edit', [comment.commentable, comment], :class => 'btn btn-mini' %>
-			    <%= link_to 'Destroy', [comment.commentable, comment],
+			    <%= link_to 'Delete', [comment.commentable, comment],
+								:confirm => 'Are you sure?',
 			                    method: :delete, 
 			                    :class => 'btn btn-mini' %>
 		    <% end %>

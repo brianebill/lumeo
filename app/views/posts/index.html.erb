@@ -1,36 +1,39 @@
-<div class="row">
-	<div class="span3 mtop30">
-		<ul class="well">
-			<h4>Browse by Category</h4>
-			<% @categories.each do |category| %>
-	  			<p><%= button_to category.name, category, :method => 'get', :class => 'btn btn-mini mbottom-10' %></p>
-	  		<% end %>
-		</ul>
-	</div>
-	<div class="span9 mtop30">
-	  <% @posts.each do |post| %>
-	    <div class="row">
-	      <div class="span2">
-	        <% if post.image.source %>
-	          <%= image_tag post.image.source(:index) %>
-	        <% end %>
-	      </div>
-	      <div class="span5">
-	        <h1><%= link_to post.title, post %></h1>
-	        <p><%= post.index_text.html_safe %></p>
-	      </div>
+<div class="span12 mtop30">
+  <% @posts.each do |post| %>
+	    <div class="row span12">
+		
+		      <div class="span2">
+		        <% if post.image.source %>
+		            <%= image_tag post.image.source(:index) %>
+		        <% end %>
+		      </div>
+		      <div class="span5">
+			        <h1><%= link_to post.title, post %></h1>
+			        <p><%= post.index_text.html_safe %></p>
+			        <% if can? :update, @post %>
+			         	 <span>
+							<%= button_to 'Destroy', post,
+				            		   method: :delete,
+				            		   :class => 'btn btn-mini btn-danger pull-right mleft10' %>
+							<%= link_to 'Edit', edit_post_path(post), :class => 'btn btn-mini pull-right' %>
+		            
+						</span>
+			        <% end %>
+			  </div>
 
-	      <div class="span2">
-	        <%= link_to 'Show', post, :class => 'btn btn-mini'%>
-	        <% if can? :update, @course %>
-	          <%= link_to 'Edit', edit_post_path(post), :class => 'btn btn-mini' %>
-	          <%= link_to 'Destroy', post,
-	            method: :delete,
-	            :class => 'btn btn-mini' %>
-	        <% end %>
-	      </div>
-	    </div>
-	  <% end %>
-	  	<%= button_to 'New Post', new_post_path, :method => 'get', :class => 'btn btn-primary mtop20 pull-right' %>
-	</div>
+			<div class="span3 mtop10">
+				<ul class="well">
+					<h4>Browse by Category</h4>
+					<% @categories.each do |category| %>
+			  			<p><%= button_to category.name, category, :method => 'get', :class => 'btn btn-mini mbottom-10' %></p>
+			  		<% end %>
+				</ul>
+				<% if can? :update, @post %>
+			  	    <%= button_to 'New Post', new_post_path, :method => 'get', :class => 'btn btn-primary mtop20 pull-right' %>
+		      <% end %>
+			</div>
+			
+		 </div>
+  <% end %>
 </div>
+

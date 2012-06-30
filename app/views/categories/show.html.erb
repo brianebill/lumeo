@@ -11,12 +11,15 @@
 		</div>
 		<div class="span2 well">
 			<% if @categories %>
+			    <h4 class="title center">Browse Categories</h4>
 				<% @categories.each do |category| %>
-					<h4 class="title center">Browse Categories</h4>
 		  			<p><%= link_to category.name, category, :class => 'btn btn-mini' %></p>
 		  		<% end %>
 			<% end %>
 		</div>
 	</div>
   <% end %>
+</div>
+<div class="row offset2 span7">
+  <%= button_to 'Back to Posts', posts_path, :method => 'get', :class => 'btn btn-primary pull-right' %>
 </div>
