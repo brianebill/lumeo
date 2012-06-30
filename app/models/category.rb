@@ -14,7 +14,7 @@
 
 class Category < ActiveRecord::Base
   before_save { |category| category.name = category.name.downcase }
-  attr_accessible :name, :post_id
+  attr_accessible :name
   validates_uniqueness_of :name, :case_sensitive => false
-  belongs_to :post
+  has_and_belongs_to_many :posts
 end

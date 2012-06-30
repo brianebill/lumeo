@@ -1,12 +1,13 @@
 class CategoriesController < ApplicationController
     before_filter :find_category, :except => [:index, :new, :create]
+    before_filter :find_posts, :only => [:index, :show]
 
     def index
       @categories = Category.all
     end
 
     def show
-      @post = Post.all
+      @categories = Category.all
       respond_to do |format|
         format.html  # show.html.erb
         format.json  { render :json => @post }
@@ -67,6 +68,9 @@ class CategoriesController < ApplicationController
   
   private
   
+  def find_posts
+    @posts = Post.all
+  end
   def find_category
     @category = Category.find(params[:id])
   end

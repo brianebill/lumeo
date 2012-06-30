@@ -1,4 +1,22 @@
 <h1 class="title center"><%= @category.name.titleize %></h1>
-<% for post in post.category %>
-   <li><%= post.name %></li>
- <% end %>
+<div class="offset1 span11">
+  <% @posts.each do |post| %>
+	<div class="row">
+		<div class="span2">
+			<%= image_tag post.image.source(:show) %>
+		</div>
+		<div class="span6">
+			<h3><%= link_to post.title, post, :class => '' %></h3>
+			<p><%= post.index_text.html_safe %></p>
+		</div>
+		<div class="span2 well">
+			<% if @categories %>
+				<% @categories.each do |category| %>
+					<h4 class="title center">Browse Categories</h4>
+		  			<p><%= link_to category.name, category, :class => 'btn btn-mini' %></p>
+		  		<% end %>
+			<% end %>
+		</div>
+	</div>
+  <% end %>
+</div>
