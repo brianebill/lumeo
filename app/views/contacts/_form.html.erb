@@ -1,9 +1,20 @@
-<div class="row span7 mleft-20 well community">
-   <%= simple_form_for @contact do |f| %>
-      <%= f.input :subject, :label => false, placeholder: "Subject: What is your message regarding?" %>
-	  <%= f.input :message, :label => false, placeholder: "Body: Send a private message to Lumeo" %>
-      <div class ="form-actions">
-         <%= f.submit 'Send Message', :class => 'btn btn-primary pull-right' %>
-      </div>
-   <% end %>
+<div class="row span7 mleft-20 well">
+	<div class="mleft30">
+		<div class="mleft-10">
+			<h2 class="bold"><%= image_tag 'glyphs/ok.png', :class => 'glyph-h2' %> Contact Lumeo</h2>
+			<h3 class="bold pleft20">Send a private message</h3>
+		</div>
+		<div class="row span6 mtop10">
+			<%= simple_form_for @contact do |f| %>
+		      <%= f.input :subject, :label => false, placeholder: "Subject" %>
+			  <%= f.input :message, :label => false, placeholder: "Message" %>
+		      <div class ="form-actions">
+		         <%= f.submit 'Send Message', :class => 'btn btn-primary pull-right' %>
+		      </div>
+		   <% end %>
+		</div>
+		<div class="row span8">
+			<p class="pleft40 bold">Your feedback is valuable. We will be in touch. Thank you!</p>
+		</div>
+	</div>
 </div>

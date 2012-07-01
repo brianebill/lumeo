@@ -1,9 +1,9 @@
 <div class="row span12">
-	<div class="offset2 span6">
+	<div class="span11">
 		<h1 class="center title pleft80">Lumeo Community</h1>
 	</div>
-	<div class="community-search offset1 span2">
-		Search Function
+	<div class="span2 row">
+		<span>Search Function</span>
 	</div>
 </div>
 
@@ -12,8 +12,8 @@
 		<div class="pad10">
 			<h3>Browse by Topic:</h3>
 		</div>
-		<div class="pad10">
-			<ul>
+		<div class="pleft20">
+			<ul class="unstyled">
 				<li><%= link_to "Course Requests", requests_path %></li>
 				<li><%= link_to "Questions", questions_path %></li>
 				<li><%= link_to "Ideas", ideas_path %></li>
@@ -27,12 +27,5 @@
 	<div>
 	       <%= render 'topics' %>
 	</div>
-
-	<div class="community-index offset3">
-		<h3>Recent Topics</h3>
-	    <%= render 'recent' %>
-	    <h3>Popular Topics</h3>
-	    <%= render 'popular' %>
-	</div>
-
 </div>
+

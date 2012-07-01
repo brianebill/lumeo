@@ -1,6 +1,6 @@
 <div class="row span8 mleft-20 well">
 	<div class="mleft-10 span8">
-		<h2 class="bold">Have a question, get a <span class="italics">fast</span> answer</h2>
+		<h2 class="bold"><%= image_tag 'glyphs/circle_question_mark.png', :class => 'glyph-h2' %> Have a question, get a <span class="italics">fast</span> answer</h2>
 		<h3 class="bold pleft20">Start with a simple search on the subject you want to know about</h3>
 	</div>
 	<div class="row span8">
@@ -11,5 +11,15 @@
 	</div>
 	<div class="row span8">
 		<p class="pleft40 bold">Let's see if someone has created a similar question...</p>
+	</div>
+</div>
+<div class="community-index">
+	<div class="span3">
+		<h3>Recent</h3>
+    	<%= render 'questions/recent' %>
+	</div>
+	<div class="mleft20 span3">
+    	<h3>Popular</h3>
+    	<%= render 'questions/popular' %>
 	</div>
 </div>

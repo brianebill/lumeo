@@ -290,6 +290,18 @@ mleft-10 {
   color:white;
 }
 
+/* Image Resizing ------------ */
+
+.glyph-h2 {
+  margin-top:-5px;
+}
+
+.glyph-h3 {
+  height:15px;
+  width:15px;
+  margin-top:-5px;
+}
+
 /* header */
 
 #logo {
@@ -305,6 +317,10 @@ mleft-10 {
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
+  font-family:helvetica, arial, sans-serif;
+}
+
+.hel p {
   font-family:helvetica, arial, sans-serif;
 }
 
@@ -458,4 +474,333 @@ aside {
       border-bottom: 1px solid $grayLighter;
     }
   }
+}
+
+/* Community */
+
+.community-index {
+   float:left;
+   margin-left:65px;
+   padding-top:20px;
+}
+
+.community textarea {
+    height:100px;
+}
+
+.pretty th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.pretty th .asc {
+  background-image: url(/images/up_arrow.gif);
+}
+
+.pretty th .desc {
+  background-image: url(/images/down_arrow.gif);
+}
+
+/* Comments */
+
+.comment textarea {
+     height:100px;
+}
+
+/* microposts */
+
+$grayLight: #999;
+
+.microposts {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.content {
+  display: block;
+}
+.timestamp {
+  color: $grayLight;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+#micropost_content {
+   height:50px;
+}
+
+
+/* HOME PAGE _______________________________________*/
+
+/* STYLE THE CONTENT------------------------------------- */
+/* HOME_EXAM------------------------------------- */
+
+.headline {
+	text-align:center;
+	padding-top:20px;
+}
+
+.center {
+	text-align:center;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+.bold {
+	font-weight:bold;
+}
+
+.italics {
+	font-style:italic;
+}
+
+
+#home_exam {
+    height:250px;
+}
+
+#home_exam_container {
+    margin-top:25px;
+}
+
+p#video_exam_link {
+	font-size:12px;
+	float:left;
+	padding-top:0px;
+	padding-left:4px;
+}
+
+.exam_counter {
+	float:right;
+	font-weight:bold;
+	padding-right:15px;
+	p	{
+	color:#fff;	
+	}
+
+}
+.exam_headline {
+	text-align:center;
+	clear:both;
+	font-size:22px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:200;
+}
+
+.exam_question {
+     text-align:center;
+}
+
+.exam_text {
+	margin-top:-5px;
+	font-size:16px;
+	font-family: Arial, Helvetica, sans-serif;
+	float:right;
+    list-style-type: none;
+}
+
+.exam_button {
+	float:left;
+	margin-left:145px;
+	margin-top:-23px;
+}
+
+.exam_call_text{
+	font-size:19px;
+	font-family: Arial, Helvetica, sans-serif;
+	clear:right;
+	float:right;
+	margin-top:0px;
+	padding-right:2px;
+	
+}
+
+/* HOME_CALL------------------------------------- */
+
+#home_row_1 {
+     margin-bottom:20px;
+     margin-top:25px;
+
+}
+
+#home_call {
+    margin-left:15px;
+	margin-bottom:20px;
+	margin-top:25px;
+}
+
+#call_text {
+	font-size:26px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:200;
+}
+
+#main_call {
+	text-align:center;
+	margin-bottom:-15px;
+}
+
+#about_video_button {
+     margin-bottom:7px;
+}
+
+.call_button {
+	margin-right:65px;
+}
+
+/* HOME_CONTAINER_INFO------------------------------------- */
+
+
+.feature_container {
+     margin-right:0px;
+}
+.feature_headline {
+
+	text-align:center;
+}
+
+.feature_1 {
+     margin-left:-55px;
+}
+.feature_2 {
+     margin-left:-75px;
+}
+.feature_3 {
+     margin-left:-60px;
+}
+
+.feature_4 {
+     margin-left:0px;
+}
+
+#home_info_content_lower {
+	width:1000px;
+	height:50px;
+	margin-left: auto;
+    margin-right: auto;
+
+	padding-top:230px;
+}
+
+.home_feature_image {
+
+     margin-left:40px;
+     margin-top:10px;
+
+}
+
+.home_feature_text {
+	color:#666;
+	padding-left:14px;
+	padding-right:14px;
+	font-size:14px;
+	font-family: Arial, Helvetica, sans-serif;
+	float:left;
+	width:215px;
+	font-weight:300;
+	text-align:center;
+}
+
+
+/* TERMS OF USE------------------------------------- */
+
+.legal_content {
+	width:850px;
+	margin-top:-20px;
+	margin-left: auto;
+    margin-right: auto;
+	
+	h1 {
+		font-size:24px;
+		font-family: Arial, Helvetica, sans-serif;
+		padding-top: 20px;
+		width:850px;
+		margin-left: auto;
+	    margin-right: auto;
+		text-align:center;
+		margin-bottom:-10px;
+	}
+
+}
+
+/* ABOUT------------------------------------- */
+
+
+.about_content {
+			font-family: Arial, Helvetica, sans-serif;
+			background:white;
+			margin-top:0px;
+				h1 {color:#000;font-size:26px;font-weight:300;
+					h2 {color:#000;font-size:16px;font-weight:300;
+						p {color:black;}
+		}
+	}
+}
+.about_headline {
+	padding-top:15px;
+}
+#about_text {
+	
+	float:left;
+	padding-left:20px;
+	margin-top:10px;
+		a:link {
+		     color:#FFDE17;
+		     text-decoration:none;
+		a:hover {
+		     color:#000;
+		     text-decoration:none;
+			 padding-bottom:15px;
+			}
+		}
+	}
+#about_text_2 {
+     padding-top:35px;
+     text-align:center;
+	padding-bottom:25px;
+
+}
+#about_video {
+	float:right;
+	width:525px;height:300px;
+	padding-right:0px;margin-top:15px;
+}
+
+#features_list {
+     padding-top:20px;
+     padding-left:50px;
+}
+.lower_text {
+
+	clear:both;
+	color:black;
+	margin-left:auto;
+	margin-right:auto;
+    padding-top:10px;
+    padding-bottom:30px;
+}
+
+.about_slogan {
+	width:328px;
+	padding-left:0px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+#as_seen {
+
+
 }

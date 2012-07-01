@@ -1,44 +1,46 @@
-<div class="row mleft40 mtop20">
-  <div class="span2">
-    <% if @post.image %>
-      <%= image_tag @post.image.source(:show) %>
-    <% end %>
-  </div>
+<div class="row span12 mleft40 mtop20">
+	 <div class="span2">
+	   <% if @post.image %>
+	     <%= image_tag @post.image.source(:show) %>
+	   <% end %>
+	 </div>
+	 <div class="span6 mleft40">
+	   	<span>
+			<h1 class="title center"><%= @post.title %></h1>
+		</span>
+		<div class="span2 pull-left mright10">
 
-  <div class="span7 mleft40">
-    <span>
-		<h1 class="title center"><%= @post.title %>
-		<% for category in @post.categories %>
-  			<p><%= button_to category.name, category, :method => 'get', :class => 'btn btn-mini' %></p>
-  		<% end %></h1>
-	</span>
-	<div class="span2 pull-left mright10">
-		<p>
-		   <span>By: <%= image_tag @post.user.image.source(:header) %></span>
-		   <span><%= @post.user.name %></span>
-		   <span>Posted <%= time_ago_in_words(@post.created_at) %> ago</span>
-		   <span>
-				
-		   </span>
-		</p>
+		</div>
+	    <p><%= @post.index_text.html_safe %></p>
+	    <p><%= @post.show_text.html_safe %></p>
+
+	    <% if can? :update, @course %>
+			<%= button_to 'Delete Post', @post,
+	        method: :delete,
+	        :class => 'btn btn-mini btn-danger pull-right mleft10 mtop9' %>
+			<%= button_to 'Edit Post', edit_post_path(@post), :method => 'update', :class => 'btn btn-mini pull-right mleft10' %>
+			<%= button_to 'New Post', new_post_path, :class => 'btn btn-mini pull-right' %>
+	    <% end %>
+	 </div>
+
+	<div class="row span3">		   
+		<div class="well center">
+			<p class="bold">Author: <%= image_tag @post.user.image.source(:header) %>
+			<%= @post.user.name %></p><br/>
+			<p class="mtop-20">Posted <%= time_ago_in_words(@post.created_at) %> ago</p>
+			<h3 class="center">More like this</h3>
+			<% for category in @post.categories %>
+				<p><%= button_to category.name, category, :method => 'get', :class => 'btn btn-mini' %></p>
+			<% end %>
+		</div>
+	  <%= link_to 'Back to Posts', posts_path, :class => 'btn btn-mini pull-right' %>
 	</div>
-    <p><%= @post.index_text.html_safe %></p>
-    <p><%= @post.show_text.html_safe %></p>
 
-    <% if can? :update, @course %>
-		<%= button_to 'Delete Post', @post,
-        method: :delete,
-        :class => 'btn btn-mini btn-danger pull-right mleft10 mtop9' %>
-		<%= button_to 'Edit Post', edit_post_path(@post), :method => 'update', :class => 'btn btn-mini pull-right mleft10' %>
-		<%= button_to 'New Post', new_post_path, :class => 'btn btn-mini pull-right' %>
-    <% end %>
-  </div>
-  <div class="row offset2 span7">
+  <div class="row offset2 span6">
     <%= render "comments/comment" %>
     <%= render "comments/form" %>
   </div>
 </div>
 
-<div class="row offset2 span8">
-  <%= link_to 'Back to Posts', posts_path, :class => 'btn btn-mini pull-right' %>
-</div>
+
+

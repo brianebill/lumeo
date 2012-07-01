@@ -1,9 +1,9 @@
-<div class="row span7 mleft-20 well">
+<div class="row span8 mleft-20 well">
 	<div class="mleft-10 span8">
-		<h2 class="bold">Courses are made by Request</h2>
-		<h3 class="bold pleft20">Start here by searching inside a subject you'd like to request</h3>
+			<h2 class="bold"><%= image_tag 'glyphs/circle_plus.png', :class => 'glyph-h2' %> Make a Course Request</h2>
+			<h3 class="bold pleft20">Start here by searching for a subject you'd like to request</h3>
 	</div>
-	<div class="row span8">
+	<div class="row span8 pull-right">
 		<%= form_tag requests_path, :method => 'get', :class => "mtop10" do %>
 		<%= text_field_tag :search, params[:search], :class => 'input-xxlarge mleft20', :placeholder => 'Enter a single subject, like "Photography"' %>
 		<%= submit_tag "Search", :title => nil, :class => 'btn btn-primary btn-large mtop-15' %>
@@ -11,5 +11,15 @@
 	</div>
 	<div class="row span8">
 		<p class="pleft80 bold">Let's see if someone has created a similar request...</p>
+	</div>
+</div>
+<div class="community-index">
+	<div class="span3">
+		<h3><%= image_tag 'glyphs/history.png', :class => 'glyph-h3' %> Recent</h3>
+    	<%= render 'requests/recent' %>
+	</div>
+	<div class="mleft20 span3">
+    	<h3><%= image_tag 'glyphs/heart.png', :class => 'glyph-h3' %> Popular</h3>
+    	<%= render 'requests/popular' %>
 	</div>
 </div>

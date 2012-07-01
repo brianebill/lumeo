@@ -19,6 +19,6 @@
 
 class Comment < ActiveRecord::Base
   attr_accessible :text, :photo
-  belongs_to :commentable, :polymorphic => true, :dependent => :destroy
+  belongs_to :commentable, :polymorphic => true
   belongs_to :user
 end

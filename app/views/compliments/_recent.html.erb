@@ -1,0 +1,6 @@
+<div class="mleft20">
+<% @recent_requests = Request.all(:order => 'created_at DESC', :limit => 10) %>
+<% @recent_requests.each do |request| %>
+	<%= link_to request.title, request %><br/>
+<% end %>
+</div>

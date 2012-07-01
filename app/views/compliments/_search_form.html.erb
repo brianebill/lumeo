@@ -1,9 +1,31 @@
-<div class="well community">
-   <%= simple_form_for @compliment do |f| %>
-	  <%= f.input :title, :label => false, placeholder: "Title" %>
-	  <%= f.input :description, :label => false, placeholder: "Send praise" %>
-      <div class ="form-actions">
-         <%= f.submit 'Send Praise', :class => 'btn btn-primary pull-right' %>
-      </div>
-   <% end %>
+<div class="row span7 mleft-20 well">
+	<div class="mleft30">
+		<div class="mleft-10">
+			<h2 class="bold"><%= image_tag 'glyphs/ok.png', :class => 'glyph-h2' %> Give praise!</h2>
+			<h3 class="bold pleft20">Let us know what we're doing right</h3>
+		</div>
+		<div class="row span6 mtop10">
+			<%= simple_form_for @compliment do |f| %>
+			  <%= f.input :title, :label => false, placeholder: "Subject" %>
+			  <%= f.input :description, :label => false, placeholder: "Compliment", :class => 'community' %>
+		      <div class ="form-actions">
+		         <%= f.submit 'Send Praise', :class => 'btn btn-primary pull-right' %>
+		      </div>
+		   <% end %>
+		</div>
+		<div class="row span8">
+			<p class="pleft40 bold">Your feedback is valuable. Thank you!</p>
+	</div>
+	</div>
+</div>
+
+<div class="community-index">
+	<div class="span3">
+		<h3>Recent</h3>
+    	<%= render 'compliments/recent' %>
+	</div>
+	<div class="mleft20 span3">
+    	<h3>Popular</h3>
+    	<%= render 'compliments/popular' %>
+	</div>
 </div>

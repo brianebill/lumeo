@@ -24,15 +24,19 @@ class CommentsController < ApplicationController
   end
   
   def destroy
-    @comment.destroy
-    flash[:notice] = "Successfully destroyed comment."
-    redirect_to :back
+    @comment.delete
+    flash[:notice] = "Successfully deleted comment."
+    if request.referer == post_path(@post)
+     redirect_to posts_path
+    else
+     redirect_to :back
+    end
   end
 
   private
   
   def find_comment
-    @comment = Comment.find(params[:post])
+    @comment = Comment.find(params[:id])
   end
 
   def find_commentable

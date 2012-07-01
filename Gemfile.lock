@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/mikeycgto/votable.git
-  revision: 0281a4d3be3ef353d35b08bd6a080c3ff7cbbbdc
+  revision: ee24d08b42979eb7f09b7540bfac927554b87fbc
   specs:
     votable (0.0.1)
       rails (~> 3.2.3)
@@ -50,7 +50,7 @@ GEM
       uuidtools (~> 2.1)
     bbenezech-nested_form (0.0.6)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.0.3)
+    bootstrap-sass (2.0.4.0)
     bootstrap-will_paginate (0.0.5)
       will_paginate
     builder (3.0.0)
@@ -214,7 +214,7 @@ GEM
       rspec (~> 2.10.0)
     rubyzip (0.9.8)
     rvm (1.11.3.3)
-    sass (3.1.18)
+    sass (3.1.20)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -258,7 +258,7 @@ PLATFORMS
 DEPENDENCIES
   annotate!
   aws-sdk
-  bootstrap-sass (= 2.0.3)
+  bootstrap-sass
   bootstrap-will_paginate (= 0.0.5)
   cancan
   capybara (= 1.1.2)
@@ -280,7 +280,7 @@ DEPENDENCIES
   rolify (>= 3.1.0)
   rspec-rails (~> 2.0)
   rvm
-  sass-rails (~> 3.2.3)
+  sass-rails
   simple_form
   thin
   uglifier (>= 1.0.3)
