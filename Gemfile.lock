@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/mikeycgto/votable.git
-  revision: ee24d08b42979eb7f09b7540bfac927554b87fbc
+  revision: bd0f753660c2fc7348c6a92063589866131bb01c
   specs:
     votable (0.0.1)
       rails (~> 3.2.3)
