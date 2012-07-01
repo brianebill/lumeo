@@ -6,7 +6,6 @@ class RequestsController < ApplicationController
     @requests = Request.request_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 25, :page => params[:page])
     @users = User.all
     @search = params[:search]
-    @popular_requests = Request.order('created_at DESC').order('user_votes_total DESC').limit(10)
   end
 
   def show

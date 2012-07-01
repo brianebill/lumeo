@@ -1,6 +1,5 @@
 <div class="mleft20">
-<% @recent_requests = Request.all(:order => 'created_at DESC', :limit => 10) %>
-<% @recent_requests.each do |request| %>
-	<%= request.title %><br/>
+<% @recent_compliments.each do |compliment| %>
+	<%= compliment.title %><br/>
 <% end %>
 </div>
