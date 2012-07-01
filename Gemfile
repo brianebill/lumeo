@@ -27,6 +27,7 @@ gem "votable", :git => "git://github.com/mikeycgto/votable.git"
 gem "letter_opener", :group => :development
 
 group :development do
+  gem 'quiet_assets'
   gem 'rvm'
 end
 
