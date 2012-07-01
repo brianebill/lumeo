@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def index
     @roles = Role.all
     @users = User.paginate(page: params[:page])
+    @votes = Vote.all
   end
   
   def show
