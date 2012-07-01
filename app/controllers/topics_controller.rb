@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
     @recent_requests = Request.all(:order => 'created_at DESC', :limit => 10)
     @popular_requests = Request.order('user_votes_total DESC').order('created_at DESC').limit(10)
     @recent_compliments = Compliment.all(:order => 'created_at DESC', :limit => 10)
-    @popular_compliments = Compliment.order('user_votes_total DESC').order('created_at DESC').limit(10)
+    @popular_compliments = Compliment.order('user_votes_total DESC, created_at DESC').limit(10)
   end
   def show
   end

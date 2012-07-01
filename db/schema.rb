@@ -216,10 +216,10 @@ ActiveRecord::Schema.define(:version => 20120701165212) do
     t.string   "title"
     t.text     "description"
     t.string   "who"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.string   "subject"
-    t.integer  "user_votes_total"
+    t.integer  "user_votes_total", :default => 0
   end
 
   create_table "roles", :force => true do |t|

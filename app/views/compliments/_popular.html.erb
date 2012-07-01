@@ -1,5 +1,7 @@
 <div class="mleft20">
 <% @popular_compliments.each do |compliment| %>
-	<%= compliment.title %><br/>
+		<%= compliment.user_votes_total %>
+		<%= compliment.title %><br/>
+
 <% end %>
 </div>
