@@ -2,14 +2,14 @@
 	<div class="mleft30">
 		<div class="mleft-10">
 			<h2 class="bold"><%= image_tag 'glyphs/ok.png', :class => 'glyph-h2' %> Give praise!</h2>
-			<h3 class="bold pleft20">Let us know what we're doing right</h3>
+			<h3 class="bold pleft20">Let us know what you think</h3>
 		</div>
-		<div class="row span6 mtop10">
+		<div class="row span6 mtop10 community">
 			<%= simple_form_for @compliment do |f| %>
 			  <%= f.input :title, :label => false, placeholder: "Subject" %>
 			  <%= f.input :description, :label => false, placeholder: "Compliment", :class => 'community' %>
 		      <div class ="form-actions">
-		         <%= f.submit 'Send Praise', :class => 'btn btn-primary pull-right' %>
+		         <%= f.submit 'Send', :class => 'btn btn-primary pull-right btn-large' %>
 		      </div>
 		   <% end %>
 		</div>

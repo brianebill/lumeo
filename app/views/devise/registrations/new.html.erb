@@ -1,7 +1,7 @@
 <% provide(:title, "Become a Member") %>
-<div class="row span6">
+<div class="row span4 offset4">
 	  <h2 class="center title">Become a Member</h2>
-	  <div class="">
+	  <div class="well">
 			 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 		      <%= f.error_notification %>
 		  	   <div class="inputs">
@@ -11,9 +11,9 @@
 		          <%= f.input :password_confirmation, :required => true %>
 		        </div>
 		       <div class="form-actions">
-		           <%= f.button :submit, "Sign up", :class => 'btn btn-primary btn-large' %>
+		           <%= f.button :submit, "Sign up", :class => 'btn btn-primary btn-large pull-right' %>
+				    <%= render "links" %>
 		       </div>
 		    <% end %>
-		    <%= render "links" %>
 	  </div>
 </div>

@@ -1,12 +1,12 @@
-<div class="row span8 mleft-20 well">
-	<div class="mleft-10 span8">
-		<h2 class="bold">Experiencing a problem? Lumeo is here to help.</h2>
+<div class="row span7 mleft-20 well">
+	<div class="mleft-10 span7">
+		<h2 class="bold"><%= image_tag 'glyphs/circle_exclamation_mark.png', :class => 'glyph-h2' %> Experiencing a problem? Lumeo is here to help.</h2>
 		<h3 class="bold pleft20"> Step 1: Search our database for similar problems</h3>
 	</div>
 	<div class="row span8">
 		<%= form_tag problems_path, :method => 'get', :class => "mtop10" do %>
 		<%= text_field_tag :search, params[:search], :class => 'input-xxlarge mleft20', :placeholder => 'Start simple by entering a single subject, like "Login" or "Password"' %>
-		<%= submit_tag "Search", :title => nil, :class => 'btn btn-primary btn-large mtop-15' %>
+		<%= submit_tag "Search", :title => nil, :class => 'btn btn-primary btn-large' %>
 		<% end %>
 	</div>
 	<div class="row span8">
@@ -23,3 +23,4 @@
     	<%= render 'problems/popular' %>
 	</div>
 </div>
+

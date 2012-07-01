@@ -1,12 +1,13 @@
-<div class="row span8 mleft-20 well">
-	<div class="mleft-10 span8">
+<div class="row span7 mleft-20 well">
+	<div class="mleft-10 span7">
 			<h2 class="bold"><%= image_tag 'glyphs/circle_plus.png', :class => 'glyph-h2' %> Make a Course Request</h2>
 			<h3 class="bold pleft20">Start here by searching for a subject you'd like to request</h3>
 	</div>
 	<div class="row span8 pull-right">
-		<%= form_tag requests_path, :method => 'get', :class => "mtop10" do %>
-		<%= text_field_tag :search, params[:search], :class => 'input-xxlarge mleft20', :placeholder => 'Enter a single subject, like "Photography"' %>
-		<%= submit_tag "Search", :title => nil, :class => 'btn btn-primary btn-large mtop-15' %>
+		<form class="form-search">
+		<%= form_tag requests_path, :method => 'get', :class => "mtop10 form-horizontal" do %>
+		<%= text_field_tag :search, params[:search], :class => 'input-xxlarge mleft20 search-query', :placeholder => 'Enter a single subject, like "Photography"' %>
+		<%= submit_tag "Search", :title => nil, :class => 'btn btn-primary btn-large mtop' %>
 		<% end %>
 	</div>
 	<div class="row span8">

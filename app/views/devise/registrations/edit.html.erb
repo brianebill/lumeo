@@ -2,7 +2,7 @@
 <h2 class="span12 center form_title">Edit Membership</h2>
 
 <div class="row">
-  <div class="span4 offset4">
+  <div class="span4 offset4 well">
     <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f| %>
       <%= f.error_notification %>
 
@@ -12,22 +12,25 @@
         <%= f.input :current_password, :hint => "enter your current password above to make any changes, then.  if you want to change your password, enter and confirm your new password below", :required => true %>
         <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
         <%= f.input :password_confirmation, :required => false %>
+	  </div>
+		<fieldset class="well">
+		    <%= f.fields_for :image do |img_field| %>
+		         <div class=""> 
+					<h3 class = "">
+						Upload Photo: <%= img_field.file_field :source, :class => 'mleft10' %>
+					</h3>
+				</div>
+		    <% end %>
+		<fieldset>
+	  <div class="form-actions">
+          <%= f.submit :class => 'btn btn-large btn-primary pull-right' %>
+	  </div>
 
-        <%= f.fields_for :image do |img_field| %>
-          Upload Photo <%= img_field.file_field :source %>
-        <% end %>
-
-        <% for role in Role.all %>
-          <div>
-            <%= check_box_tag "user[role_id][]", role.id, @user.roles.include?(role) %>
-            <%=h role.name %>
-          </div>
-        <% end %>
-
-        <%= hidden_field_tag "user[role_id][]", "" %>
-        <%= f.submit :class => 'btn' %>
-      </div>
-      <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+      <div class="pull-right row">
+			Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), 
+								:confirm => "Are you sure? This is not Facebook, if you press ok, you're account will be deleted", 
+								:method => :delete %>
+	  </div>
     <% end %>
   </div>
 </div>

@@ -1,12 +1,12 @@
-<div class="row span8 mleft-20 well">
-	<div class="mleft-10 span8">
+<div class="row span7 mleft-20 well">
+	<div class="mleft-10 span7">
 		<h2 class="bold"><%= image_tag 'glyphs/lightbulb.png', :class => 'glyph-h2' %> Have an idea? Help Lumeo make Lumeo better</h2>
 		<h3 class="bold pleft20">Start with a search on the idea you want to submit</h3>
 	</div>
 	<div class="row span8">
 		<%= form_tag questions_path, :method => 'get', :class => "mtop10" do %>
 		<%= text_field_tag :search, params[:search], :class => 'input-xxlarge mleft20', :placeholder => 'Start simple by entering a single subject, like "Sports" or "Baseball"' %>
-		<%= submit_tag "Search", :title => nil, :class => 'btn btn-primary btn-large mtop-15' %>
+		<%= submit_tag "Search", :title => nil, :class => 'btn btn-primary btn-large' %>
 		<% end %>
 	</div>
 	<div class="row span8">

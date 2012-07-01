@@ -4,12 +4,12 @@
 			<h2 class="bold"><%= image_tag 'glyphs/ok.png', :class => 'glyph-h2' %> Contact Lumeo</h2>
 			<h3 class="bold pleft20">Send a private message</h3>
 		</div>
-		<div class="row span6 mtop10">
+		<div class="row span6 mtop10 community">
 			<%= simple_form_for @contact do |f| %>
 		      <%= f.input :subject, :label => false, placeholder: "Subject" %>
 			  <%= f.input :message, :label => false, placeholder: "Message" %>
 		      <div class ="form-actions">
-		         <%= f.submit 'Send Message', :class => 'btn btn-primary pull-right' %>
+		         <%= f.submit 'Send', :class => 'btn btn-primary btn-large pull-right' %>
 		      </div>
 		   <% end %>
 		</div>

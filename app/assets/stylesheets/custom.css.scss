@@ -33,6 +33,10 @@ section {
   overflow: auto;
 }
 
+text { 
+  height:40px;
+}
+
 textarea {
   resize: vertical;
 }
@@ -82,7 +86,7 @@ textarea {
 .pleft80 {
    padding-left:80px;
 }
-.top4 {
+.ptop4 {
   padding-top:4px;
 }
 
@@ -218,6 +222,9 @@ mleft-10 {
   margin-left:50px;
 }
 
+.mleft60 {
+  margin-left:60px;
+}
 .mleft80 {
   margin-left:80px;
 }
