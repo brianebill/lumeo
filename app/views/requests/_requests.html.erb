@@ -18,20 +18,22 @@
 		 	<td>
 				 <%= form_for req, :url => vote_request_path(req) do |f| %>
 				     <%= hidden_field_tag :redirect, :index %>
-					 <p class="center"><%= submit_tag "up", :name => :up, :class => 'btn btn-mini' %></p>
-					 <h4 class="center mtop-7"><%= vote_total req.user_votes %></h4>
-					 <p class="center"><%= submit_tag "down", :name => :down, :class => 'btn btn-mini' %></p>
+					 <p class="center"><%= submit_tag "^", :name => :up, :class => 'btn btn-mini up-index' %></p>
+					 <p class="center"><%= submit_tag "v", :name => :down, :class => 'btn btn-mini down-index' %></p>
+			</td>
+			<td>
+					 <h2 class="count-index"><%= vote_total req.user_votes %></h2>
 				 <% end %>
 		   </td>
-	       <td><h3><%= link_to req.title, req %></h3></td>
-	       <td><%= req.who %></td>
-	       <td><%= time_ago_in_words(req.created_at) %> ago</td>
-		   <td><%= req.user.name %></td>
+	       <td><h3 class="mtop15"><%= link_to req.title, req %></h3></td>
+	       <td><p class="mtop15"><%= req.who %></p></td>
+	       <td><p class="mtop15"><%= time_ago_in_words(req.created_at) %> ago</p></td>
+		   <td><p class="mtop15"><%= link_to req.user.name, req.user %></p></td>
 		   <% if can? :update, @course %>
-	   	       <td><%= link_to 'Edit', edit_request_path(req), :class => 'btn btn-mini' %></td>
+	   	       <td><%= link_to 'Edit', edit_request_path(req), :class => 'btn btn-mini btn-success mtop15' %></td>
 		       <td><%= link_to 'Delete', req,
 		                    method: :delete, 
-		                    :class => 'btn btn-mini' %></td>
+		                    :class => 'btn btn-mini btn-danger mtop15' %></td>
 	       <% end %>
 	     </tr>
 	  <% end %>

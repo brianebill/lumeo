@@ -1,0 +1,12 @@
+<% if @compliments.total_entries.zero? %> 
+   <p class = "center bold">Your search returned no formerly submitted praise.</p>
+   <p class = "center bold"> Proceed to Step 2: Click on the blue button to submit your Praise</p>
+<% elsif @search.nil? %>
+	<div><%= render 'compliments' %></div>
+<% else %>
+	<h3 class="center">Your search found <%= pluralize(@compliments.total_entries, "praise") %>....</h3>
+	<div id="compliments">
+		   <%= render 'compliments' %>
+	</div>
+	<h3 class="center">Enter new praise by clicking on the blue button</h3>
+<% end %>

@@ -3,7 +3,7 @@ class ProblemsController < ApplicationController
   helper_method :sort_column, :sort_direction, :vote
   
   def index
-    @problems = Problem.problem_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
+    @problems = Problem.problem_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
     @users = User.all
     @search = params[:search]
   end
@@ -71,7 +71,7 @@ class ProblemsController < ApplicationController
           else
             current_user.cast_problem_vote(@problem, -1)
           end
-          render :show
+          redirect_to params[:redirect] == 'index' ? problems_path : @problem
         end
       
       private

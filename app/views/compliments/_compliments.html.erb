@@ -16,21 +16,23 @@
 	     <tr>
 		    <td>
 				 <%= form_for compliment, :url => vote_compliment_path(compliment) do |f| %>
-					 <p class="center"><%= submit_tag "Up", :name => :up %></p>
-					 <h1 class="center  mtop-20"><%= vote_total compliment.user_votes %></h1>
-					 <p class="center"><%= submit_tag "Down", :name => :down %></p>
+				     <%= hidden_field_tag :redirect, :index %>
+					 <p class="center"><%= submit_tag "^", :name => :up, :class => 'btn btn-mini up-index' %></p>
+					 <p class="center"><%= submit_tag "v", :name => :down, :class => 'btn btn-mini down-index' %></p>
+			</td>
+			<td>		
+					<h1 class="count-index"><%= vote_total compliment.user_votes %></h1>
 				 <% end %>
 		   </td>
-	       <td><%= compliment.title %></td>
-	       <td><%= time_ago_in_words(compliment.created_at) %> ago</td>
-		   <td><%= compliment.user.name %></td>
-		   <td><%= link_to 'Show', compliment, :class => 'btn btn-mini'%></td>
+	       <td><h3 class="mtop15"><%= link_to compliment.title, compliment %></h3></td>
+	       <td><p class="mtop15"><%= time_ago_in_words(compliment.created_at) %> ago</p></td>
+		   <td><p class="mtop15"><%= link_to compliment.user.name, compliment.user %></p></td>
 		   <% if can? :update, @course %>
-	   	   <td><%= link_to 'Edit', edit_compliment_path(compliment), :class => 'btn btn-mini' %></td>
+	   	   <td><%= link_to 'Edit', edit_compliment_path(compliment), :class => 'btn btn-mini btn-success mtop15' %></td>
 		       <td><%= link_to 'Destroy', compliment, 
 		                    confirm: 'Are you sure?', 
 		                    method: :delete, 
-		                    :class => 'btn btn-mini' %></td>
+		                    :class => 'btn btn-mini btn-danger mtop15' %></td>
 	       <% end %>
 	     </tr>
 	  <% end %>

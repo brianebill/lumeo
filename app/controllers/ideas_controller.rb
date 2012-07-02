@@ -3,7 +3,7 @@ class IdeasController < ApplicationController
   helper_method :sort_column, :sort_direction, :vote
   
   def index
-    @ideas = Idea.idea_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
+    @ideas = Idea.idea_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
     @users = User.all
     @search = params[:search]
   end
@@ -72,7 +72,7 @@ class IdeasController < ApplicationController
           else
             current_user.cast_idea_vote(@idea, -1)
           end
-          render :show
+          redirect_to params[:redirect] == 'index' ? ideas_path : @idea
         end
         
       private

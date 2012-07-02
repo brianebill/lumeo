@@ -6,10 +6,10 @@
 	   <thead>
 		  <tr>
 			<th></th>
+			<th></th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "created_at", "When" %></th>
 			<th><%= sortable "problem.user", "Ticket Created By" %></th>
-			<th>Actions</th>
 		  </tr>
 	   </thead>
 	   <tbody>
@@ -17,21 +17,23 @@
 	     <tr>
 		    <td>
 				 <%= form_for problem, :url => vote_problem_path(problem) do |f| %>
-					 <p class="center"><%= submit_tag "up", :name => :up %></p>
-					 <h1 class="center  mtop-20"><%= vote_total problem.user_votes %></h1>
-					 <p class="center"><%= submit_tag "down", :name => :down %></p>
+				     <%= hidden_field_tag :redirect, :index %>
+					 <p class="center"><%= submit_tag "^", :name => :up, :class => 'btn btn-mini up-index' %></p>
+					 <p class="center"><%= submit_tag "v", :name => :down, :class => 'btn btn-mini down-index' %></p>
+			</td>
+			<td>
+					<h2 class="count-index"><%= vote_total problem.user_votes %></h1>
 				 <% end %>
 		   </td>
-	       <td><%= problem.title %></td>
-	       <td><%= time_ago_in_words(problem.created_at) %> ago</td>
-		   <td><%= problem.user.name %></td>
-		   <td><%= link_to 'Show', problem, :class => 'btn btn-mini'%></td>
+	       <td><h3 class="mtop15"><%= link_to problem.title, problem %></h3></td>
+	       <td><p class="mtop15"><%= time_ago_in_words(problem.created_at) %> ago</p></td>
+		   <td><p class="mtop15"><%= link_to problem.user.name, problem.user %></p></td>
 		   <% if can? :update, @course %>
-	   	   <td><%= link_to 'Edit', edit_problem_path(problem), :class => 'btn btn-mini' %></td>
+	   	       <td><%= link_to 'Edit', edit_problem_path(problem), :class => 'btn btn-mini btn-success mtop15' %></td>
 		       <td><%= link_to 'Destroy', problem, 
 		                    confirm: 'Are you sure?', 
 		                    method: :delete, 
-		                    :class => 'btn btn-mini' %></td>
+		                    :class => 'btn btn-mini btn-danger mtop15' %></td>
 	       <% end %>
 	     </tr>
 	  <% end %>

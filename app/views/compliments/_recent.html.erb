@@ -1,5 +1,6 @@
 <div class="mleft20">
 <% @recent_compliments.each do |compliment| %>
+    <%= compliment.user_votes_total %>
 	<%= link_to compliment.title, compliment %><br/>
 <% end %>
 </div>

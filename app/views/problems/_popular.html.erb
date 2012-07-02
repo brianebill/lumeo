@@ -1,6 +1,6 @@
 <div class="mleft20">
-	<% @recent_problems = Problem.all(:order => 'created_at DESC', :limit => 10) %>
-	<% @recent_problems.each do |problem| %>
-		<%= link_to problem.title, problem %><br/>
+	<% @popular_problems.each do |problem| %>
+			<%= problem.user_votes_total %>
+			<%= link_to problem.title, problem %><br/>
 	<% end %>
 </div>

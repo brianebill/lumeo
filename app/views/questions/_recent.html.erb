@@ -1,6 +1,6 @@
 <div class="mleft20">
-<% @recent_requests = Request.all(:order => 'created_at DESC', :limit => 10) %>
-<% @recent_requests.each do |request| %>
-	<%= link_to request.title, request %><br/>
-<% end %>
+	<% @recent_questions.each do |question| %>
+	    <%= question.user_votes_total %>
+		<%= link_to question.title, question %><br/>
+	<% end %>
 </div>

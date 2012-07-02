@@ -4,7 +4,7 @@ class ComplimentsController < ApplicationController
   
   def index
     @users = User.all
-    @compliments = Compliment.compliment_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
+    @compliments = Compliment.compliment_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
     @search = params[:search]
   end
 
@@ -70,7 +70,7 @@ class ComplimentsController < ApplicationController
         else
           current_user.cast_compliment_vote(@compliment, -1)
         end
-        render :show
+        redirect_to params[:redirect] == 'index' ? compliments_path : @compliment
       end
 
       private

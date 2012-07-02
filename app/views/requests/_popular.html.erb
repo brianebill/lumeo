@@ -1,5 +1,6 @@
 <div class="mleft20">
 	<% @popular_requests.each do |req| %>
-		<%= req.title %><br/>
+			<%= req.user_votes_total %>
+			<%= link_to req.title, req %><br/>
 	<% end %>
 </div>

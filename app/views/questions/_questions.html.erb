@@ -6,35 +6,38 @@
 	   <thead>
 		  <tr>
 		    <th></th>
+		    <th></th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "created_at", "When" %></th>
 			<th><%= sortable "question.user.name", "Member" %></th>
 		  </tr>
 	   </thead>
 	   <tbody>
-	   <% @questions.each do |question| %>
-	     <tr>
-		    <td>
-				 <%= form_for question, :url => vote_question_path(question) do |f| %>
-					 <p class="center"><%= submit_tag "up", :name => :up %></p>
-					 <h1 class="center  mtop-20"><%= vote_total question.user_votes %></h1>
-					 <p class="center"><%= submit_tag "down", :name => :down %></p>
-				 <% end %>
-		   </td>
-	       <td><h3><%= question.title %></h3></td>
-	       <td><%= time_ago_in_words(question.created_at) %> ago</td>
-	       <td><%= question.user.name %></td>
-
-		   <td><%= link_to 'Show', question, :class => 'btn btn-mini'%></td>
-		   <% if can? :update, @course %>
-	   	   <td><%= link_to 'Edit', edit_question_path(question), :class => 'btn btn-mini' %></td>
-		       <td><%= link_to 'Destroy', question, 
-		                    confirm: 'Are you sure?', 
-		                    method: :delete, 
-		                    :class => 'btn btn-mini' %></td>
-	       <% end %>
-	     </tr>
-	  <% end %>
+		 <% @questions.each do |question| %>
+		     <tr>
+			    <td>
+				     <%= form_for question, :url => vote_question_path(question) do |f| %>
+					     <%= hidden_field_tag :redirect, :index %>
+						 <p class="center"><%= submit_tag "^", :name => :up, :class => 'btn btn-mini up-index' %></p>
+						 <p class="center"><%= submit_tag "v", :name => :down, :class => 'btn btn-mini down-index' %></p>
+			    </td>
+			    <td>
+						 <h2 class="count-index"><%= vote_total question.user_votes %></h2>
+					 <% end %>
+				</td>
+			   
+		       <td><h3 class="mtop15"><%= link_to question.title, question %></h3></td>
+		       <td><p class="mtop15"><%= time_ago_in_words(question.created_at) %> ago</p></td>
+		       <td><p class="mtop15"><%= link_to question.user.name, question.user %></p></td>
+			   <% if can? :update, @course %>
+		   	   <td><%= link_to 'Edit', edit_question_path(question), :class => 'btn btn-mini btn-success mtop15' %></td>
+			       <td><%= link_to 'Delete', question, 
+			                    confirm: 'Are you sure?', 
+			                    method: :delete, 
+			                    :class => 'btn btn-mini btn-danger mtop15' %></td>
+		       <% end %>
+		     </tr>
+		  <% end %>
 	  </tbody>
 	</table>
 	<div class="pull-right"><%= will_paginate @questions %></div>	
