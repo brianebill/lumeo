@@ -1,10 +1,12 @@
 class Problem < ActiveRecord::Base
-  attr_accessible :description, :status, :title, :user_id
+  attr_accessible :description, :status, :title, :user_id, :image_attributes
   
   belongs_to :user
   has_many :comments
   
   votable_by :users
+  
+  default_scope order: 'problems.created_at DESC'
   
   include PgSearch
   pg_search_scope :search, against: [:title, :description],

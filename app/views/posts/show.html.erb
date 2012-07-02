@@ -5,21 +5,16 @@
 	   <% end %>
 	 </div>
 	 <div class="span6 mleft40">
-	   	<span>
-			<h1 class="title center"><%= @post.title %></h1>
-		</span>
-		<div class="span2 pull-left mright10">
-
-		</div>
+		<h1 class="title"><%= @post.title %></h1>
 	    <p><%= @post.index_text.html_safe %></p>
 	    <p><%= @post.show_text.html_safe %></p>
 
-	    <% if can? :update, @course %>
+	    <% if can? :update, @post %>
 			<%= button_to 'Delete Post', @post,
 	        method: :delete,
 	        :class => 'btn btn-mini btn-danger pull-right mleft10 mtop9' %>
-			<%= button_to 'Edit Post', edit_post_path(@post), :method => 'update', :class => 'btn btn-mini pull-right mleft10' %>
-			<%= button_to 'New Post', new_post_path, :class => 'btn btn-mini pull-right' %>
+			<%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-mini pull-right mleft10' %>
+			<%= button_to 'New Post', new_post_path, :method => 'get', :class => 'btn btn-mini pull-right' %>
 	    <% end %>
 	 </div>
 

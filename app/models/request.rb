@@ -1,7 +1,6 @@
 class Request < ActiveRecord::Base
-
-  
-  attr_accessible :description, :title, :user_id, :who, :tag_ids, :subject, :tags_attributes
+  attr_accessible :description, :title, :user_id, :who, :tag_ids, 
+                  :subject, :tags_attributes, :image_attributes
   
   validates :title, :presence => true,
                     :length => { :minimum => 5 }
@@ -9,9 +8,13 @@ class Request < ActiveRecord::Base
   validates :who,  :presence => true
   
   belongs_to :user
-  has_many :comments
+  has_many :comments, :as => :commentable, :dependent => :destroy
+  has_one :image, :as => :parent, :dependent => :destroy
+  accepts_nested_attributes_for :image, :allow_destroy => true
 
   votable_by :users
+  
+  default_scope order: 'requests.created_at DESC'
 
   include PgSearch
   pg_search_scope :search, against: [:title, :description, :who, :subject],

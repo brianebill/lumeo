@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :find_user, :except => [:index, :destroy]
+  
   def index
     @roles = Role.all
     @users = User.paginate(page: params[:page])
@@ -6,7 +8,6 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
     @micropost = current_user.microposts.build if signed_in?
     @feed_items = current_user.feed.paginate(page: params[:page])
@@ -20,7 +21,6 @@ class UsersController < ApplicationController
   
   def following
     @title = "Following"
-    @user = User.find(params[:id])
     @users = @user.followed_users.paginate(page: params[:page])
     render 'show_follow'
   end
@@ -33,16 +33,21 @@ class UsersController < ApplicationController
   end
   
   def update
-    @user = User.find(params[:id])
-
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'Member was successfully updated.' }
+        format.html { redirect_to @user, 
+                      notice: 'Member was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @user.errors, 
+                      status: :unprocessable_entity }
       end
     end
+  end
+  
+  private 
+  def find_user
+    @user = User.find(params[:id])
   end
 end

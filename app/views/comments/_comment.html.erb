@@ -1,16 +1,19 @@
 <% if @comments %>
 	<h1 class="center title">Comments</h1>
 	<% for comment in @comments %>
-		<div class="well">
-			<span><%= image_tag comment.user.image.source(:header) %></span>
-			<span><%= link_to comment.user.name, comment.user %></span>
-			<p><%= comment.text %></p>
+		<div class="well comment">
+			<span>
+				<%= image_tag comment.user.image.source(:header) %>
+				<%= link_to comment.user.name, comment.user %></span>
+				Posted <%= time_ago_in_words(comment.created_at) %> ago
+			</span>
+			<p class="mleft20 mtop10"><%= comment.text %></p>
 			<% if can? :update, @comment %>
-		    	<%= link_to 'Edit', [comment.commentable, comment], :class => 'btn btn-mini' %>
+				<%= link_to 'Edit', [comment.commentable, comment], :class => 'btn btn-mini mtop5 mleft10' %>
 			    <%= link_to 'Delete', [comment.commentable, comment],
 								:confirm => 'Are you sure?',
 			                    method: :delete, 
-			                    :class => 'btn btn-mini' %>
+			                    :class => 'btn btn-mini mtop5' %>
 		    <% end %>
 		</div>
 	<% end %>

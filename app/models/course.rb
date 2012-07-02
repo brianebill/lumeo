@@ -27,7 +27,9 @@ class Course < ActiveRecord::Base
   has_many :videos, :dependent => :destroy
   accepts_nested_attributes_for :videos, :allow_destroy => true
   
-  #photo
+  #image
   has_one :image, :dependent => :destroy, :as => :parent
   accepts_nested_attributes_for :image, :allow_destroy => true
+  
+  default_scope order: 'posts.created_at DESC'
 end

@@ -7,7 +7,14 @@
 	   <%= f.input :title %>
  	   <%= f.input :who, :label => 'Taught by' %>
 	   <%= f.input :description %>
-  </fieldset>
+   </fieldset>
+	<fieldset class="well">
+	    <%= f.simple_fields_for :image do |img_field| %>
+				<h3>
+					Upload Photo: <%= img_field.file_field :source, :class => 'mleft10' %>
+				</h3>
+	    <% end %>
+	<fieldset>
   <div class ="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary pull-right btn-large m5' %>
   </div>

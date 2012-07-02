@@ -1,25 +1,47 @@
-<p id="notice"><%= notice %></p>
-<div class="row">
-	<div class="span2 offset1">
-	 
+<div class="row span12 mleft40 mtop20">
+	<div class="span2">
+		<% if @request.image %>
+			<%= image_tag @request.image.source(:show) %>
+		<% else %>
+			<%= image_tag 'missing_show.png' %>
+		<% end %>
+		<% if can? :update, @request %>
+		    <%= link_to 'Add a photo', edit_request_path(@request), :class => 'btn btn-mini btn-success pull-right' %>
+		<% end %>
 	</div>
-		<div class="span5">
-			    <h1><%= @request.title %></h1>
+		<div class="span6 mleft40">
+			    <h1 class="title"><%= @request.title %></h1>
 			    <p><%= @request.subject %></p>
 			    <p><%= @request.who %></p>
 			    <p><%= @request.description %></p>
 			
 			    <% if can? :update, @request %>
-				    <%= link_to 'Edit Request', edit_request_path(@request), :class => 'btn btn-mini' %>
-					<%= link_to 'Delete Request', @request, 
+			        <%= link_to 'Delete Request', @request, 
 					                    confirm: 'Are you sure?', 
 					                    method: :delete, 
-					                    :class => 'btn btn-mini' %>
-	                 <%= link_to 'New Request', new_request_path, :class => 'btn btn-mini' %>
+					                    :class => 'btn btn-mini btn-danger pull-right mleft10' %>
+					<%= link_to 'New Request', new_request_path, :class => 'btn btn-mini btn-primary pull-right mleft10' %>
+				    <%= link_to 'Edit Request', edit_request_path(@request), :class => 'btn btn-mini btn-success pull-right' %>
 				<% end %>
 	     </div>
+	
+	  	<div class="row span3">		   
+			<div class="well center">
+				<p class="bold">Author: <%= image_tag @request.user.image.source(:header) %>
+				<%= @request.user.name %></p><br/>
+				<p class="mtop-20">Posted <%= time_ago_in_words(@request.created_at) %> ago</p>
+				<h3 class="center">More like this</h3>
+				
+		    </div>
+				
+			    <%= link_to 'Back to Requests', requests_path, :class => 'btn btn-mini' %>
+		</div>
+				
+				
+	  <div class="row offset2 span6">
+	    <%= render "comments/comment" %>
+	    <%= render "comments/form" %>
+	  </div>
 
 </div>
-<div class="row offset2">
-    <%= link_to 'Back to Requests', requests_path, :class => 'btn btn-mini' %>
-</div>
+

@@ -7,9 +7,9 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @post = @commentable = Post.find(params[:id])
     @comments = @commentable.comments
+    @posts = Post.all
     respond_to do |format|
       format.html  # show.html.erb
       format.json  { render :json => @post }

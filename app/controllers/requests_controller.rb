@@ -10,6 +10,7 @@ class RequestsController < ApplicationController
 
   def show
     @request = @commentable = Request.find(params[:id])
+    @comments = @commentable.comments
     respond_to do |format|
       format.html  # show.html.erb
       format.json  { render :json => @request }
@@ -18,6 +19,7 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
+    @image = @request.build_image
     respond_to do |format|
       format.html  # new.html.erb
       format.json  { render :json => @request }

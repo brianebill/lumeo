@@ -1,6 +1,6 @@
 class Question < ActiveRecord::Base
   before_save { |question| question.title = title.titleize }
-  attr_accessible :description, :title, :user_id, :subject
+  attr_accessible :description, :title, :user_id, :subject, :image_attributes
   
   validates :title, :presence => true,
                     :length => { :minimum => 5 }
@@ -10,6 +10,8 @@ class Question < ActiveRecord::Base
   has_many :comments
   
   votable_by :users
+  
+  default_scope order: 'questions.created_at DESC'
   
   include PgSearch
   pg_search_scope :search, against: [:title, :description, :subject],
