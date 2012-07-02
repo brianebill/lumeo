@@ -7,7 +7,9 @@ class Question < ActiveRecord::Base
   validates :description,  :presence => true
   
   belongs_to :user
-  has_many :comments
+  has_one :image, :as => :parent, :dependent => :destroy
+  accepts_nested_attributes_for :image, :allow_destroy => true
+  has_many :comments, :as => :commentable, :dependent => :destroy
   
   votable_by :users
   

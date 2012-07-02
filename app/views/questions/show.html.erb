@@ -1,25 +1,49 @@
-<p id="notice"><%= notice %></p>
-<div class="row">
-	<div class="span2 offset1">
-	 
+<div class="row span12 mleft40 mtop20">
+	<div class="span2">
+		<% if @question.image %>
+			<%= image_tag @question.image.source(:show) %>
+		<% else %>
+			<%= image_tag 'missing_show.png' %>
+		<% end %>
+		<% if can? :update, @question %>
+		    <% if @question.image %>
+				<%= link_to 'Replace photo?', edit_question_path(@question), 
+							:class => 'btn btn-mini btn-success mleft40 mtop10' %>	
+			<% else %>
+	    		<%= link_to 'Add a photo', edit_question_path(@question), 
+							:class => 'btn btn-mini btn-success mleft50 mtop10' %>
+			<% end %>
+		<% end %>
 	</div>
-		<div class="span5">
-			<h1><%= @question.title %></h1>
-			<p><%= @question.subject %></p>
-			<p><%= @question.description %></p>
-
-
+		<div class="span6 mleft40">
+			    <h1 class="title"><%= @question.title %></h1>
+				<p><%= @question.description %></p>
+			
 			    <% if can? :update, @question %>
-				    <%= link_to 'Edit Question', edit_question_path(@question), :class => 'btn btn-mini' %>
-					<%= link_to 'Delete Question', @question, 
+			        <%= link_to 'Delete Question', @question, 
 					                    confirm: 'Are you sure?', 
 					                    method: :delete, 
-					                    :class => 'btn btn-mini' %>
-	                 <%= link_to 'New Question', new_question_path, :class => 'btn btn-mini' %>
+					                    :class => 'btn btn-mini btn-danger pull-right mleft10 mtop30' %>
+					<%= link_to 'New Question', new_question_path, 
+								:class => 'btn btn-mini btn-primary pull-right mleft10 mtop30' %>
+				    <%= link_to 'Edit Question', edit_question_path(@question), 
+								:class => 'btn btn-mini btn-success pull-right mtop30' %>
 				<% end %>
 	     </div>
-
-</div>
-<div class="row offset2">
-    <%= link_to 'Back to Questions', questions_path, :class => 'btn btn-mini' %>
+	
+	  	<div class="row span3">		   
+			<div class="well center">
+				<p class="bold">Author: <%= image_tag @question.user.image.source(:header) %>
+				<%= @question.user.name %></p><br/>
+				<p class="mtop-20">Posted <%= time_ago_in_words(@question.created_at) %> ago</p>
+				<h3 class="center">More like this</h3>
+				
+		    </div>
+				
+			    <%= link_to 'Back to Questions', questions_path, :class => 'btn btn-mini btn-primary' %>
+		</div>
+	  <div class="row offset2 span6">
+	    <%= render "comments/comment" %>
+	    <%= render "comments/form" %>
+	  </div>
 </div>

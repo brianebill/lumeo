@@ -3,13 +3,15 @@ class QuestionsController < ApplicationController
   helper_method :sort_column, :sort_direction, :vote
   
   def index
-    @questions = Question.question_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
+    @questions = Question.question_search(params[:search]).order(sort_column + 
+    " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
     @users = User.all
     @search = params[:search]
   end
 
   def show
     @question = @commentable = Question.find(params[:id])
+    @comments = @commentable.comments
     respond_to do |format|
       format.html  # show.html.erb
       format.json  { render :json => @question }
@@ -18,6 +20,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    @image = @question.build_image
     respond_to do |format|
       format.html  # new.html.erb
       format.json  { render :json => @question }

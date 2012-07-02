@@ -1,25 +1,48 @@
-<p id="notice"><%= notice %></p>
-<div class="row">
-	<div class="span2 offset1">
-	 
+<div class="row span12 mleft40 mtop20">
+	<div class="span2 mbottom-50">
+		<% if @problem.image %>
+			<%= image_tag @problem.image.source(:show) %>
+		<% else %>
+			<%= image_tag 'missing_show.png' %>
+		<% end %>
+		<% if can? :update, @problem %>
+		    <% if @problem.image %>
+				<%= link_to 'Replace photo?', edit_problem_path(@problem), 
+							:class => 'btn btn-mini btn-success mleft40 mtop10' %>	
+			<% else %>
+	    		<%= link_to 'Add a photo', edit_problem_path(@problem), 
+							:class => 'btn btn-mini btn-success mleft50 mtop10' %>
+			<% end %>
+		<% end %>
 	</div>
-		<div class="span5">
-			    <h1><%= @problem.title %></h1>
-			    <p><%= @problem.description %></p>
-				<p><%= @problem.status %></p>
-
-
+		<div class="span6">
+			    <h1 class="title"><%= @problem.title %></h1>
+				<%= @problem.description %>
 			    <% if can? :update, @problem %>
-				    <%= link_to 'Edit Ticket', edit_problem_path(@problem), :class => 'btn btn-mini' %>
-					<%= link_to 'Delete Ticket', @problem, 
+			        <%= link_to 'Delete Ticket', @problem, 
 					                    confirm: 'Are you sure?', 
 					                    method: :delete, 
-					                    :class => 'btn btn-mini' %>
-	                 <%= link_to 'New Support Ticket', new_problem_path, :class => 'btn btn-mini' %>
+					                    :class => 'btn btn-mini btn-danger pull-right mleft10 mtop30' %>
+					<%= link_to 'New Support Ticket', new_problem_path, 
+								:class => 'btn btn-mini btn-primary pull-right mleft10 mtop30' %>
+				    <%= link_to 'Edit Ticket', edit_problem_path(@problem), 
+								:class => 'btn btn-mini btn-success pull-right mtop30' %>
 				<% end %>
 	     </div>
-
-</div>
-<div class="row offset2">
-    <%= link_to 'Back to Support', problems_path, :class => 'btn btn-mini' %>
+	
+	  	<div class="row span3">		   
+			<div class="well center">
+				<p class="bold">Author: <%= image_tag @problem.user.image.source(:header) %>
+				<%= @problem.user.name %></p><br/>
+				<p class="mtop-20">Posted <%= time_ago_in_words(@problem.created_at) %> ago</p>
+				<h3 class="center">More like this</h3>
+				
+		    </div>
+				
+			    <%= link_to 'Back to Problems', problems_path, :class => 'btn btn-mini btn-primary' %>
+		</div>
+	  <div class="row offset2 span6">
+	    <%= render "comments/comment" %>
+	    <%= render "comments/form" %>
+	  </div>
 </div>

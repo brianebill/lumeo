@@ -38,8 +38,9 @@ Lumeo::Application.routes.draw do
   resources :roles
   
   resources :messages
-  resources :questions
-  resources :topics, :contacts, :compliments, :ideas, :problems, :requests do
+
+  resources :topics, :contacts, :compliments,
+            :ideas, :problems, :requests, :questions do
     resources :comments
   end
   

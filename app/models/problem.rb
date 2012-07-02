@@ -2,7 +2,9 @@ class Problem < ActiveRecord::Base
   attr_accessible :description, :status, :title, :user_id, :image_attributes
   
   belongs_to :user
-  has_many :comments
+  has_one :image, :as => :parent, :dependent => :destroy
+  accepts_nested_attributes_for :image, :allow_destroy => true
+  has_many :comments, :as => :commentable, :dependent => :destroy
   
   votable_by :users
   

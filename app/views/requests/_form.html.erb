@@ -1,9 +1,6 @@
 <div class="offset3 span6 mtop20">
 <%= simple_form_for @request, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
    <fieldset class="well">
-	   <% if current_user.has_role? :admin %>
-	       <%= f.input :subject, :placeholder => 'no commas' %>
-	   <% end %>
 	   <%= f.input :title %>
  	   <%= f.input :who, :label => 'Taught by' %>
 	   <%= f.input :description %>

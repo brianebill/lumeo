@@ -6,7 +6,13 @@
 			<%= image_tag 'missing_show.png' %>
 		<% end %>
 		<% if can? :update, @request %>
-		    <%= link_to 'Add a photo', edit_request_path(@request), :class => 'btn btn-mini btn-success pull-right' %>
+				<% if @request.image %>
+					<%= link_to 'Replace photo?', edit_request_path(@request), 
+								:class => 'btn btn-mini btn-success mleft50 mtop10' %>	
+				<% else %>
+		    		<%= link_to 'Add a photo', edit_request_path(@request), 
+								:class => 'btn btn-mini btn-success mleft50 mtop10' %>
+				<% end %>
 		<% end %>
 	</div>
 		<div class="span6 mleft40">
@@ -19,9 +25,11 @@
 			        <%= link_to 'Delete Request', @request, 
 					                    confirm: 'Are you sure?', 
 					                    method: :delete, 
-					                    :class => 'btn btn-mini btn-danger pull-right mleft10' %>
-					<%= link_to 'New Request', new_request_path, :class => 'btn btn-mini btn-primary pull-right mleft10' %>
-				    <%= link_to 'Edit Request', edit_request_path(@request), :class => 'btn btn-mini btn-success pull-right' %>
+					                    :class => 'btn btn-mini btn-danger pull-right mleft10 mtop30' %>
+					<%= link_to 'New Request', new_request_path, 
+								:class => 'btn btn-mini btn-primary pull-right mleft10 mtop30' %>
+				    <%= link_to 'Edit Request', edit_request_path(@request), 
+								:class => 'btn btn-mini btn-success pull-right mtop30' %>
 				<% end %>
 	     </div>
 	
@@ -36,12 +44,9 @@
 				
 			    <%= link_to 'Back to Requests', requests_path, :class => 'btn btn-mini' %>
 		</div>
-				
-				
 	  <div class="row offset2 span6">
 	    <%= render "comments/comment" %>
 	    <%= render "comments/form" %>
 	  </div>
-
 </div>
 

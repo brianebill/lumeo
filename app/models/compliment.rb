@@ -8,6 +8,8 @@ class Compliment < ActiveRecord::Base
   votable_by :users
   
   belongs_to :user
+  has_one :image, :as => :parent, :dependent => :destroy
+  accepts_nested_attributes_for :image, :allow_destroy => true
   has_many :comments, :as => :commentable, :dependent => :destroy
   
   default_scope order: 'compliments.created_at DESC'

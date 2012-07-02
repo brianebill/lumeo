@@ -15,6 +15,10 @@ class Request < ActiveRecord::Base
   votable_by :users
   
   default_scope order: 'requests.created_at DESC'
+  
+  after_create do
+    self.create_image unless image
+  end
 
   include PgSearch
   pg_search_scope :search, against: [:title, :description, :who, :subject],
