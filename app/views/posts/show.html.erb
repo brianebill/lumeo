@@ -1,4 +1,4 @@
-<div class="row span12 mleft40 mtop20">
+<div class="row span12 mtop20">
 	 <div class="span2">
 	   <% if @post.image %>
 	     <%= image_tag @post.image.source(:show) %>
@@ -18,7 +18,7 @@
 	    <% end %>
 	 </div>
 
-	<div class="row span3">		   
+	<div class="row mleft40 span3">		   
 		<div class="well center">
 			<p class="bold">Author: <%= image_tag @post.user.image.source(:header) %>
 			<%= @post.user.name %></p><br/>

@@ -21,6 +21,7 @@ class RequestsController < ApplicationController
   def new
     @request = Request.new
     @image = @request.build_image
+    1.times { @request.tags.build }
     respond_to do |format|
       format.html  # new.html.erb
       format.json  { render :json => @request }

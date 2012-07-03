@@ -1,6 +1,6 @@
-<fieldset>
-	<%= f.input :name, :label => 'Subject', :placeholder => 'Add a subject like, "Film"' %>
-	<%= f.hidden_field :_destroy %>
-	<%= link_to 'remove subject', '#', class: 'remove_fields pull-right' %>
-</fieldset>
-
+ <fieldset>
+	 <%= f.label :name, "Tags"%>
+	 <%= f.text_field :name %>
+	 <%= f.hidden_field :_destroy %>
+	 <%= link_to 'remove subject', '#', class: 'remove_fields pull-right' %>
+ </fieldset>

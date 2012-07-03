@@ -1,25 +1,46 @@
 <h1 class="title center"><%= @category.name.titleize %></h1>
-<div class="offset1 span11">
-  <% @posts.each do |post| %>
-	<div class="row">
-		<div class="span2">
-			<%= image_tag post.image.source(:show) %>
-		</div>
-		<div class="span6">
-			<h3><%= link_to post.title, post, :class => '' %></h3>
-			<p><%= post.index_text.html_safe %></p>
-		</div>
-		<div class="span2 well">
+<div class="span12 row">
+	<div class="span2">
+		<div class="well span2">
 			<% if @categories %>
 			    <h4 class="title center">Browse Categories</h4>
 				<% @categories.each do |category| %>
 		  			<p><%= link_to category.name, category, :class => 'btn btn-mini' %></p>
 		  		<% end %>
+				<% if can? :update, @category %>
+					<%= link_to 'Edit Categories', categories_path,
+												   :class => 'btn btn-mini btn-success pull-right'%>
+				<% end %>
 			<% end %>
 		</div>
+		<div>
+		  <%= button_to 'Back to Posts', posts_path, :method => 'get', :class => 'btn btn-primary mleft40' %>
+		</div>
 	</div>
-  <% end %>
-</div>
-<div class="row offset2 span7">
-  <%= button_to 'Back to Posts', posts_path, :method => 'get', :class => 'btn btn-primary pull-right' %>
+  	<% @category.posts.each do |post| %>
+		<div class="span9 mtop20 mleft70">
+			<div class="span2">
+				<% if post.image %>
+					<%= image_tag post.image.source(:show) %>
+				<% else %>
+					<%= image_tag 'missing_show.png' %>
+				<% end %>
+				<% if can? :update, @post %>
+						<% if post.image %>
+							<%= link_to 'Replace photo?', edit_post_path(@post), 
+										:class => 'btn btn-mini btn-success mleft40 mtop10' %>	
+						<% else %>
+				    		<%= link_to 'Add a photo', edit_post_path(@post), 
+										:class => 'btn btn-mini btn-success mleft50 mtop10' %>
+						<% end %>
+				<% end %>
+			</div>
+		<div class="span6">
+			<h2><%= link_to post.title, post %></h2>
+			<p><%= post.index_text.html_safe %></p>
+		</div>
+
+
+	</div>
+	<% end %>
 </div>

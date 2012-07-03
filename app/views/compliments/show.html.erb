@@ -1,24 +1,48 @@
-<p id="notice"><%= notice %></p>
-<div class="row">
-	<div class="span2 offset1">
-	 
+<div class="row span12 mtop20">
+	<div class="span2 mbottom-50">
+		<% if @compliment.image %>
+			<%= image_tag @compliment.image.source(:show) %>
+		<% else %>
+			<%= image_tag 'missing_show.png' %>
+		<% end %>
+		<% if can? :update, @compliment %>
+		    <% if @compliment.image %>
+				<%= link_to 'Replace photo?', edit_compliment_path(@compliment), 
+							:class => 'btn btn-mini btn-success mleft40 mtop10' %>	
+			<% else %>
+	    		<%= link_to 'Add a photo', edit_compliment_path(@compliment), 
+							:class => 'btn btn-mini btn-success mleft50 mtop10' %>
+			<% end %>
+		<% end %>
 	</div>
-		<div class="span5">
-			    <h1><%= @compliment.title %></h1>
-			    <p><%= @compliment.description %></p>
-
-
+		<div class="span6">
+			    <h1 class="title"><%= @compliment.title %></h1>
+				<%= @compliment.description %>
 			    <% if can? :update, @compliment %>
-				    <%= link_to 'Edit Compliment', edit_compliment_path(@compliment), :class => 'btn btn-mini' %>
-					<%= link_to 'Delete Compliment', @compliment, 
+			        <%= link_to 'Delete Compliment', @compliment, 
 					                    confirm: 'Are you sure?', 
 					                    method: :delete, 
-					                    :class => 'btn btn-mini' %>
-	                 <%= link_to 'New Compliment', new_compliment_path, :class => 'btn btn-mini' %>
+					                    :class => 'btn btn-mini btn-danger pull-right mleft10 mtop30' %>
+					<%= link_to 'New Compliment', new_compliment_path, 
+								:class => 'btn btn-mini btn-primary pull-right mleft10 mtop30' %>
+				    <%= link_to 'Edit Compliment', edit_compliment_path(@compliment), 
+								:class => 'btn btn-mini btn-success pull-right mtop30' %>
 				<% end %>
 	     </div>
-
-</div>
-<div class="row offset2">
-    <%= link_to 'Back to Compliments', compliments_path, :class => 'btn btn-mini' %>
+	
+	  	<div class="row mleft40 span3">		   
+			<div class="well center">
+				<p class="bold">By <%= image_tag @compliment.user.image.source(:header) %>
+				<%= link_to @compliment.user.name, @compliment.user %></p><br/>
+				<p class="mtop-20">Posted <%= time_ago_in_words(@compliment.created_at) %> ago</p>
+				<h3 class="center">More like this</h3>
+				
+		    </div>
+				
+			    <%= link_to 'Back to Compliments', compliments_path, :class => 'btn btn-mini btn-primary' %>
+		</div>
+	  <div class="row offset2 span6">
+	    <%= render "comments/comment" %>
+	    <%= render "comments/form" %>
+	  </div>
 </div>

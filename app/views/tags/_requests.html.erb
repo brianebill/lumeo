@@ -1,0 +1,20 @@
+<div class="row">
+	<% @tag.requests.each do |req| %>
+		<div class="span2">
+			<% if req.image %>
+				<%= image_tag req.image.source(:show) %>
+			<% else %>
+				<%= image_tag 'missing_show.png' %>
+			<% end %>
+		</div>
+		<div class="span5">
+		   		<h1><%= link_to req.title, req %></h1>
+				<p class="bold">Requested by: <%= link_to req.user.name, @user %><br/>
+				Requested pro: <%= req.who %></p>
+		   		<p class="show-text"><%= req.description %></p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+		</div>
+	<% end %>
+</div>
+

@@ -34,6 +34,8 @@ Lumeo::Application.routes.draw do
   end
   
   resources :categories
+  
+  resources :tags
 
   resources :roles
   

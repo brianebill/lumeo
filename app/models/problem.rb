@@ -1,14 +1,25 @@
 class Problem < ActiveRecord::Base
-  attr_accessible :description, :status, :title, :user_id, :image_attributes
+  attr_accessible :description, :status, :title, 
+                  :user_id, :image_attributes, :tags_attributes
   
   belongs_to :user
   has_one :image, :as => :parent, :dependent => :destroy
   accepts_nested_attributes_for :image, :allow_destroy => true
   has_many :comments, :as => :commentable, :dependent => :destroy
+  has_and_belongs_to_many :tags
+  accepts_nested_attributes_for :tags, allow_destroy: :true,
+                                :reject_if => :all_blank
   
   votable_by :users
   
   default_scope order: 'problems.created_at DESC'
+  
+  # this will enqueue a Delayed Job for processing the image
+  after_save do
+    if source_changed?
+      Delayed::Job.enqueue ImageJob.new(self.id)
+    end
+  end
   
   include PgSearch
   pg_search_scope :search, against: [:title, :description],

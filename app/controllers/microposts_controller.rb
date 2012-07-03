@@ -6,18 +6,23 @@ class MicropostsController < ApplicationController
   
     def create
         @micropost = current_user.microposts.build(params[:micropost])
+      respond_to do |format|
         if @micropost.save
-          flash[:success] = "Micropost created!"
-          redirect_to root_path
+          format.html  { redirect_to(:back,
+                                     :notice => 'Lumination was successfully created.') }
+          format.json  { render :json => @micropost,
+                         :status => :created, :location => @micropost }
         else
-          @feed_items = []
-          render 'pages/home'
+          format.html  { render :action => "new" }
+          format.json  { render :json => @micropost.errors,
+                         :status => :unprocessable_entity }
         end
       end
+    end
 
     def destroy
       @micropost.destroy
-      redirect_to root_path
+      redirect_to :back
     end
 
     private

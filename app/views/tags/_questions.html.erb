@@ -1,0 +1,12 @@
+<div class="span2">
+	<% @tag.questions.each do |question| %>
+		<%= image_tag question.image.source(:show) %>
+</div>
+<div class="span5">
+   		<h2><%= link_to question.title, request %></h2>
+		<p class="bold">Posted by: <%= link_to question.user.name, @user %></p>
+   		<p><%= question.description %></p>
+<% end %>
+</div>
+
+	

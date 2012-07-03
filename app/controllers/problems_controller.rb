@@ -9,8 +9,8 @@ class ProblemsController < ApplicationController
   end
 
   def show
-    @problem = Problem.find(params[:id])
     @problem = @commentable = Problem.find(params[:id])
+    @comments = @commentable.comments
     respond_to do |format|
       format.html  # show.html.erb
       format.json  { render :json => @problem }

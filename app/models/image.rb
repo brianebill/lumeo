@@ -12,7 +12,7 @@ class Image < ActiveRecord::Base
                              :bucket => 'lumeo-course-dev',
                              :s3_credentials => "#{Rails.root}/config/s3.yml",
                              :path => ":attachment/:id/:style.:extension",
-                             :default_url => ":attachment/:parent_type/:style.png"
+                             :default_url => "missing_:style.png"
 
 
   # cancel post-processing now, and set processing flag

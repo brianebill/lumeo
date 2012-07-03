@@ -1,4 +1,4 @@
-<div class="row span12 mleft40 mtop20">
+<div class="row span12 mtop20">
 	<div class="span2">
 		<% if @request.image %>
 			<%= image_tag @request.image.source(:show) %>
@@ -8,7 +8,7 @@
 		<% if can? :update, @request %>
 				<% if @request.image %>
 					<%= link_to 'Replace photo?', edit_request_path(@request), 
-								:class => 'btn btn-mini btn-success mleft50 mtop10' %>	
+								:class => 'btn btn-mini btn-success mleft40 mtop10' %>	
 				<% else %>
 		    		<%= link_to 'Add a photo', edit_request_path(@request), 
 								:class => 'btn btn-mini btn-success mleft50 mtop10' %>
@@ -33,12 +33,15 @@
 				<% end %>
 	     </div>
 	
-	  	<div class="row span3">		   
+	  	<div class="row span3 mleft40">		   
 			<div class="well center">
 				<p class="bold">Author: <%= image_tag @request.user.image.source(:header) %>
-				<%= @request.user.name %></p><br/>
+				<%= link_to @request.user.name, @request.user %></p><br/>
 				<p class="mtop-20">Posted <%= time_ago_in_words(@request.created_at) %> ago</p>
 				<h3 class="center">More like this</h3>
+				<% for tag in @request.tags %>
+					<p><%= button_to tag.name, tag, :method => 'get', :class => 'btn btn-mini' %></p>
+				<% end %>
 				
 		    </div>
 				

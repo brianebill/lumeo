@@ -4,12 +4,14 @@ class ComplimentsController < ApplicationController
   
   def index
     @users = User.all
-    @compliments = Compliment.compliment_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
+    @compliments = Compliment.compliment_search(params[:search]).order(sort_column + 
+    " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
     @search = params[:search]
   end
 
   def show
     @compliment = @commentable = Compliment.find(params[:id])
+    @comments = @commentable.comments
     respond_to do |format|
       format.html  # show.html.erb
       format.json  { render :json => @compliment }

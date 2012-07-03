@@ -1,0 +1,16 @@
+<div class="span2">
+	<% if post.image %>
+		<%= image_tag post.image.source(:show) %>
+	<% else %>
+		<%= image_tag 'missing_show.png' %>
+	<% end %>
+	<% if can? :update,@post %>
+			<% if post.image %>
+				<%= link_to 'Replace photo?', edit_post_path(@post), 
+							:class => 'btn btn-mini btn-success mleft50 mtop10' %>	
+			<% else %>
+	    		<%= link_to 'Add a photo', edit_post_path(@post), 
+							:class => 'btn btn-mini btn-success mleft50 mtop10' %>
+			<% end %>
+	<% end %>
+</div>

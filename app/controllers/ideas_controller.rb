@@ -10,6 +10,7 @@ class IdeasController < ApplicationController
 
   def show
     @idea = @commentable = Idea.find(params[:id])
+    @comments = @commentable.comments
     respond_to do |format|
       format.html  # show.html.erb
       format.json  { render :json => @idea }

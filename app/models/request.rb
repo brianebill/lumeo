@@ -1,6 +1,6 @@
 class Request < ActiveRecord::Base
   attr_accessible :description, :title, :user_id, :who, :tag_ids, 
-                  :subject, :tags_attributes, :image_attributes
+                  :subject, :image_attributes, :tags_attributes, :tags
   
   validates :title, :presence => true,
                     :length => { :minimum => 5 }
@@ -8,6 +8,10 @@ class Request < ActiveRecord::Base
   validates :who,  :presence => true
   
   belongs_to :user
+  
+  has_and_belongs_to_many :tags
+  accepts_nested_attributes_for :tags, allow_destroy: :true,
+                                :reject_if => :all_blank
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_one :image, :as => :parent, :dependent => :destroy
   accepts_nested_attributes_for :image, :allow_destroy => true

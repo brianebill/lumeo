@@ -13,6 +13,13 @@ class Compliment < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
   
   default_scope order: 'compliments.created_at DESC'
+  
+  # this will enqueue a Delayed Job for processing the image
+  after_save do
+    if source_changed?
+      Delayed::Job.enqueue ImageJob.new(self.id)
+    end
+  end
 
   include PgSearch
   pg_search_scope :search, against: [:title, :description],

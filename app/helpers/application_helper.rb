@@ -22,11 +22,11 @@ module ApplicationHelper
   
   #to add a tag using js in the new.html.erb forms for community/post/courses
   def link_to_add_fields(name, f, association)
-    new_object = f.object.send(association).klass.new
-    id = new_object.object_id
-    fields = f.fields_for(association, new_object, child_index: id) do |builder|
-      render(association.to_s.pluralize + "/form", f: builder)
+      new_object = f.object.send(association).klass.new
+      id = new_object.object_id
+      fields = f.fields_for(association, new_object, child_index: id) do |builder|
+        render("tags/form", f: builder)
+      end
+      link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
     end
-    button_to(name, '#', class: "add_fields btn btn-small pull-right", data: {id: id, fields: fields.gsub("\n", "")})
-  end
 end

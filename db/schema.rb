@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702032137) do
+ActiveRecord::Schema.define(:version => 20120703164738) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -116,6 +116,14 @@ ActiveRecord::Schema.define(:version => 20120702032137) do
     t.integer  "user_votes_total", :default => 0
   end
 
+  create_table "ideas_tags", :id => false, :force => true do |t|
+    t.integer "idea_id"
+    t.integer "tag_id"
+  end
+
+  add_index "ideas_tags", ["idea_id", "tag_id"], :name => "index_ideas_tags_on_idea_id_and_tag_id"
+  add_index "ideas_tags", ["tag_id", "idea_id"], :name => "index_ideas_tags_on_tag_id_and_idea_id"
+
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
     t.string   "parent_type"
@@ -180,6 +188,14 @@ ActiveRecord::Schema.define(:version => 20120702032137) do
     t.integer  "user_votes_total", :default => 0
   end
 
+  create_table "problems_tags", :id => false, :force => true do |t|
+    t.integer "problem_id"
+    t.integer "tag_id"
+  end
+
+  add_index "problems_tags", ["problem_id", "tag_id"], :name => "index_problems_tags_on_problem_id_and_tag_id"
+  add_index "problems_tags", ["tag_id", "problem_id"], :name => "index_problems_tags_on_tag_id_and_problem_id"
+
   create_table "questions", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -189,6 +205,14 @@ ActiveRecord::Schema.define(:version => 20120702032137) do
     t.string   "subject"
     t.integer  "user_votes_total", :default => 0
   end
+
+  create_table "questions_tags", :id => false, :force => true do |t|
+    t.integer "question_id"
+    t.integer "tag_id"
+  end
+
+  add_index "questions_tags", ["question_id", "tag_id"], :name => "index_questions_tags_on_question_id_and_tag_id"
+  add_index "questions_tags", ["tag_id", "question_id"], :name => "index_questions_tags_on_tag_id_and_question_id"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -225,6 +249,14 @@ ActiveRecord::Schema.define(:version => 20120702032137) do
     t.integer  "user_votes_total", :default => 0
   end
 
+  create_table "requests_tags", :id => false, :force => true do |t|
+    t.integer "request_id"
+    t.integer "tag_id"
+  end
+
+  add_index "requests_tags", ["request_id", "tag_id"], :name => "index_requests_tags_on_request_id_and_tag_id"
+  add_index "requests_tags", ["tag_id", "request_id"], :name => "index_requests_tags_on_tag_id_and_request_id"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -248,17 +280,8 @@ ActiveRecord::Schema.define(:version => 20120702032137) do
 
   create_table "tags", :force => true do |t|
     t.string   "name"
-    t.integer  "post_id"
-    t.integer  "request_id"
-    t.integer  "idea_id"
-    t.integer  "problem_id"
-    t.integer  "question_id"
-    t.integer  "course_id"
-    t.integer  "video_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "parent_id"
-    t.string   "parent_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "topics", :force => true do |t|

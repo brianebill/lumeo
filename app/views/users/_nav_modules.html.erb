@@ -1,7 +1,6 @@
 <div class="tabbable tabs-right">
   <ul class="nav nav-tabs">
-	<li class="active"><a href="#feed" data-toggle="tab">Feed</a></li>
-    <li><a href="#luminations" data-toggle="tab">Luminations</a></li>
+	<li class="active"><a href="#luminations" data-toggle="tab">Luminations</a></li>
     <li><a href="#info" data-toggle="tab">Info</a></li>
     <li><a href="#profolio" data-toggle="tab">Profolio</a></li>
     <li><a href="#community" data-toggle="tab">Community</a></li>
@@ -9,11 +8,7 @@
     <li><%= link_to "Help", topics_path %></li>
   </ul>
   <div class="tab-content">
-	<div class="tab-pane span6 active" id="feed">
-	      <h3>Feed</h3>
-	      <%= render 'shared/feed' %>
-	</div>
-	<div class="tab-pane" id="luminations">
+	<div class="tab-pane span6 active" id="luminations">
 	    <h3>Every Day I Learn Something New</h3>
 		<p>Today I learned:</p>
      	<%= render 'reflections' %>
