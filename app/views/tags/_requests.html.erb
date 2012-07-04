@@ -9,7 +9,7 @@
 		</div>
 		<div class="span5">
 		   		<h1><%= link_to req.title, req %></h1>
-				<p class="bold">Requested by: <%= link_to req.user.name, @user %><br/>
+				<p class="bold">Requested by: <%= link_to req.user.name, req.user %><br/>
 				Requested pro: <%= req.who %></p>
 		   		<p class="show-text"><%= req.description %></p>
 				<p>&nbsp;</p>

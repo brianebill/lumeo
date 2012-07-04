@@ -1,4 +1,9 @@
-<h1 class="title center"><%= @category.name.titleize %></h1>
+<div class="breadcrumbs span12 row">
+	<p>
+		<%= link_to "blog", posts_path %>
+		> categories
+	</p>
+</div><h1 class="title center"><%= @category.name.titleize %></h1>
 <div class="span12 row">
 	<div class="span2">
 		<div class="well span2">

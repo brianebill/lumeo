@@ -1,5 +1,6 @@
 <div class="offset3 span6 mtop20">
-	<%= simple_form_for @question, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+	<%= simple_form_for @question, :html => { :class => 'form-horizontal', 
+						:multipart => true } do |f| %>
 		<fieldset class="well">
 			   <%= f.input :title %>
 			   <%= f.input :description %>
@@ -19,7 +20,7 @@
 							:label => 'Pick one or more subjects' %>
 		</div>
 	  <div class ="form-actions">
-	    <%= f.submit nil, :class => 'btn btn-primary pull-right' %>
+	    <%= f.submit nil, :class => 'btn btn-primary btn-large pull-right' %>
 	  </div>
 	<% end %>
 </div>

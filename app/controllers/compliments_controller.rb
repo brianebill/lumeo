@@ -20,7 +20,7 @@ class ComplimentsController < ApplicationController
 
   def new
     @compliment = Compliment.new
-    @image = @post.build_image
+    @image = @compliment.build_image
     respond_to do |format|
       format.html  # new.html.erb
       format.json  { render :json => @compliment }

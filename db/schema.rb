@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703215238) do
+ActiveRecord::Schema.define(:version => 20120704035404) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -112,7 +112,6 @@ ActiveRecord::Schema.define(:version => 20120703215238) do
     t.text     "description"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
-    t.string   "subject"
     t.integer  "user_votes_total", :default => 0
   end
 
@@ -202,7 +201,6 @@ ActiveRecord::Schema.define(:version => 20120703215238) do
     t.text     "description"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
-    t.string   "subject"
     t.integer  "user_votes_total", :default => 0
   end
 
@@ -245,7 +243,6 @@ ActiveRecord::Schema.define(:version => 20120703215238) do
     t.string   "who"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
-    t.string   "subject"
     t.integer  "user_votes_total", :default => 0
   end
 

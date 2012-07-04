@@ -11,30 +11,28 @@
 			<nav>
 			  <ul class="nav pull-right top4">
 					<% if user_signed_in? %>
-				      <% if current_user.image %>
-                <li class="gravatar_header">
-                  <%= image_tag current_user.image.source(:header) %>
-							  </li>
-              <% end %>
-
-					  <li> &nbsp; &nbsp;</li>
-					  <li><%= link_to current_user.name, current_user %></li>
-          <% end %>
-
-			         <li><%= link_to "Content", courses_path %></li>
-			         <li><%= link_to "Contests", courses_path %></li>
-				    <li><%= link_to "Community", topics_path %></li>
-				   <li class="footer_link"><%= link_to "Blog",  posts_path  %></li>
-				   <% if user_signed_in? %>		 
-			           <% if current_user.has_role? :admin %>
-					        <li><%= link_to "Manage Members", users_path %></li>
-				       <% end %>
-				       <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>	
-			       <% else %>
-				      <li><%= link_to "Sign in", new_user_session_path %></li>
-			          <li><%= link_to "Become a member", new_user_registration_path %></li> 
-			       <% end %>
-		     </ul>
+		                  <li class="gravatar_header">
+			                  	<% if current_user.image %>
+									<%= image_tag current_user.image.source(:header) %>
+								<% else %>
+									<%= image_tag 'missing_header.png' %>
+								<% end %>
+						  </li>
+						  <li> &nbsp; &nbsp;</li>
+						  <li><%= link_to current_user.name, current_user %></li>
+				          <li><%= link_to "Content", courses_path %></li>
+				          <li><%= link_to "Contests", courses_path %></li>
+					      <li><%= link_to "Community", topics_path %></li>
+					      <li class="footer_link"><%= link_to "Blog",  posts_path  %></li>
+			              <% if current_user.has_role? :admin %>
+					           <li><%= link_to "Manage Members", users_path %></li>
+				          <% end %>
+				          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>	
+			              <% else %>
+				               <li><%= link_to "Sign in", new_user_session_path %></li>
+			                   <li><%= link_to "Become a member", new_user_registration_path %></li> 
+			          <% end %>
+		       </ul>
 		   </nav>
 		  </div>
     </div>
