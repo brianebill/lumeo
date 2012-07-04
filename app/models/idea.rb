@@ -1,6 +1,6 @@
 class Idea < ActiveRecord::Base
   attr_accessible :description, :title, :user_id, 
-                  :subject, :image_attributes, :tags_attributes
+                  :subject, :image_attributes, :tags_attributes, :tag_ids
   
   belongs_to :user
   has_one :image, :as => :parent, :dependent => :destroy
@@ -14,11 +14,8 @@ class Idea < ActiveRecord::Base
   
   default_scope order: 'ideas.created_at DESC'
   
-  # this will enqueue a Delayed Job for processing the image
-  after_save do
-    if source_changed?
-      Delayed::Job.enqueue ImageJob.new(self.id)
-    end
+  after_create do
+    self.create_image unless image
   end
   
   include PgSearch

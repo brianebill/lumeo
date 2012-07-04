@@ -1,3 +1,9 @@
+<div class="breadcrumbs span12 row">
+	<p>
+		<%= link_to "community", topics_path %>
+		> <%= link_to "questions", questions_path %> > <%= @question.title.downcase %>
+	</p>
+</div>
 <div class="row span12 mtop20">
 	<div class="span2">
 		<% if @question.image %>
@@ -29,6 +35,10 @@
 				    <%= link_to 'Edit Question', edit_question_path(@question), 
 								:class => 'btn btn-mini btn-success pull-right mtop30' %>
 				<% end %>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
 	     </div>
 	
 	  	<div class="row span3 mleft40">		   
@@ -37,7 +47,9 @@
 				<%= link_to @question.user.name, @question.user %></p><br/>
 				<p class="mtop-20">Posted <%= time_ago_in_words(@question.created_at) %> ago</p>
 				<h3 class="center">More like this</h3>
-				
+				<% for tag in @question.tags %>
+					<p><%= button_to tag.name, tag, :method => 'get', :class => 'btn btn-mini' %></p>
+				<% end %>
 		    </div>
 				
 			    <%= link_to 'Back to Questions', questions_path, :class => 'btn btn-mini btn-primary' %>

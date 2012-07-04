@@ -1,6 +1,6 @@
 class ComplimentsController < ApplicationController
   before_filter :find_compliment, :except => [:index, :new, :create]
-  helper_method :sort_column, :sort_direction, :vote
+  helper_method :sort_column, :sort_direction, :vote, :model_name
   
   def index
     @users = User.all
@@ -20,6 +20,7 @@ class ComplimentsController < ApplicationController
 
   def new
     @compliment = Compliment.new
+    @image = @post.build_image
     respond_to do |format|
       format.html  # new.html.erb
       format.json  { render :json => @compliment }
@@ -73,6 +74,10 @@ class ComplimentsController < ApplicationController
           current_user.cast_compliment_vote(@compliment, -1)
         end
         redirect_to params[:redirect] == 'index' ? compliments_path : @compliment
+      end
+      
+      def model_name
+          @model_name = self.class.name.sub("Controller", "")
       end
 
       private

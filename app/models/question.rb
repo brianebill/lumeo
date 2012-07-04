@@ -9,25 +9,18 @@ class Question < ActiveRecord::Base
   
   belongs_to :user
   has_one :image, :as => :parent, :dependent => :destroy
-  accepts_nested_attributes_for :image, :allow_destroy => true
-  has_many :comments, :as => :commentable, :dependent => :destroy
+    accepts_nested_attributes_for :image, :allow_destroy => true
   has_and_belongs_to_many :tags
-  accepts_nested_attributes_for :tags, allow_destroy: :true,
+    accepts_nested_attributes_for :tags, allow_destroy: :true,
                                 :reject_if => :all_blank
-                                
-  after_create do
-    self.create_image unless image
-  end
+  has_many :comments, :as => :commentable, :dependent => :destroy
   
   votable_by :users
   
   default_scope order: 'questions.created_at DESC'
   
-  # this will enqueue a Delayed Job for processing the image
-  after_save do
-    if source_changed?
-      Delayed::Job.enqueue ImageJob.new(self.id)
-    end
+  after_create do
+    self.create_image unless image
   end
   
   include PgSearch

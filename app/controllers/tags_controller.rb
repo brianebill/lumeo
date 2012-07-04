@@ -6,6 +6,7 @@ class TagsController < ApplicationController
 
     def index
       @tags = Tag.all
+      @tag = Tag.new
     end
 
     def show
@@ -33,10 +34,10 @@ class TagsController < ApplicationController
 
       respond_to do |format|
         if @tag.save
-          format.html  { redirect_to(@tag,
+          format.html  { redirect_to(:back,
                         :notice => 'Tag was successfully created.') }
-          format.json  { render :json => @tag,
-                        :status => :created, :location => @tag }
+          format.json  { render :json => :back,
+                        :status => :created, :location => tags_path }
         else
           format.html  { render :action => "new" }
           format.json  { render :json => @tag.errors,

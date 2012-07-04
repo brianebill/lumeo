@@ -1,6 +1,6 @@
 class ProblemsController < ApplicationController
   before_filter :find_problem, :except => [:index, :new, :create]
-  helper_method :sort_column, :sort_direction, :vote
+  helper_method :sort_column, :sort_direction, :vote, :model_name
   
   def index
     @problems = Problem.problem_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
@@ -19,6 +19,7 @@ class ProblemsController < ApplicationController
 
   def new
     @problem = Problem.new
+    @image = @problem.build_image
     respond_to do |format|
       format.html  # new.html.erb
       format.json  { render :json => @problem }
@@ -72,6 +73,10 @@ class ProblemsController < ApplicationController
             current_user.cast_problem_vote(@problem, -1)
           end
           redirect_to params[:redirect] == 'index' ? problems_path : @problem
+        end
+        
+        def model_name
+            @model_name = self.class.name.sub("Controller", "")
         end
       
       private

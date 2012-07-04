@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   before_filter :find_idea, :except => [:index, :new, :create]
-  helper_method :sort_column, :sort_direction, :vote
+  helper_method :sort_column, :sort_direction, :vote, :model_name
   
   def index
     @ideas = Idea.idea_search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
@@ -19,6 +19,8 @@ class IdeasController < ApplicationController
 
   def new
     @idea = Idea.new
+    @image = @idea.build_image
+    1.times { @idea.tags.build }
     respond_to do |format|
       format.html  # new.html.erb
       format.json  { render :json => @idea }
@@ -74,6 +76,10 @@ class IdeasController < ApplicationController
             current_user.cast_idea_vote(@idea, -1)
           end
           redirect_to params[:redirect] == 'index' ? ideas_path : @idea
+        end
+        
+        def model_name
+            @model_name = self.class.name.sub("Controller", "")
         end
         
       private

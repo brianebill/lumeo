@@ -6,6 +6,8 @@
 	   <thead>
 		  <tr>
 			<th></th>
+			<th>Vote</th>
+			<th> </th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "created_at", "When" %></th>
 			<th><%= sortable "idea.user", "Member" %></th>
@@ -24,6 +26,13 @@
 					<h1 class="count-index"><%= vote_total idea.user_votes %></h1>
 				 <% end %>
 		   </td>
+		   	<td><div class="mtop10">
+				<% if idea.image %>
+					<%= image_tag idea.image.source(:feed) %>
+				<% else %>
+					<%= image_tag 'missing_feed.png' %>
+				<% end %>
+			</div></td>
 	       <td><h3 class="mtop15"><%= link_to idea.title, idea %></h3></td>
 	       <td><p class="mtop15"><%= time_ago_in_words(idea.created_at) %> ago</p></td>
 		   <td><p class="mtop15"><%= link_to idea.user.name, idea.user %></p></td>

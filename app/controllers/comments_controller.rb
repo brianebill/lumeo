@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
   end
 
   def new
+    @image = @comment.build_image
   end
   
   def show

@@ -1,10 +1,18 @@
-<div class="span2">
+<div class="row">
 	<% @tag.ideas.each do |idea| %>
-		<%= image_tag idea.image.source(:show) %>
-</div>
-<div class="span5">
-   		<h2><%= link_to idea.title, idea %></h2>
-		<p class="bold">Posted by: <%= link_to idea.user.name, @user %></p>
-   		<p><%= idea.description %></p>
-<% end %>
+		<div class="span2">
+			<% if idea.image %>
+				<%= image_tag idea.image.source(:show) %>
+			<% else %>
+				<%= image_tag 'missing_show.png' %>
+			<% end %>
+		</div>
+		<div class="span5">
+		   		<h1><%= link_to idea.title, idea %></h1>
+				<p class="bold">Posted by: <%= link_to idea.user.name, @user %><br/></p>
+		   		<p class="show-text"><%= idea.description %></p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+		</div>
+	<% end %>
 </div>

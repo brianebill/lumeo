@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   before_filter :find_request, :except => [:index, :new, :create]
-  helper_method :sort_column, :sort_direction, :vote
+  helper_method :sort_column, :sort_direction, :vote, :model_name
 
   def index
     @requests = Request.request_search(params[:search]).order(sort_column + 
@@ -76,6 +76,10 @@ class RequestsController < ApplicationController
     end
 
     redirect_to params[:redirect] == 'index' ? requests_path : @request
+  end
+  
+  def model_name
+      @model_name = self.class.name.sub("Controller", "")
   end
 
   protected

@@ -5,7 +5,9 @@
 	<table class="table table-striped pretty">
 	   <thead>
 		  <tr>
-			<th></th>
+			<th> </th>
+			<th>Vote</th>
+			<th> </th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "created_at", "When" %></th>
 			<th><%= sortable "compliment.user.name", "Compliment by" %></th>
@@ -24,6 +26,13 @@
 					<h1 class="count-index"><%= vote_total compliment.user_votes %></h1>
 				 <% end %>
 		   </td>
+			<td><div class="mtop10">
+				<% if compliment.image %>
+					<%= image_tag compliment.image.source(:feed) %>
+				<% else %>
+					<%= image_tag 'missing_feed.png' %>
+				<% end %>
+			</div></td>
 	       <td><h3 class="mtop15"><%= link_to compliment.title, compliment %></h3></td>
 	       <td><p class="mtop15"><%= time_ago_in_words(compliment.created_at) %> ago</p></td>
 		   <td><p class="mtop15"><%= link_to compliment.user.name, compliment.user %></p></td>

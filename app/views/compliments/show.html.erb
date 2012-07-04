@@ -1,3 +1,9 @@
+<div class="breadcrumbs span12 row">
+	<p>
+		<%= link_to "community", topics_path %>
+		> <%= link_to "compliments", compliments_path %> > <%= @compliment.title.downcase %>
+	</p>
+</div>
 <div class="row span12 mtop20">
 	<div class="span2 mbottom-50">
 		<% if @compliment.image %>

@@ -5,8 +5,9 @@
 	<table class="table table-striped pretty">
 	   <thead>
 		  <tr>
-		    <th></th>
-		    <th></th>
+		    <th> </th>
+		    <th>Vote</th>
+		    <th> </th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "created_at", "When" %></th>
 			<th><%= sortable "question.user.name", "Member" %></th>
@@ -25,7 +26,13 @@
 						 <h2 class="count-index"><%= vote_total question.user_votes %></h2>
 					 <% end %>
 				</td>
-			   
+			   	<td><div class="mtop10">
+					<% if question.image %>
+						<%= image_tag question.image.source(:feed) %>
+					<% else %>
+						<%= image_tag 'missing_feed.png' %>
+					<% end %>
+				</div></td>
 		       <td><h3 class="mtop15"><%= link_to question.title, question %></h3></td>
 		       <td><p class="mtop15"><%= time_ago_in_words(question.created_at) %> ago</p></td>
 		       <td><p class="mtop15"><%= link_to question.user.name, question.user %></p></td>

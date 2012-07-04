@@ -35,5 +35,9 @@ class Post < ActiveRecord::Base
   validates :show_text, :presence => true, :length => { :minimum => 3 }
 
   default_scope order: 'posts.created_at DESC'
+  
+  after_create do
+    self.create_image unless image
+  end
 
 end

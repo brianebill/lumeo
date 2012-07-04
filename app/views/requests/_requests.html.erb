@@ -5,7 +5,9 @@
 	<table class="table table-striped pretty">
 	   <thead>
 		  <tr>
+			<th> </th>
 			<th>Vote</th>
+			<th> </th>
 		    <th><%= sortable "title" %></th>
 			<th><%= sortable "who", "Requested Pro" %></th>
 			<th><%= sortable "created_at", "When" %></th>
@@ -25,6 +27,13 @@
 					 <h2 class="count-index"><%= vote_total req.user_votes %></h2>
 				 <% end %>
 		   </td>
+			<td><div class="mtop10">
+				<% if req.image %>
+					<%= image_tag req.image.source(:feed) %>
+				<% else %>
+					<%= image_tag 'missing_feed.png' %>
+				<% end %>
+			</div></td>
 	       <td><h3 class="mtop15"><%= link_to req.title, req %></h3></td>
 	       <td><p class="mtop15"><%= req.who %></p></td>
 	       <td><p class="mtop15"><%= time_ago_in_words(req.created_at) %> ago</p></td>

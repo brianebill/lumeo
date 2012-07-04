@@ -1,3 +1,3 @@
 class QuestionsTags < ActiveRecord::Base
-  attr_accessible :request_id, :tag_id
+  attr_accessible :question_id, :tag_id
 end

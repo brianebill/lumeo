@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_filter :find_question, :except => [:index, :new, :create]
-  helper_method :sort_column, :sort_direction, :vote
+  helper_method :sort_column, :sort_direction, :vote, :model_name
   
   def index
     @questions = Question.question_search(params[:search]).order(sort_column + 
@@ -21,6 +21,7 @@ class QuestionsController < ApplicationController
   def new
     @question = Question.new
     @image = @question.build_image
+    1.times { @question.tags.build }
     respond_to do |format|
       format.html  # new.html.erb
       format.json  { render :json => @question }
@@ -74,6 +75,10 @@ class QuestionsController < ApplicationController
           current_user.cast_question_vote(@question, -1)
         end
         redirect_to params[:redirect] == 'index' ? questions_path : @question
+      end
+      
+      def model_name
+          @model_name = self.class.name.sub("Controller", "")
       end
       
       private

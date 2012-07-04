@@ -1,4 +1,9 @@
 class Request < ActiveRecord::Base
+  before_save do |req|
+    %w[ title who subject ].each do |type|
+      req.attributes[type] = req.attributes[type].titleize
+    end
+  end
   attr_accessible :description, :title, :user_id, :who, :tag_ids, 
                   :subject, :image_attributes, :tags_attributes, :tags
   
@@ -8,13 +13,12 @@ class Request < ActiveRecord::Base
   validates :who,  :presence => true
   
   belongs_to :user
-  
+  has_one :image, :as => :parent, :dependent => :destroy
+    accepts_nested_attributes_for :image, :allow_destroy => true
   has_and_belongs_to_many :tags
-  accepts_nested_attributes_for :tags, allow_destroy: :true,
+    accepts_nested_attributes_for :tags, allow_destroy: :true,
                                 :reject_if => :all_blank
   has_many :comments, :as => :commentable, :dependent => :destroy
-  has_one :image, :as => :parent, :dependent => :destroy
-  accepts_nested_attributes_for :image, :allow_destroy => true
 
   votable_by :users
   

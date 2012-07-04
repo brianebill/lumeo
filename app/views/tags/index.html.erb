@@ -1,13 +1,28 @@
-<div class="row span11">
-	<h1 class="title">Tags</h1>
-	<div class="span4 row well offset3">
+<h1 class="title span10 mleft120">Manage Subject Tags</h1>
+<div class="span4 row offset4 mtop20">
+	<fieldset class="well">
 	  <% @tags.each do |tag| %>
+		<span>
 				<%= button_to tag.name, tag, 
 											:method => 'get',
 	 										:class => 'btn btn-primary btn-small' %>
+		</span>
+		<span class="pull-right mtop-17">
 		   		<%= button_to 'Delete', tag, 
 			                :method => 'delete', 
-							:class => 'btn btn-small btn-danger pull-right mtop-47' %>
+							:class => 'btn btn-small btn-danger mtop-47' %>
+	    </span>
 	  <% end %>
-	</div>
+	</fieldset>
+</div>
+<div class="offset4 span4 mtop20">
+	<%= simple_form_for @tag, :html => { :class => 'form-horizontal' } do |f| %>
+		<fieldset class="well">
+			<h3>Add Subject: </h3>
+			<%= f.input :name %>
+		</fieldset>
+		<div class="form-actions">
+			<%= f.submit nil, :class => 'btn btn-primary pull-right' %>
+		</div>
+	<% end %>
 </div>

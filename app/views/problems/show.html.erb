@@ -1,3 +1,9 @@
+<div class="breadcrumbs span12 row">
+	<p>
+		<%= link_to "community", topics_path %>
+		> <%= link_to "support", problems_path %> > <%= @problem.title.downcase %>
+	</p>
+</div>
 <div class="row span12 mtop20">
 	<div class="span2 mbottom-50">
 		<% if @problem.image %>
@@ -36,7 +42,9 @@
 				<%= link_to @problem.user.name, @problem.user %></p><br/>
 				<p class="mtop-20">Posted <%= time_ago_in_words(@problem.created_at) %> ago</p>
 				<h3 class="center">More like this</h3>
-				
+				<% for tag in @problem.tags %>
+					<p><%= button_to tag.name, tag, :method => 'get', :class => 'btn btn-mini' %></p>
+				<% end %>
 		    </div>
 				
 			    <%= link_to 'Back to Problems', problems_path, :class => 'btn btn-mini btn-primary' %>
