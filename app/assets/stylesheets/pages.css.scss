@@ -23,10 +23,6 @@
 }
 
 
-#home_exam {
-    height:250px;
-}
-
 #home_exam_container {
     margin-top:25px;
 }
@@ -38,67 +34,12 @@ p#video_exam_link {
 	padding-left:4px;
 }
 
-.exam_counter {
-	float:right;
-	font-weight:bold;
-	padding-right:15px;
-	p	{
-	color:#fff;	
-	}
-
-}
-.exam_headline {
-	text-align:center;
-	clear:both;
-	font-size:22px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight:200;
-}
-
-.exam_question {
-     text-align:center;
-}
-
-.exam_text {
-	margin-top:-5px;
-	font-size:16px;
-	font-family: Arial, Helvetica, sans-serif;
-	float:right;
-    list-style-type: none;
-}
-
-.exam_button {
-	float:left;
-	margin-left:145px;
-	margin-top:-23px;
-}
-
-.exam_call_text{
-	font-size:19px;
-	font-family: Arial, Helvetica, sans-serif;
-	clear:right;
-	float:right;
-	margin-top:0px;
-	padding-right:2px;
-	
-}
 
 /* HOME_CALL------------------------------------- */
 
-#home_row_1 {
-     margin-bottom:20px;
-     margin-top:25px;
-
-}
-
-#home_call {
-    margin-left:15px;
-	margin-bottom:20px;
-	margin-top:25px;
-}
-
-#call_text {
+.call_text {
 	font-size:26px;
+	line-height:36px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight:200;
 }

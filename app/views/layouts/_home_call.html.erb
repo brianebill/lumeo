@@ -1,16 +1,41 @@
-
-<div id="home_call">
-     <h1 id="call_text"><strong><span id="main_call">Pursue Your HAPPY!</span></strong><br/>
-     					Lumeo is the <span class="italics bold">direct</span> 
-						way to get what you want from learning. It all starts with 
-						<span class="bold">YOU</span>.<br/></h1><h2 class="center">
-						Join Lumeo now and <span class="italics">let's get it started.</span></h2>
+<div class="span6">
+	<h1 class="mtop20">
+			Lumeo is a <strong>social learning community
+	</h1>
+	<p class="center call_text">
+		def:</strong> a happy place where dreams come true
+	</p>
+	<h3 class="mleft60">Benefits: </h3>
+		<ol class="mleft120 mtop5">
+			<li> <strong>Meet cool people</strong> who like the same things you do</li>
+			<li>Learn what you need to know to <strong>get a better job</strong></li>
+			<li><strong>Network with professionals</strong> and peers</li>
+			<li>Enter contests to <strong>win gear</strong> you need to go pro</li> 
+			<li>Increase your <strong>happiness quotient</strong></li>
+	</p>
+	<h3 class="mtop20">This quirky about video explains how LUMEO works</h3>
+	<div class="">
+		<a href="#"><%= image_tag("home_watch_video_button.png", alt: "Watch the Video") %></a>
+	</div>
 </div>
-
-<div class="center" id="about_video_button">
-	<a href="#"><span class="label label-info">Watch the "About" Video to find out how</span></a>
-</div>
-
-<div class="center call_button">
-<a href="#"><%= image_tag("home_call_button.gif", alt: "Become a member") %></a>
+<div class="span5 mtop10">
+	<div class="well h425">
+			<span class="label pull-right">Become a luminary!</span>
+			<h2 class="">Pursue your Happy!</h2>
+			<p>The Lumeo community is free and always will be.</p>		
+			<div class="mtop20 span4">
+					 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+				      <%= f.error_notification %>
+				  	   <div class="inputs">
+				          <%= f.input :name, :required => true %>
+				          <%= f.input :email, :required => true, :autofocus => true %>
+				          <%= f.input :password, :required => true %>
+				          <%= f.input :password_confirmation, :required => true %>
+				        </div>
+				       <div class="form-actions">
+				           <%= f.button :submit, "Sign up", :class => 'btn btn-primary btn-large pull-right' %>
+				       </div>
+				    <% end %>
+			</div>
+	</div>
 </div>
