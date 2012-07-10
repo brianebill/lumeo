@@ -6,6 +6,7 @@ $navbarBackground: #555;
 $navbarBackgroundHighlight: #888;
 $navbarText: #eee;
 $navbarLinkColor: #eee;
+$green: #669933;
 
 @import "bootstrap";
 
@@ -75,29 +76,9 @@ textarea {
   color:white;
 }
 
-/* typography */
 
-h1, h2, h3, h4, h5, h6 {
-  font-family:helvetica, arial, sans-serif;
-}
 
-.hel p {
-  font-family:helvetica, arial, sans-serif;
-}
-
-li {
-  font-family:helvetica, arial, sans-serif;
-}
-
-a {
-  font-family:helvetica, arial, sans-serif;
-}
-
-p {
-  font-family:helvetica, arial, sans-serif;
-}
-
-/* footer */
+/* footer -----------------------*/
 
 footer {
   margin-top: 45px;
@@ -143,28 +124,9 @@ footer ul li {
 		}
 	}
 	
-/* forms */
-
-@mixin box_sizing {
-  -moz-box-sizing: border-box; 
-  -webkit-box-sizing: border-box; 
-  box-sizing: border-box;
-}
 
 
-input, textarea, select, .uneditable-input {
-	  border: 1px solid #bbb;
-	  width: 100%;
-	  padding: 10px;
-	  height: auto;
-	  margin-bottom: 15px;
-}
-
-.form_title {
-     padding:20px;
-}
-
-/* sidebar */
+/* sidebar------------------ */
 
 aside {
   section {
@@ -222,7 +184,7 @@ aside {
   }
 }
 
-/* users index */
+/* users index----------------------- */
 
 .users {
   list-style: none;
@@ -237,7 +199,7 @@ aside {
   }
 }
 
-/* Community */
+/* Community --------------------*/
 
 .community-index {
    float:left;
@@ -263,13 +225,13 @@ aside {
   background-image: url(/images/down_arrow.gif);
 }
 
-/* Comments */
+/* Comments --------------------*/
 
 .comment textarea {
      height:100px;
 }
 
-/* microposts */
+/* microposts --------------------*/
 
 $grayLight: #999;
 

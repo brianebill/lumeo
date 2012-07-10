@@ -28,21 +28,23 @@
 					           <li><%= link_to "Manage Members", users_path %></li>
 				          <% end %>
 				          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>	
+				</ul>
 			              <% else %>
-				             <%= simple_form_for resource, :as => resource_name, 
-														   :url => session_path(resource_name),
-														 	:input_html => { :class => 'form-inline' } do |f| %>
-									<%= f.input :email, :label => false, :placeholder => 'email',  
-														:input_html => { :class => 'input-medium' } %>
-									<%= f.input :password,  :label => false, :placeholder => 'password',
-									 						:input_html => { :class => 'input-medium' } %>
-									<% if devise_mapping.rememberable? -%>
-										  <%= f.check_box :remember_me %>
-									<% end -%>
-								  <%= f.submit "Sign in", :class => 'btn btn-primary btn-small pull-right' %>
-							 <% end %>
+							<div class="mtop5 mbottom-10">
+					             <%= simple_form_for resource, :as => resource_name, 
+															   :url => session_path(resource_name),
+															 	:html => { :class => 'form-inline' } do |f| %>
+										<%= f.input_field :email, :label => false, :placeholder => 'email',  
+															:class => 'input-medium inline w50' %>
+										<%= f.input_field :password,  :label => false, :placeholder => 'password',
+										 						:class => 'input-medium inline w50' %>
+										<% if devise_mapping.rememberable? -%>
+											  <%= f.check_box :remember_me %> remember?
+										<% end -%>
+									  <%= f.submit "Sign in", :class => 'btn btn-success btn-small inline' %>
+								 <% end %>
+							</div>
 			          <% end %>
-		       </ul>
 		   </nav>
 		  </div>
     </div>
