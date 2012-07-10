@@ -31,10 +31,11 @@
 			              <% else %>
 				             <%= simple_form_for resource, :as => resource_name, 
 														   :url => session_path(resource_name),
-														 	:html => { :class => 'form-inline' } do |f| %>
+														 	:input_html => { :class => 'form-inline' } do |f| %>
 									<%= f.input :email, :label => false, :placeholder => 'email',  
-														:class => 'input-small' %>
-									<%= f.input :password,  :label => false, :placeholder => 'password' %>
+														:input_html => { :class => 'input-medium' } %>
+									<%= f.input :password,  :label => false, :placeholder => 'password',
+									 						:input_html => { :class => 'input-medium' } %>
 									<% if devise_mapping.rememberable? -%>
 										  <%= f.check_box :remember_me %>
 									<% end -%>
