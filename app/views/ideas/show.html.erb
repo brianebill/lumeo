@@ -32,7 +32,7 @@
 	</div>
 		<div class="span6">
 			    <h1 class="title"><%= @idea.title %></h1>
-				<%= @idea.description %>
+				<%= @idea.description.html_safe %>
 			    <% if can? :update, @idea %>
 			        <%= link_to 'Delete Idea', @idea, 
 					                    confirm: 'Are you sure?', 

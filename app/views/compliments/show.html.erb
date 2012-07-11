@@ -23,7 +23,7 @@
 	</div>
 		<div class="span6">
 			    <h1 class="title"><%= @compliment.title %></h1>
-				<%= @compliment.description %>
+				<%= @compliment.description.html_safe %>
 			    <% if can? :update, @compliment %>
 			        <%= link_to 'Delete Compliment', @compliment, 
 					                    confirm: 'Are you sure?', 

@@ -32,7 +32,7 @@
 	</div>
 		<div class="span6">
 			    <h1 class="title"><%= @problem.title %></h1>
-				<%= @problem.description %>
+				<%= @problem.description.html_safe %>
 			    <% if can? :update, @problem %>
 			        <%= link_to 'Delete Ticket', @problem, 
 					                    confirm: 'Are you sure?', 

@@ -7,7 +7,7 @@
 				<%= link_to comment.user.name, comment.user %></span>
 				Posted <%= time_ago_in_words(comment.created_at) %> ago
 			</span>
-			<p class="mleft20 mtop10"><%= comment.text %></p>
+			<p class="mleft20 mtop10"><%= comment.text.html_safe %></p>
 			<% if can? :update, @comment %>
 				<%= link_to 'Edit', [comment.commentable, comment], :class => 'btn btn-mini mtop5 mleft10' %>
 			    <%= link_to 'Delete', [comment.commentable, comment],
