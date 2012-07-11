@@ -33,7 +33,7 @@
 		<div class="span6 mleft40">
 			    <h1 class="title"><%= @request.title %></h1>
 			    <p><%= @request.who %></p>
-			    <p><%= @request.description %></p>
+			    <p><%= @request.description.html_safe %></p>
 			
 			    <% if can? :update, @request %>
 			        <%= link_to 'Delete Request', @request, 

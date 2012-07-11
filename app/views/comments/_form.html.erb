@@ -1,9 +1,9 @@
 <%= simple_form_for [@commentable, Comment.new], :html => 
 					{ :class => 'form-horizontal', :multipart => true } do |f| %>
-	<div class="well mtop40">
+	<div class="mtop40">
 		  <h3>Leave a comment:</h3><br/>
-			<fieldset class="mleft-140 comment">
-		   <%= f.input :text, :label => false %>
+			<fieldset class="comment well">
+		   		<%= f.input_field :text, :label => false, :id => 'enter_comment' %>
 		    </fieldset>
 		   	<fieldset class="well">
 			    <%= f.simple_fields_for :image do |img_field| %>
@@ -17,3 +17,7 @@
 		  </div>
 	</div>
 <% end %>
+
+<script type="text/javascript">
+	$('#enter_comment').wysihtml5();
+</script>

@@ -6,6 +6,7 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'pg'
 gem 'jquery-rails'
+gem 'sass-rails'
 gem 'bootstrap-sass'
 gem 'devise', '2.0.4'
 gem 'simple_form'
@@ -23,6 +24,7 @@ gem 'paper_trail', '~> 2'
 gem 'pg_search'
 gem 'delayed_job_active_record'
 gem "votable", :git => "git://github.com/mikeycgto/votable.git"
+gem "bootstrap-wysihtml5-rails"
 
 gem "letter_opener", :group => :development
 
@@ -46,7 +48,6 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes

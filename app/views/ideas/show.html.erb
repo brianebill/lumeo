@@ -6,6 +6,15 @@
 </div>
 <div class="row span12 mtop20">
 	<div class="span2 mbottom-50">
+		<div class="well mtop20">
+			<h3 class="center">Popularity</h3>
+				<h2 class="center"><%= vote_total @idea.user_votes %></h2>
+		     <%= form_for @idea, :url => vote_idea_path(@idea) do |f| %>
+			     <%= hidden_field_tag :redirect, :show %>
+				 <h3 class="center mtop10"><%= submit_tag "^", :name => :up, :class => 'btn btn-large up-show' %></h3>
+				 <h2 class="center"><%= submit_tag "v", :name => :down, :class => 'btn btn-large down-show' %></h2>
+			 <% end %>
+		</div>
 		<% if @idea.image %>
 			<%= image_tag @idea.image.source(:show) %>
 		<% else %>
@@ -28,11 +37,10 @@
 			        <%= link_to 'Delete Idea', @idea, 
 					                    confirm: 'Are you sure?', 
 					                    method: :delete, 
-					                    :class => 'btn btn-mini btn-danger pull-right mleft10 mtop30' %>
-					<%= link_to 'New Idea', new_idea_path, 
-								:class => 'btn btn-mini btn-primary pull-right mleft10 mtop30' %>
+					                    :class => 'btn btn-mini pull-right mleft10 mtop30' %>
+					
 				    <%= link_to 'Edit Idea', edit_idea_path(@idea), 
-								:class => 'btn btn-mini btn-success pull-right mtop30' %>
+								:class => 'btn btn-mini pull-right mtop30' %>
 				<% end %>
 	     </div>
 	
@@ -46,10 +54,11 @@
 					<p><%= button_to tag.name, tag, :method => 'get', :class => 'btn btn-mini' %></p>
 				<% end %>
 		    </div>
-				
-			    <%= link_to 'Back to Ideas', ideas_path, :class => 'btn btn-mini btn-primary' %>
+				<%= link_to 'New Idea', new_idea_path, 
+							:class => 'btn btn-mini btn-primary' %>
+			    <%= link_to 'Back to Ideas', ideas_path, :class => 'btn btn-mini' %>
 		</div>
-	  <div class="row offset2 span6">
+	  <div class="row span6">
 	    <%= render "comments/comment" %>
 	    <%= render "comments/form" %>
 	  </div>

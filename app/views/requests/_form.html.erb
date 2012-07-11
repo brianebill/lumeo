@@ -1,18 +1,21 @@
-<div class="offset3 span6 mtop20 edit">
+<div class="offset2 span7 mtop20 edit">
 <%= simple_form_for @request, :html => { :multipart => true } do |f| %>
-   <fieldset class="well">
+   <fieldset class="well pleft80">
+	  <div class="mtop10">
 	   <%= f.input :title %>
  	   <%= f.input :who, :label => 'Taught by' %>
-	   <%= f.input :description %>
+	   <p>Description</p>
+	   <%= f.input_field :description, :id => 'edit_topic' %>
+	  </div>
    </fieldset>
-	<fieldset class="well">
+	<fieldset class="well pleft80">
 	    <%= f.simple_fields_for :image do |img_field| %>
 				<h3>
 					Upload Photo: <%= img_field.file_field :source, :class => 'mleft10' %>
 				</h3>
 	    <% end %>
 	</fieldset>
-	<div class="well">
+	<div class="well pleft80">
 		<h3>Subject Tags:</h3>
 			<%= f.association :tags, 
 						:as => :check_boxes, 
@@ -24,3 +27,6 @@
   </div>
 <% end %>
 </div>
+<script type="text/javascript">
+	$('#edit_topic').wysihtml5();
+</script>

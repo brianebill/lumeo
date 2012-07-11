@@ -9,7 +9,7 @@ Lumeo::Application.routes.draw do
 
   match '/about',   to: 'pages#about'
   match '/terms', to: 'pages#terms'
-  match '/data', to: 'pages#data'
+  match '/privacy', to: 'pages#privacy'
 
   devise_for :users
 

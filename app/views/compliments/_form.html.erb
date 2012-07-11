@@ -1,9 +1,24 @@
-<div class="row span5 offset3 well">
+<div class="row span7 offset2 edit">
    <%= simple_form_for @compliment do |f| %>
-	  <%= f.input :title, :label => false, placeholder: "Title" %>
-	  <%= f.input :description, :label => false, placeholder: "Send praise" %>
+	<fieldset class="well pleft80">
+		<div class="mtop10">
+		  <%= f.input :title %>
+		  <p>Description</p>
+		  <%= f.input_field :description, :id => 'edit_topic' %>
+		</div>
+	</fieldset>
+	<fieldset class="well pleft80">
+	    <%= f.simple_fields_for :image do |img_field| %>
+				<h3>
+					Upload Photo: <%= img_field.file_field :source, :class => 'mleft10' %>
+				</h3>
+	    <% end %>
+	</fieldset>
       <div class ="form-actions">
          <%= f.submit 'Send Praise', :class => 'btn btn-primary btn-large pull-right' %>
       </div>
    <% end %>
 </div>
+<script type="text/javascript">
+	$('#edit_topic').wysihtml5();
+</script>
