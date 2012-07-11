@@ -6,7 +6,6 @@ $navbarBackground: #555;
 $navbarBackgroundHighlight: #888;
 $navbarText: #eee;
 $navbarLinkColor: #eee;
-$green: #669933;
 
 @import "bootstrap";
 
@@ -16,6 +15,10 @@ body { padding-top: 60px; }
 
 .navbar .brand {
   color: #FAFFB8;
+}
+
+.btn-success {
+  background:#669933;
 }
 
 .brand {margin-top:-22px;}
@@ -50,32 +53,6 @@ textarea {
   padding:15px;
   text-align: center;
 }
-
-.h50 {
-   height:50px;
-}
-
-.h125  {
-  height:125px;
-  textarea{
-   height:125px;
-  }
-}
-.h200  {
-  height:125px;
-  textarea{
-   height:200px;
-  }
-}
-
-.center h1 {
-  margin-bottom: 10px;
-}
-
-.text-white a {
-  color:white;
-}
-
 
 
 /* footer -----------------------*/

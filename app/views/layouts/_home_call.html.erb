@@ -1,31 +1,32 @@
 <div class="span6">
 	<h1 class="mtop20">
-			Lumeo is a <strong>social learning community
+			Lumeo is a social learning community
 	</h1>
 	<p class="center call_text">
-		def:</strong> a happy place where dreams come true
+		<strong>def:</strong> a happy place where dreams come true
 	</p>
 	<h3 class="mleft60">Benefits: </h3>
 		<ol class="mleft120 mtop5">
 			<li> <strong>Meet cool people</strong> who like the same things you do</li>
+			<li>Enter contests to <strong>win gear</strong> you need to go pro</li>
+			<li><strong>Get answers</strong> to your questions in the Lumeo Community</li>
 			<li>Learn what you need to know to <strong>get a better job</strong></li>
-			<li><strong>Network with professionals</strong> and peers</li>
-			<li>Enter contests to <strong>win gear</strong> you need to go pro</li> 
+			<li><strong>Market your expertise</strong> by creating products and offering services</li>
 			<li>Increase your <strong>happiness quotient</strong></li>
 		</ol>
 	<h3 class="mtop20 center">Click the link below to find out how LUMEO works</h3>
 	<div class="mleft70 mtop20">
-		<a data-toggle="modal" href="#about_video">
+		<a data-toggle="modal" href="#about_video" data-dynamic="true" >
 			<%= image_tag("home_watch_video_button.png", alt: "Watch the Video") %>
 		</a>
-		<div class="modal hide" id="about_video">
+		<div class="modal hide large" id="about_video">
 		  <div class="modal-header">
 		    <button type="button" class="close" data-dismiss="modal">×</button>
-		    <h3>Lumeo is a Social Learning Community</h3>
+		    <h3>Watch the "about" video</h3>
 		  </div>
 		  <div class="modal-body">
 		    <iframe src="http://player.vimeo.com/video/44839980?title=0&amp;byline=0&amp;portrait=0" 
-			width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+					width="720" height="405" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
 		  </div>
 		  <div class="modal-footer">
 		    <a href="#" class="btn" data-dismiss="modal">Close</a>
@@ -34,23 +35,30 @@
 	</div>
 </div>
 <div class="span5 mtop10">
-	<div class="well h425">
-			<span class="label pull-right">Become a luminary!</span>
-			<h2 class="">Pursue your Happy!</h2>
-			<p>The Lumeo community is free and always will be.</p>		
-			<div class="mtop20 span4">
+	<div class="well h350">
+			<span class="label label-inverse pull-right mtop8">Become a luminary!</span>
+			<h2 class="mleft20">Pursue your Happy!</h2>
+			<p class="mleft40">The Lumeo community is free and always will be.</p>		
+			<div class="mtop20 span3 mleft80">
 					 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 				      <%= f.error_notification %>
 				  	   <div class="inputs">
-				          <%= f.input :name, :required => true %>
-				          <%= f.input :email, :required => true, :autofocus => true %>
-				          <%= f.input :password, :required => true %>
-				          <%= f.input :password_confirmation, :required => true %>
-				        </div>
-				       <div class="form-actions">
-				           <%= f.button :submit, "Sign up", :class => 'btn btn-primary btn-large pull-right' %>
-				       </div>
-				    <% end %>
+				          <%= f.input_field :name, :class => 'inline', :placeholder => 'name', :required => true %>
+				          <%= f.input_field :email, :placeholder => 'email', :required => true, :autofocus => true %>
+				          <%= f.input_field :password, :placeholder => 'password', :required => true %>
+				          <%= f.input_field :password_confirmation, :placeholder => 'repeat password',:required => true %>
+						  
+						  <div>
+								By clicking Sign Up, you agree to our 
+								<%= link_to 'Terms', terms_path %>
+								and that you understand our 
+								<%= link_to 'Data Use Policy', data_path %>
+						  </div>
 			</div>
+	       <div class="mleft-20 mtop20">
+	           <%= f.button :submit, "Sign Up", :class => 'btn btn-primary btn-large' %>
+	       </div>
+				    <% end %>
+			
 	</div>
 </div>

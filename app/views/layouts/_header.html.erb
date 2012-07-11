@@ -11,7 +11,7 @@
 			<nav>
 			  <ul class="nav pull-right top4">
 					<% if user_signed_in? %>
-		                  <li class="gravatar_header">
+		                  <li class="image_header">
 			                  	<% if current_user.image %>
 									<%= image_tag current_user.image.source(:header) %>
 								<% else %>

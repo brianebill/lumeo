@@ -9,6 +9,8 @@
 		          <%= f.input :email, :required => true, :autofocus => true %>
 		          <%= f.input :password, :required => true %>
 		          <%= f.input :password_confirmation, :required => true %>
+					<%= f.input_field :terms, :required => true %>
+					  <div class="mtop-23 mleft20">I agree to the Lumeo <%= link_to 'terms of use', terms_path %></div>
 		        </div>
 		       <div class="form-actions">
 		           <%= f.button :submit, "Sign up", :class => 'btn btn-primary btn-large pull-right' %>

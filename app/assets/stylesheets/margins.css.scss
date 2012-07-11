@@ -1,9 +1,30 @@
-.w50 text {
-  width:50px;
+.h50 {
+   height:50px;
+}
+
+.h125  {
+  height:125px;
+  textarea{
+   height:125px;
+  }
+}
+.h200  {
+  height:125px;
+  textarea {
+   height:200px;
+  }
+}
+
+.h300 {
+    height:300px;
 }
 
 .h350 {
     height:350px;
+}
+
+.h400 {
+    height:400px;
 }
 
 .h425 {
@@ -16,6 +37,10 @@
 
 .h500 {
     height:500px;
+}
+
+.w50 text {
+  width:50px;
 }
 
 .padding-top {
@@ -96,6 +121,14 @@
   margin-top:-30px;
 }
 
+.mtop-25 {
+  margin-top:-25px;
+}
+
+.mtop-23 {
+  margin-top:-23px;
+}
+
 .mtop-20 {
   margin-top:-20px;
 }
@@ -118,6 +151,10 @@
 
 .mtop-5 {
   margin-top:-5px;
+}
+
+.mtop3 {
+  margin-top:3px;
 }
 
 .mtop5 {
@@ -150,6 +187,10 @@
 
 .mtop20 {
   margin-top:20px;
+}
+
+.mtop25 {
+  margin-top:25px;
 }
 
 .mtop30 {
