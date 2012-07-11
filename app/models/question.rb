@@ -24,7 +24,7 @@ class Question < ActiveRecord::Base
   end
   
   include PgSearch
-  pg_search_scope :search, against: [:title, :description, :subject],
+  pg_search_scope :search, against: [:title, :description ],
      using: {tsearch: {dictionary: "english"}},
        associated_against: {user: :name},
        ignoring: :accents
@@ -32,7 +32,8 @@ class Question < ActiveRecord::Base
   def self.question_search(query)
     if query.present?
       search(query)
-      where("to_tsvector('english', title) @@ :q or to_tsvector('english', description) @@ :q or to_tsvector('english', subject) @@ :q", q: query)
+      where("to_tsvector('english', title) @@ :q 
+            or to_tsvector('english', description) @@", q: query)
     else
       scoped
     end

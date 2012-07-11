@@ -31,5 +31,4 @@ class Course < ActiveRecord::Base
   has_one :image, :dependent => :destroy, :as => :parent
   accepts_nested_attributes_for :image, :allow_destroy => true
   
-  default_scope order: 'posts.created_at DESC'
 end

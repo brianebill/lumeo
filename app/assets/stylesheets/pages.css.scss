@@ -57,6 +57,42 @@ p#video_exam_link {
 	margin-right:65px;
 }
 
+#about_video {
+  height:485px;
+  width:800px;
+  margin-left:-375px;
+
+  .modal-header {
+   	background:#555;
+	border:none;
+	color:#FFDE17;
+	h3 {
+	font-weight:200;
+	.white { 
+		color:#FFF;}
+	}
+	.fw300 {
+	  font-weight:500;
+	}
+}
+  .modal-body {
+    max-height:none;
+    text-align:center;
+	background:#000;
+	border:none;
+	margin-bottom:-4px;
+  }
+	.modal-footer {
+	  background:#000;
+	  border:none;
+	  margin-top:-4px;
+	}
+}
+
+.close_text {
+   color:#FFF;
+}
+
 /* HOME_CONTAINER_INFO------------------------------------- */
 
 
@@ -169,14 +205,7 @@ p#video_exam_link {
 	padding-bottom:25px;
 
 }
-#about_video {
-  width:800px;
 
-  .modal-body {
-    max-height:none;
-    text-align:center;
-  }
-}
 
 #features_list {
      padding-top:20px;
