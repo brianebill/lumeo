@@ -7,8 +7,6 @@ class Contact < ActiveRecord::Base
   validates :subject, :presence => true
   validates :message,  :presence => true
   
-  default_scope order: 'contacts.created_at DESC'
-  
   include PgSearch
   pg_search_scope :search, against: [:subject, :message],
      using: {tsearch: {dictionary: "english"}},

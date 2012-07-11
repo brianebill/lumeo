@@ -22,14 +22,12 @@ class Request < ActiveRecord::Base
 
   votable_by :users
   
-  default_scope order: 'requests.created_at DESC'
-  
   after_create do
     self.create_image unless image
   end
 
   include PgSearch
-  pg_search_scope :search, against: [:title, :description, :who, :subject],
+  pg_search_scope :search, against: [:title, :description, :who],
      using: {tsearch: {dictionary: "english"}},
        associated_against: {user: :name},
        ignoring: :accents
@@ -37,7 +35,9 @@ class Request < ActiveRecord::Base
   def self.request_search(query)
     if query.present?
       search(query)
-      where("to_tsvector('english', title) @@ :q or to_tsvector('english', description) @@ :q or to_tsvector('english', subject) @@ :q", q: query)
+      where("to_tsvector('english', title) @@ :q 
+            or to_tsvector('english', description) @@ :q 
+            or to_tsvector('english', who) @@ :q", q: query)
     else
       scoped
     end

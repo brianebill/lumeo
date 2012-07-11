@@ -1,5 +1,5 @@
-<div class="offset3 span6 mtop20">
-<%= simple_form_for @problem, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+<div class="offset3 span6 mtop20 edit">
+<%= simple_form_for @problem, :html => { :multipart => true } do |f| %>
    <fieldset class="well">
 	   <%= f.input :title %>
 	   <%= f.input :description %>

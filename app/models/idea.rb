@@ -12,8 +12,6 @@ class Idea < ActiveRecord::Base
   
   votable_by :users
   
-  default_scope order: 'ideas.created_at DESC'
-  
   after_create do
     self.create_image unless image
   end
@@ -27,7 +25,8 @@ class Idea < ActiveRecord::Base
   def self.idea_search(query)
     if query.present?
       search(query)
-      where("to_tsvector('english', title) @@ :q or to_tsvector('english', description) @@ :q", q: query)
+      where("to_tsvector('english', title) @@ :q 
+      or to_tsvector('english', description) @@ :q", q: query)
     else
       scoped
     end

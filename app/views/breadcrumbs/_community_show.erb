@@ -1,6 +1,6 @@
 <div class="breadcrumbs span12 row">
 	<p>
 		<%= link_to "community", topics_path %>
-		> <%= link_to model_name, requests_path %> > <%= @request.title %>
+		> <%= link_to model_name.downcase, requests_path %> > <%= @request.title.downcase %>
 	</p>
 </div>

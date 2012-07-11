@@ -6,6 +6,15 @@
 </div>
 <div class="row span12 mtop20">
 	<div class="span2">
+		<div class="well mtop20">
+			<h3 class="center">Popularity</h3>
+				<h2 class="center"><%= vote_total @request.user_votes %></h2>
+		     <%= form_for @request, :url => vote_request_path(@request) do |f| %>
+			     <%= hidden_field_tag :redirect, :show %>
+				 <h3 class="center mtop10"><%= submit_tag "^", :name => :up, :class => 'btn btn-large up-show' %></h3>
+				 <h2 class="center"><%= submit_tag "v", :name => :down, :class => 'btn btn-large down-show' %></h2>
+			 <% end %>
+		</div>
 		<% if @request.image %>
 			<%= image_tag @request.image.source(:show) %>
 		<% else %>
@@ -30,11 +39,9 @@
 			        <%= link_to 'Delete Request', @request, 
 					                    confirm: 'Are you sure?', 
 					                    method: :delete, 
-					                    :class => 'btn btn-mini btn-danger pull-right mleft10 mtop30' %>
-					<%= link_to 'New Request', new_request_path, 
-								:class => 'btn btn-mini btn-primary pull-right mleft10 mtop30' %>
+					                    :class => 'btn btn-mini pull-right mleft10 mtop30' %>
 				    <%= link_to 'Edit Request', edit_request_path(@request), 
-								:class => 'btn btn-mini btn-success pull-right mtop30' %>
+								:class => 'btn btn-mini pull-right mtop30' %>
 				<% end %>
 	     </div>
 	
@@ -49,10 +56,12 @@
 				<% end %>
 				
 		    </div>
-				
-			    <%= link_to 'Back to Requests', requests_path, :class => 'btn btn-mini' %>
+				<%= link_to 'New Request', new_request_path, 
+							:class => 'btn btn-mini btn-primary' %>
+			    <%= link_to 'Back to Requests', requests_path, 
+							:class => 'btn btn-mini' %>
 		</div>
-	  <div class="row offset2 span6">
+	  <div class="row span6">
 	    <%= render "comments/comment" %>
 	    <%= render "comments/form" %>
 	  </div>

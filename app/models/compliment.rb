@@ -12,24 +12,7 @@ class Compliment < ActiveRecord::Base
   accepts_nested_attributes_for :image, :allow_destroy => true
   has_many :comments, :as => :commentable, :dependent => :destroy
   
-  default_scope order: 'compliments.created_at DESC'
-  
   after_create do
     self.create_image unless image
-  end
-
-  include PgSearch
-  pg_search_scope :search, against: [:title, :description],
-     using: {tsearch: {dictionary: "english"}},
-       associated_against: {user: :name},
-       ignoring: :accents
-
-  def self.compliment_search(query)
-    if query.present?
-      search(query)
-      where("title @@ :q or description @@ :q", q: query)
-    else
-      scoped
-    end
   end
 end

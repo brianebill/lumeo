@@ -6,7 +6,8 @@
 	<div class="row span8 pull-right">
 		<form class="form-search">
 		<%= form_tag requests_path, :method => 'get', :class => "mtop10 form-horizontal" do %>
-		<%= text_field_tag :search, params[:search], :class => 'input-xxlarge mleft20 search-query', :placeholder => 'Enter a single subject, like "Photography"' %>
+		<%= text_field_tag :search, params[:search], :class => 'input-xxlarge mleft20 search-query', 
+							:placeholder => 'Enter a single subject, like "Photography"' %>
 		<%= submit_tag "Search", :title => nil, :class => 'btn btn-primary btn-large mtop' %>
 		<% end %>
 	</div>

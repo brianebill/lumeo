@@ -27,5 +27,20 @@
 /* Comments --------------------*/
 
 .comment textarea {
-     height:100px;
+    height:100px;
+	width:450px;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+.edit textarea {
+    height:100px;
+	width:500px;
+	margin-left:auto;
+}
+
+.edit input {
+	width:510px;
+	margin-left:auto;
+	border:none;
 }
