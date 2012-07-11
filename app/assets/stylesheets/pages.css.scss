@@ -170,9 +170,12 @@ p#video_exam_link {
 
 }
 #about_video {
-	float:right;
-	width:525px;height:300px;
-	padding-right:0px;margin-top:15px;
+  width:800px;
+
+  .modal-body {
+    max-height:none;
+    text-align:center;
+  }
 }
 
 #features_list {
