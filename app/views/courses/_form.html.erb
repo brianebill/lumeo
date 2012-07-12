@@ -1,20 +1,18 @@
-<div class="span8 offset2">
-	<%= simple_form_for @course, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
-	  <fieldset class="well">
+<div class="span7 offset2 edit">
+	<%= simple_form_for @course, :html => { :multipart => true } do |f| %>
+	  <fieldset class="well pleft80">
 	    <%= f.input :title %>
 	    <%= f.input :description %>
 	    <%= f.input :price %>
 	 </fieldset>
-	 <fieldset class="well">
+	 <fieldset class="well pleft80">
 	    <%= f.fields_for :image do |img_field| %>
-	         <div class="mleft150"> 
-				<h3 class = "">
-					Upload Photo: <%= img_field.file_field :source, :class => 'mleft10' %>
+				<h3>
+					Upload Photo: <%= img_field.file_field :source %>
 				</h3>
-			</div>
 	    <% end %>
-	<fieldset>
-	 <div class="form-actions offset2">
+	</fieldset>
+	 <div class="form-actions">
 	    <%= link_to 'Cancel', courses_path, :class => 'btn pull-right btn-large m5' %>
 		<%= f.submit nil, :class => 'btn btn-primary pull-right btn-large m5' %>
 	  </div>

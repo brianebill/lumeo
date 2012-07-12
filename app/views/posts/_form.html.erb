@@ -1,24 +1,32 @@
-<div class="offset2 span7">
-  <%= simple_form_for @post, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
-    <fieldset class="well">
-      <%= f.input :title %>
-      <%= f.input :index_text %>
-      <%= f.input :show_text %>
-      		<%= f.association :categories, :as => :check_boxes, :collection => @categories, :label => 'Pick one or more categories' %>
-	  <%= f.simple_fields_for :categories do |builder| %>
-		   <%= render 'categories/form', f: builder %>
-	  <% end %>
-	  <p><%= link_to_add_fields "Add Category", f, :categories  %></p>
-	 </fiedlset>
-	<fieldset>
-      <%= f.fields_for :image do |img_field| %>
-        <p class="mleft80"><b>Upload Photo</b> <%= img_field.file_field :source %></p>
-      <% end %>
-    </fieldset>
-
-    <div class ="title form-actions">
-      <%= button_to 'Cancel', posts_path, :method => 'get', :class => 'btn btn-large pull-right mleft10 mtop18' %>
-      <%= f.submit nil, :class => 'btn btn-primary btn-large pull-right' %>
-    </div>
-  <% end %>
-</div>
+<%= simple_form_for @post, :html => { :multipart => true } do |f| %>
+	<div class="span7 offset1 post">
+	    <fieldset class="well pleft80">
+	      <%= f.input :title %>
+	      <%= f.input :index_text %>
+		  <p>* Show Text</p>
+	      <%= f.input_field :show_text, :id => 'edit_post'  %>
+		</fieldset>
+		<fieldset class="well pleft80">
+	      <%= f.fields_for :image do |img_field| %>
+	        <h3>Upload Photo<%= img_field.file_field :source %></h3>
+	      <% end %>
+	    </fieldset>
+	    <div class ="form-actions pleft80">
+	      <%= f.submit nil, :class => 'btn btn-primary btn-large' %>
+			<%= link_to 'Cancel', posts_path, :class => 'btn btn-large' %>
+	    </div>
+	</div>
+		<fieldset class="well span2">Date and Time</fieldset>
+		<fieldset class="well span2">
+				<h3>Pick one or more Categories</h3>
+	      		<%= f.association :categories, :as => :check_boxes, 
+								  :collection => @categories, :label => false %>
+		  		<%= f.simple_fields_for :categories do |builder| %>
+			   <%= render 'categories/form', f: builder %>
+		  <% end %>
+		  <p><%= link_to_add_fields "Add Category", f, :categories  %></p>
+		 </fieldset>
+<% end %>
+<script type="text/javascript">
+	$('#edit_post').wysihtml5();
+</script>

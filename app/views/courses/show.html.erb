@@ -1,7 +1,9 @@
 <div class="row">
 	<div class="offset1 span3">
         <% if @course.image %>
-		 <%= image_tag @course.image.source %>
+			<%= image_tag @course.image.source(:show) %>
+		<% else %>
+			<%= image_tag 'missing_show.png' %>
 		<% end %>
   </div>
 
@@ -20,17 +22,6 @@
 			 </ul>
 	</div>
 </div>
-<div class="row">
-	<div class="offset1 span9">
-			 <%= render "videos/video" %>
-		<div class="form-actions">
-             <%= render 'shared/form_actions' %>
-		</div>
-		<% if can? :update, @course %>
-		<h2>Add a video:</h2>
-		<%= render "videos/form" %>
-		 <% end %>
-	</div>
-</div>
+
 
 

@@ -28,7 +28,11 @@ class Course < ActiveRecord::Base
   accepts_nested_attributes_for :videos, :allow_destroy => true
   
   #image
-  has_one :image, :dependent => :destroy, :as => :parent
+  has_one :image, :as => :parent, :dependent => :destroy
   accepts_nested_attributes_for :image, :allow_destroy => true
+  
+  after_create do
+    self.create_image unless image
+  end
   
 end
