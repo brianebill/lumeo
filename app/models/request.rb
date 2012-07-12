@@ -32,7 +32,7 @@ class Request < ActiveRecord::Base
        associated_against: {user: :name},
        ignoring: :accents
 
-  def self.request_search(query)
+  def self.search(query)
     if query.present?
       search(query)
       where("to_tsvector('english', title) @@ :q 

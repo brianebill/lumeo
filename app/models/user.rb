@@ -54,6 +54,8 @@ class User < ActiveRecord::Base
   has_one :image, :dependent => :destroy, :as => :parent
   accepts_nested_attributes_for :image, :allow_destroy => true
   
+  has_one :pro, :dependent => :destroy
+  
   has_many :posts, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :requests, :dependent => :destroy
@@ -62,6 +64,10 @@ class User < ActiveRecord::Base
   has_many :ideas, :dependent => :destroy
   has_many :compliments, :dependent => :destroy
   has_many :contacts, :dependent => :destroy
+  has_many :courses, :dependent => :destroy
+  has_many :articles, :dependent => :destroy
+  has_many :books, :dependent => :destroy
+  has_many :videos, :dependent => :destroy
 
   # after a user is created, make sure a Image
   # association is also created

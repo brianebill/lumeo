@@ -19,10 +19,13 @@
 #
 
 class Course < ActiveRecord::Base
-  attr_accessible :index_text, :school_id, :show_text, :title, :total_running_time, :description, 
+  attr_accessible :school_id, :title, :total_running_time, :description, 
+                  :credits, :available, :subtitle, :pro, :producer, :teaser,
                   :price, :image_attributes
+ validates_length_of :title, :maximum => 24
 
   belongs_to :user
+  belongs_to :pro
 
   has_many :videos, :dependent => :destroy
   accepts_nested_attributes_for :videos, :allow_destroy => true

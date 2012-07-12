@@ -23,11 +23,12 @@
 				          <li><%= link_to "Content", courses_path %></li>
 				          <li><%= link_to "Contests", courses_path %></li>
 					      <li><%= link_to "Community", topics_path %></li>
-					      <li class="footer_link"><%= link_to "Blog",  posts_path  %></li>
+					      <li><%= link_to "Pros", pros_path %></li>
+					      <li><%= link_to "Blog",  posts_path  %></li>
 			              <% if current_user.has_role? :admin %>
 					           <li><%= link_to "Manage Members", users_path %></li>
 				          <% end %>
-				          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>	
+				          <li class="mleft10"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>	
 				</ul>
 			              <% else %>
 							<div class="mtop5 mbottom-10">

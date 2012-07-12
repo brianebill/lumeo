@@ -5,6 +5,7 @@ class Tag < ActiveRecord::Base
   has_and_belongs_to_many :questions
   has_and_belongs_to_many :ideas
   has_and_belongs_to_many :problems
+  has_and_belongs_to_many :pros
 
   validates_uniqueness_of :name
 

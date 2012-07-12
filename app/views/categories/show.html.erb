@@ -4,26 +4,8 @@
 		> categories
 	</p>
 </div><h1 class="title center"><%= @category.name.titleize %></h1>
-<div class="span12 row">
-	<div class="span2">
-		<div class="well span2">
-			<% if @categories %>
-			    <h4 class="title center">Browse Categories</h4>
-				<% @categories.each do |category| %>
-		  			<p><%= link_to category.name, category, :class => 'btn btn-mini' %></p>
-		  		<% end %>
-				<% if can? :update, @category %>
-					<%= link_to 'Edit Categories', categories_path,
-												   :class => 'btn btn-mini btn-success pull-right'%>
-				<% end %>
-			<% end %>
-		</div>
-		<div>
-		  <%= button_to 'Back to Posts', posts_path, :method => 'get', :class => 'btn btn-primary mleft40' %>
-		</div>
-	</div>
+<div class="span9 row mtop20">
   	<% @category.posts.each do |post| %>
-		<div class="span9 mtop20 mleft70">
 			<div class="span2">
 				<% if post.image %>
 					<%= image_tag post.image.source(:show) %>
@@ -40,12 +22,34 @@
 						<% end %>
 				<% end %>
 			</div>
-		<div class="span6">
-			<h2><%= link_to post.title, post %></h2>
-			<p><%= post.index_text.html_safe %></p>
-		</div>
-
-
-	</div>
+			<div class="span6">
+				<h2><%= link_to post.title, post %></h2>
+				<p><%= post.index_text.html_safe %></p>
+			</div>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
 	<% end %>
+</div>
+<div class="row ">
+<div class="span2">
+	<div class="well span2">
+		<% if @categories %>
+		    <h4 class="title center">Browse Categories</h4>
+			<% @categories.each do |category| %>
+	  			<p><%= link_to category.name, category, :class => 'btn btn-mini' %></p>
+	  		<% end %>
+			<% if can? :update, @category %>
+				<%= link_to 'Edit Categories', categories_path,
+											   :class => 'btn btn-mini btn-success pull-right'%>
+			<% end %>
+		<% end %>
+	</div>
+	<div>
+	  <%= button_to 'Back to Posts', posts_path, :method => 'get', :class => 'btn btn-primary mleft40' %>
+	</div>
 </div>

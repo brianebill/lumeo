@@ -1,0 +1,28 @@
+<div class="breadcrumbs span12 row">
+	<p>
+		> pros
+	</p>
+</div>
+<div class="span12 title">
+	<h1 class="center">Lumeo Pros</h1>
+	<% if can? :update, @pro %>
+		
+	<% end %>
+</div>
+<div class="row span12">
+    <% @pros.each do |pro| %>
+        <div class="span2">
+			<% if pro.image %>
+			 <%= link_to image_tag(pro.image.source(:feature)), pro %>
+			<% end %>
+			<p class="center bold"><%= link_to pro.user.name, pro %></p>
+	          <% if can? :update, @course %>
+	            <%= link_to 'Edit', edit_pro_path(pro), :class => 'btn btn-mini mleft40' %>
+	            <%= link_to 'Delete', pro, 
+	              confirm: 'Are you sure?', 
+	              method: :delete, 
+	              :class => 'btn btn-mini' %>
+	          <% end %>
+        </div>
+    <% end %>
+</div>

@@ -46,6 +46,9 @@ Lumeo::Application.routes.draw do
     resources :comments
   end
   
+  resources :contents
+  resources :pros
+  
   resources :requests do
    put :vote, :on => :member
   end

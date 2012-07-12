@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120711210011) do
+ActiveRecord::Schema.define(:version => 20120712231351) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -74,6 +74,11 @@ ActiveRecord::Schema.define(:version => 20120711210011) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "contents", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "courses", :force => true do |t|
     t.integer  "school_id"
     t.string   "title"
@@ -85,6 +90,14 @@ ActiveRecord::Schema.define(:version => 20120711210011) do
     t.text     "description"
     t.decimal  "price"
     t.integer  "user_id"
+    t.string   "pro"
+    t.string   "subtitle"
+    t.datetime "released"
+    t.boolean  "available"
+    t.string   "producer"
+    t.integer  "credits"
+    t.text     "teaser"
+    t.integer  "pro_id"
   end
 
   add_index "courses", ["index_text"], :name => "index_courses_on_index_text"
@@ -195,6 +208,23 @@ ActiveRecord::Schema.define(:version => 20120711210011) do
 
   add_index "problems_tags", ["problem_id", "tag_id"], :name => "index_problems_tags_on_problem_id_and_tag_id"
   add_index "problems_tags", ["tag_id", "problem_id"], :name => "index_problems_tags_on_tag_id_and_problem_id"
+
+  create_table "pros", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "description"
+    t.text     "teaser"
+    t.string   "location"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "pros_tags", :id => false, :force => true do |t|
+    t.integer "pro_id"
+    t.integer "tag_id"
+  end
+
+  add_index "pros_tags", ["pro_id", "tag_id"], :name => "index_pros_tags_on_pro_id_and_tag_id"
+  add_index "pros_tags", ["tag_id", "pro_id"], :name => "index_pros_tags_on_tag_id_and_pro_id"
 
   create_table "questions", :force => true do |t|
     t.integer  "user_id"

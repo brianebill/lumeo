@@ -1,0 +1,30 @@
+<%= simple_form_for @pro, :html => { :multipart => true } do |f| %>
+	<div class="span7 offset2 post">
+	    <fieldset class="well pleft40">
+		  <p>* About</p>
+	      <%= f.input_field :description, :id => 'edit_post' %>
+		</fieldset>
+		<fieldset class="well pleft40">
+			<%= f.input :teaser %>
+	 	</fieldset>
+		<fieldset class="well pleft40">
+	      <%= f.fields_for :image do |img_field| %>
+	        <h3>Upload Photo<%= img_field.file_field :source %></h3>
+	      <% end %>
+	    </fieldset>
+		<div class="well pleft40">
+			<h3>Subject Tags:</h3>
+				<%= f.association :tags, 
+							:as => :check_boxes, 
+							:collection => @tags, 
+							:label => 'Pick one or more subjects' %>
+		</div>
+		<div class ="form-actions pleft80">
+	      <%= f.submit nil, :class => 'btn btn-primary btn-large' %>
+			<%= link_to 'Cancel', pros_path, :class => 'btn btn-large' %>
+	    </div>
+	</div>
+<% end %>
+<script type="text/javascript">
+	$('#edit_post').wysihtml5();
+</script>

@@ -1,9 +1,20 @@
 <div class="span7 offset2 edit">
 	<%= simple_form_for @course, :html => { :multipart => true } do |f| %>
 	  <fieldset class="well pleft80">
+		<h2 class="title mleft-45">Produced by <%= current_user.name %></h2>
+		<div class="w250">
+			Instructed by:
+			<%= f.select :pro_id, pro_select, :input_html => { :class => 'dropdown' } %>
+		</div>
 	    <%= f.input :title %>
+	    <%= f.input :subtitle %>
+		<%= f.input :available %>
+		<%= f.input :price %>
+		<%= f.input :credits %>
 	    <%= f.input :description %>
-	    <%= f.input :price %>
+	 </fieldset>
+	 <fieldset class="well pleft80">
+		<%= f.input :teaser %>
 	 </fieldset>
 	 <fieldset class="well pleft80">
 	    <%= f.fields_for :image do |img_field| %>

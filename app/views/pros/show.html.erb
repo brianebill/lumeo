@@ -1,0 +1,52 @@
+<div class="breadcrumbs span12 row">
+	<p>
+		<%= link_to "pros", pros_path %>
+		> <%= @pro.user.name.downcase %>
+	</p>
+</div>
+<div class="mleft30">
+	<% if can? :update, @pro %>
+	    <%= link_to 'New Course', new_pro_path, :class => 'btn btn-primary btn-mini' %>
+	    <%= link_to "Edit Course", edit_pro_path(@pro), :class => 'btn btn-mini' %>
+		<%= link_to 'Delete', @pro, 
+	       confirm: 'Are you sure?', 
+	       method: :delete, 
+	       :class => 'btn btn-mini' %>
+	<% end %>
+</div>
+<div class="row span12 mleft-40">
+	<div class="show span6">
+		<h1><%= @pro.user.name %></h1>
+	</div>
+	<div class="span2 offset3">
+		<%= link_to "Hire " + @pro.user.name.split[0], '#', 
+					:class => 'btn btn-primary btn-large' %>
+	</div>
+</div>
+<div class="row span12">
+	<div class="span2">
+	       <% if @pro.image %>
+			<%= image_tag @pro.image.source(:show) %>
+		<% else %>
+			<%= image_tag 'missing_show.png' %>
+		<% end %>
+	 </div>
+	 <div class="span8 show center mleft20 mtop-20">
+		<div class="well center">
+			<h3>Content</h3>
+			<% @pro.courses.each do |course| %>
+			<%= course.title %>
+			<% end %>
+			<h3>Services</h3>
+			<p>put services here</p>
+		</div>
+		<%= @pro.teaser.html_safe %>
+		<p>
+		  <%= @pro.description.html_safe %>
+		</p>
+	</div>
+</div>
+<div class="w250 mleft80">	
+	<h4></h2>
+	
+</div>

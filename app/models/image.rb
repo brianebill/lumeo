@@ -5,6 +5,7 @@ class Image < ActiveRecord::Base
   belongs_to :parent, :polymorphic => true
 
   has_attached_file :source, :styles => { :show => "250x250>",
+                                          :feature => "200x200>",
                                           :index => "150x150>",
                                           :feed => "50X50>",
                                           :header => "15X15>"},
