@@ -1,4 +1,4 @@
-This readme file is a working progress while I get the processes in place inside the app
+**Deprecated since 2012
 
 == Welcome to Lumeo
 
