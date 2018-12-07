@@ -6,6 +6,8 @@ class Tag < ActiveRecord::Base
   has_and_belongs_to_many :ideas
   has_and_belongs_to_many :problems
   has_and_belongs_to_many :pros
+  has_and_belongs_to_many :courses
+  has_and_belongs_to_many :videos
 
   validates_uniqueness_of :name
 

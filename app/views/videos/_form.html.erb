@@ -1,11 +1,7 @@
-<%= simple_form_for([@course, @course.videos.build]) do |f| %>
    <fieldset>
+	<h4 class="p10">Enter Video Information:</h4>
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :html_embed_for_video %>
     <%= f.input :running_time %>
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-  </div>
   </fieldset>
-<% end %>

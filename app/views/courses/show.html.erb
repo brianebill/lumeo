@@ -17,8 +17,8 @@
 <div class="row span12 mleft-40">
 	<div class="show span6">
 		<h1><%= @course.title %></h1>
-		<h3><%= @course.subtitle.titleize %> with <%= @course.pro %></h3>
-		<p>Directed by <%= @course.user.name %></p>
+		<h3><%= @course.subtitle.titleize %> with <%= link_to @course.pro.user.name, @course.pro %></h3>
+		<p>Directed by <%= link_to @course.user.name, @course.user %></p>
 	</div>
 	<div class="span2 offset2 mtop40">
 		<%= link_to 'Add this Course to my Queue', new_course_path, 
@@ -43,8 +43,10 @@
 	</div>
 </div>
 <div class="w250 mleft80">	
-	<h4></h2>
-	
+	<h2>Videos</h2>
+	<% @course.videos.each do |video| %>
+		<%= video.title %>
+	<% end %>
 </div>
 
 

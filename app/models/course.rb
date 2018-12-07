@@ -20,15 +20,19 @@
 
 class Course < ActiveRecord::Base
   attr_accessible :school_id, :title, :total_running_time, :description, 
-                  :credits, :available, :subtitle, :pro, :producer, :teaser,
-                  :price, :image_attributes
+                  :credits, :available, :subtitle, :pro, :producer, :teaser, :pro_id, :tag_ids,
+                  :price, :image_attributes, :videos_attrabutes
  validates_length_of :title, :maximum => 24
-
+ validates_length_of :subtitle, :maximum => 24
   belongs_to :user
   belongs_to :pro
 
   has_many :videos, :dependent => :destroy
-  accepts_nested_attributes_for :videos, :allow_destroy => true
+  accepts_nested_attributes_for :videos, :allow_destroy => true,
+                              :reject_if => :all_blank
+  has_and_belongs_to_many :tags
+    accepts_nested_attributes_for :tags, allow_destroy: :true,
+                                :reject_if => :all_blank
   
   #image
   has_one :image, :as => :parent, :dependent => :destroy

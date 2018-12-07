@@ -23,6 +23,7 @@ class CoursesController < ApplicationController
   def new
     @course = Course.new
     @image = @course.build_image
+    1.times { video = @course.videos.build }
   end
 
   # GET /courses/1/edit

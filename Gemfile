@@ -4,7 +4,7 @@ gem 'rails', '3.2.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem 'pg'
+gem 'pg', "~> 0.18"
 gem 'jquery-rails'
 gem 'sass-rails'
 gem 'bootstrap-sass'
@@ -23,7 +23,6 @@ gem 'paper_trail', '~> 2'
 # gem 'texticle', "2.0", :require => 'texticle/rails'
 gem 'pg_search'
 gem 'delayed_job_active_record'
-gem "votable", :git => "git://github.com/mikeycgto/votable.git"
 gem "bootstrap-wysihtml5-rails"
 
 gem "letter_opener", :group => :development

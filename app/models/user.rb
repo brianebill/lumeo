@@ -67,7 +67,6 @@ class User < ActiveRecord::Base
   has_many :courses, :dependent => :destroy
   has_many :articles, :dependent => :destroy
   has_many :books, :dependent => :destroy
-  has_many :videos, :dependent => :destroy
 
   # after a user is created, make sure a Image
   # association is also created

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120712231351) do
+ActiveRecord::Schema.define(:version => 20120712235509) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -103,6 +103,14 @@ ActiveRecord::Schema.define(:version => 20120712231351) do
   add_index "courses", ["index_text"], :name => "index_courses_on_index_text"
   add_index "courses", ["show_text"], :name => "index_courses_on_show_text"
   add_index "courses", ["title"], :name => "index_courses_on_title"
+
+  create_table "courses_tags", :id => false, :force => true do |t|
+    t.integer "course_id"
+    t.integer "tag_id"
+  end
+
+  add_index "courses_tags", ["course_id", "tag_id"], :name => "index_courses_tags_on_course_id_and_tag_id"
+  add_index "courses_tags", ["tag_id", "course_id"], :name => "index_courses_tags_on_tag_id_and_course_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -311,6 +319,14 @@ ActiveRecord::Schema.define(:version => 20120712231351) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "tags_videos", :id => false, :force => true do |t|
+    t.integer "video_id"
+    t.integer "tag_id"
+  end
+
+  add_index "tags_videos", ["tag_id", "video_id"], :name => "index_tags_videos_on_tag_id_and_video_id"
+  add_index "tags_videos", ["video_id", "tag_id"], :name => "index_tags_videos_on_video_id_and_tag_id"
 
   create_table "topics", :force => true do |t|
     t.integer  "community_id"

@@ -1,3 +1,0 @@
-Votable.setup do
-  
-end

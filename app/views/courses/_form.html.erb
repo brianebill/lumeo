@@ -23,6 +23,19 @@
 				</h3>
 	    <% end %>
 	</fieldset>
+	<div class="well pleft80">
+		<h3>Subject Tags:</h3>
+			<%= f.association :tags, 
+						:as => :check_boxes, 
+						:collection => @tags, 
+						:label => 'Pick one or more subjects' %>
+	</div>
+	<fieldset class="well pleft80">
+		<h3>Add Videos</h3>
+		<%= simple_fields_for :videos do |builder| %>
+	    	<%= render 'videos/form', :f => builder %>
+		<% end %>
+	</fieldset>
 	 <div class="form-actions">
 	    <%= link_to 'Cancel', courses_path, :class => 'btn pull-right btn-large m5' %>
 		<%= f.submit nil, :class => 'btn btn-primary pull-right btn-large m5' %>
